@@ -1,0 +1,15 @@
+﻿<Application
+    x:Class="RestSys.Client.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RestSys.Client"
+    xmlns:localData="using:RestSys.Client.Data">
+
+    <Application.Resources>
+
+        <!-- Application-specific resources -->
+
+        <x:String x:Key="AppName">RestSys.Client</x:String>
+
+    </Application.Resources>
+</Application>
