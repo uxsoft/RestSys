@@ -8,6 +8,11 @@ namespace RestSys.Models
 {
     public class RSPrincipal : IPrincipal
     {
+        public RSPrincipal(RSUser user)
+        {
+            User = user;
+        }
+
         public RSUser User { get; set; }
 
         public IIdentity Identity
