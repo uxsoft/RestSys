@@ -10,8 +10,22 @@ namespace RestSys.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
-        public ICollection<RSShift> Shifts { get; set; }
+        [Required]
+        public string Username { get; set; }
+        public string PasswordHash { get; set; }
+        public string PasswordSalt { get; set; }
+
+        public bool IsAdmin { get; set; }
+        public bool IsWaiter { get; set; }
+        public bool IsStorekeeper { get; set; }
+        public bool IsDiscountManager { get; set; }
+
+        //Relations
+        public virtual ICollection<RSShift> Shifts { get; set; }
+        public virtual ICollection<RSOrder> Orders { get; set; }
+        public virtual ICollection<RSDiscount> Discounts { get; set; }
 
         public string AuthenticationType
         {
@@ -20,7 +34,19 @@ namespace RestSys.Models
 
         public bool IsAuthenticated
         {
+            //TODO: RSUser.IsAuthenticated
             get { throw new NotImplementedException(); }
+        }
+
+        public void CreatePassword(string newPassword)
+        { 
+            //TODO: Implement password hashing
+        }
+
+        public bool CheckPassword(string attemptedPassword)
+        { 
+            //TODO: Implement password hashing check
+            throw new NotImplementedException();
         }
     }
 }

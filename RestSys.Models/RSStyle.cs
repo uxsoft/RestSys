@@ -6,17 +6,19 @@ using System.Text;
 
 namespace RestSys.Models
 {
-    public class RSStock
+    public class RSStyle
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        public int Code { get; set; }
+        public RSStyleType Type { get; set; }
         public string Title { get; set; }
-        public double Quantity { get; set; }
         public string Notes { get; set; }
-        public string SerialNumber { get; set; }
-
-        //Relations
-        public virtual ICollection<RSProduct> DependentProducts { get; set; }
+        public bool Selected { get; set; }
+    }
+    public enum RSStyleType
+    {
+        MenuStyle,
+        ReceiptStyle
     }
 }

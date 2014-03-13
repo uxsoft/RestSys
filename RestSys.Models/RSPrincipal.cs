@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RestSys.Models
 {
-    public class RSPrincipal: IPrincipal
+    public class RSPrincipal : IPrincipal
     {
         public RSUser User { get; set; }
 
@@ -17,7 +17,19 @@ namespace RestSys.Models
 
         public bool IsInRole(string role)
         {
-            throw new NotImplementedException();
+            switch (role.ToLowerInvariant())
+            {
+                case "admin":
+                    return User.IsAdmin;
+                case "waiter":
+                    return User.IsWaiter;
+                case "storekeeper":
+                    return User.IsStorekeeper;
+                case "discountmanager":
+                    return User.IsDiscountManager;
+                default:
+                    return false;
+            }
         }
     }
 }

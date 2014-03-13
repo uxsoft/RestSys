@@ -42,6 +42,7 @@
     <Compile Include="RSOrder.cs" />
     <Compile Include="RSPrincipal.cs" />
     <Compile Include="RSProduct.cs" />
+    <Compile Include="RSStyle.cs" />
     <Compile Include="RSUser.cs" />
     <Compile Include="RSShift.cs" />
     <Compile Include="RSStock.cs" />
