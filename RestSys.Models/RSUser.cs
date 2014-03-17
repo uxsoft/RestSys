@@ -11,7 +11,7 @@ using System.Composition;
 
 namespace RestSys.Models
 {
-    public class RSUser : IIdentity
+    public class RSUser : IIdentity, IRSEntity
     {
         public RSUser()
         {

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 using System.Reflection;
 namespace RestSys.Client
 {
-    public static class DependencyInjection
+    public static class DependencyInjectionExtensions
     {
-        static DependencyInjection()
+        static DependencyInjectionExtensions()
         {
             Configuration = new ContainerConfiguration()
-            .WithAssembly(typeof(DependencyInjection).GetTypeInfo().Assembly);
+            .WithAssembly(typeof(DependencyInjectionExtensions).GetTypeInfo().Assembly);
         }
 
         public static ContainerConfiguration Configuration { get; set; }

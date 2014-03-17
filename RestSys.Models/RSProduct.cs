@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestSys.Models.Exports;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace RestSys.Models
 {
-    public class RSProduct
+    public class RSProduct : IRSEntity
     {
         [Key]
         public int Id { get; set; }
@@ -21,6 +22,6 @@ namespace RestSys.Models
         //Relations
         public virtual ICollection<RSStock> Stocks { get; set; }
         public virtual ICollection<RSOrder> DependentOrders { get; set; }
-    
+
     }
 }
