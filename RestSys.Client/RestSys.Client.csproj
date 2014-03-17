@@ -105,7 +105,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\ApiContext.cs" />
     <Compile Include="DependencyInjection.cs" />
+    <Compile Include="Exports\SettingsPersistenceProvider.cs" />
     <Compile Include="GroupedItemsPage.xaml.cs">
       <DependentUpon>GroupedItemsPage.xaml</DependentUpon>
     </Compile>
@@ -160,6 +162,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RestSys.ClientCore\RestSys.ClientCore.csproj">
+      <Project>{8e6814f6-27ec-44ca-93ab-3e1f8ebfe686}</Project>
+      <Name>RestSys.ClientCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RestSys.Models\RestSys.Models.csproj">
       <Project>{cbdc4359-b0d3-4885-ae22-ff79d5244248}</Project>
       <Name>RestSys.Models</Name>
@@ -205,7 +211,6 @@
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.4\tools\Microsoft.Bcl.Build.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

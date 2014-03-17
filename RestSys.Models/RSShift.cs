@@ -9,8 +9,6 @@ namespace RestSys.Models
 {
     public class RSShift : IRSEntity
     {
-        [Key]
-        public int Id { get; set; }
         public DateTime From { get; set; }
         public DateTime To { get; set; }
         public string Notes { get; set; }

@@ -11,15 +11,13 @@ using System.Composition;
 
 namespace RestSys.Models
 {
-    public class RSUser : IIdentity, IRSEntity
+    public class RSUser : IRSEntity, IIdentity
     {
         public RSUser()
         {
-            
+
         }
 
-        [Key]
-        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

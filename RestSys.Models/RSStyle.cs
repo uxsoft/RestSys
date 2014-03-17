@@ -9,8 +9,6 @@ namespace RestSys.Models
 {
     public class RSStyle : IRSEntity
     {
-        [Key]
-        public int Id { get; set; }
         public int Code { get; set; }
         public RSStyleType Type { get; set; }
         public string Title { get; set; }

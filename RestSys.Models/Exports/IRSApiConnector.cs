@@ -9,12 +9,13 @@ namespace RestSys.Models.Exports
 {
     public interface IRSApiConnector<T> where T : IRSEntity
     {
-        void AttachPersistencyProvider(IRSPersistencyProvider persistencyProvider);
+        IRSApiConnector<T> AttachPersistencyProvider(IRSPersistencyProvider persistencyProvider);
+        IRSApiConnector<T> AttachWebApiEndpoint(string url);
 
-        Task Update<T>(T t);
-        Task Add<T>(T t);
-        Task Find<T>(int id);
-        Task Delete<T>(int id);
+        Task Update(T t);
+        Task Add(T t);
+        Task Find(int id);
+        Task Delete(int id);
         Task<ObservableCollection<T>> Get();
         Task Synchronize();
         //or something like that

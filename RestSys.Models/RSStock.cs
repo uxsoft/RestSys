@@ -9,8 +9,6 @@ namespace RestSys.Models
 {
     public class RSStock : IRSEntity
     {
-        [Key]
-        public int Id { get; set; }
         [Required]
         public string Title { get; set; }
         public double Quantity { get; set; }

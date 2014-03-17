@@ -9,8 +9,6 @@ namespace RestSys.Models
 {
     public class RSOrder : IRSEntity
     {
-        [Key]
-        public int Id { get; set; }
         public DateTime DateOrdered { get; set; }
         public double TotalPrice { get; set; }
         public string Notes { get; set; }
