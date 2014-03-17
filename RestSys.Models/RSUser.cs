@@ -4,18 +4,28 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Principal;
+using RestSys.Models.Exports;
+using System.Collections;
+using RestSys;
+using System.Composition;
+
 namespace RestSys.Models
 {
     public class RSUser : IIdentity
     {
+        public RSUser()
+        {
+            
+        }
+
         [Key]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public string Username { get; set; }
-        public string PasswordHash { get; set; }
-        public string PasswordSalt { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
 
         public bool IsAdmin { get; set; }
         public bool IsWaiter { get; set; }
@@ -39,14 +49,18 @@ namespace RestSys.Models
         }
 
         public void CreatePassword(string newPassword)
-        { 
-            //TODO: Implement password hashing
+        {
+            PasswordSalt = CryptoModule.Salt();
+            PasswordHash = CryptoModule.Hash(Encoding.UTF8.GetBytes(newPassword), PasswordSalt);
         }
 
         public bool CheckPassword(string attemptedPassword)
-        { 
-            //TODO: Implement password hashing check
-            throw new NotImplementedException();
+        {
+            IStructuralEquatable hash = CryptoModule.Hash(Encoding.UTF8.GetBytes(attemptedPassword), PasswordSalt);
+            return hash.Equals(PasswordHash, StructuralComparisons.StructuralEqualityComparer);
         }
+
+        [Import]
+        private IRSCryptographyModule CryptoModule { get; set; }
     }
 }
