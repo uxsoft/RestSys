@@ -15,6 +15,7 @@ namespace RestSys.Models.Exports
         IRSApiConnector<T> AttachWebApiEndpoint(string url);
 
         T Find(int id);
+        T LastInserted();
         Task Synchronize();
     }
 }
