@@ -27,7 +27,6 @@ namespace RestSys.Models
 
         public bool IsAdmin { get; set; }
         public bool IsWaiter { get; set; }
-        public bool IsStorekeeper { get; set; }
         public bool IsDiscountManager { get; set; }
 
         //Relations

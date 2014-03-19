@@ -16,6 +16,15 @@ namespace RestSys.Models.Exports
         [Key]
         public int Id { get; set; }
 
+        private bool SuppressPropertyChanged = false;
+
+        public void Quietly(Action<IRSEntity> action)
+        {
+            SuppressPropertyChanged = true;
+            action(this);
+            SuppressPropertyChanged = false;
+        }
+
         public void RaisePropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)

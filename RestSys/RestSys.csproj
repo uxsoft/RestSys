@@ -145,7 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_GlobalResources\Resources.en.Designer.cs">
@@ -159,13 +158,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StylesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201403131332534_initial.cs" />
-    <Compile Include="Migrations\201403131332534_initial.Designer.cs">
-      <DependentUpon>201403131332534_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201403191122168_styles.cs" />
+    <Compile Include="Migrations\201403191122168_styles.Designer.cs">
+      <DependentUpon>201403191122168_styles.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Exports\HMACSHA1CryptographyModule.cs" />
@@ -182,7 +182,9 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -208,8 +210,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201403131332534_initial.resx">
-      <DependentUpon>201403131332534_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201403191122168_styles.resx">
+      <DependentUpon>201403191122168_styles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

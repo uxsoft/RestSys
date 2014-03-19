@@ -1,5 +1,5 @@
 ﻿using RestSys.Client.Common;
-
+using RestSys.Client.DataModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -43,16 +43,8 @@ namespace RestSys.Client
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-
-#if DEBUG
-            // Show graphics profiling information while debugging.
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                // Display the current frame rate counters
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
-
+            dynamic ctx = new ApiContext();
+            ctx.Styles.Test();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,

@@ -17,7 +17,7 @@ namespace RestSys.Client.DataModel
             this.DependencyInjection();
 
 
-
+            Styles.AttachWebApiEndpoint("http://localhost:56345/Api/Styles/");
             Users.AttachPersistencyProvider(PersistencyProvider);
         }
 
@@ -26,5 +26,8 @@ namespace RestSys.Client.DataModel
 
         [Import]
         public IRSApiConnector<RSUser> Users { get; set; }
+
+        [Import]
+        public IRSApiConnector<RSStyle> Styles { get; set; }
     }
 }

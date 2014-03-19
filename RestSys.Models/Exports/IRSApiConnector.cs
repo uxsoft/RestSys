@@ -14,6 +14,7 @@ namespace RestSys.Models.Exports
         IRSApiConnector<T> AttachPersistencyProvider(IRSPersistencyProvider persistencyProvider);
         IRSApiConnector<T> AttachWebApiEndpoint(string url);
 
+        T Find(int id);
         Task Synchronize();
     }
 }
