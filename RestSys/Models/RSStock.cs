@@ -7,17 +7,17 @@ using System.Text;
 
 namespace RestSys.Models
 {
-    public class RSStyle : IRSEntity
+    public class RSStock : IRSEntity
     {
-        public int Code { get; set; }
-        public RSStyleType Type { get; set; }
+        public int Id { get; set; }
+
+        [Required]
         public string Title { get; set; }
+        public double Quantity { get; set; }
         public string Notes { get; set; }
-        public bool Selected { get; set; }
-    }
-    public enum RSStyleType
-    {
-        MenuStyle,
-        ReceiptStyle
+        public string SerialNumber { get; set; }
+
+        //Relations
+        public virtual ICollection<RSProduct> DependentProducts { get; set; }
     }
 }

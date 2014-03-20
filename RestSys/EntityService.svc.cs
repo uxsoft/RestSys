@@ -17,7 +17,7 @@ using System.ServiceModel;
 namespace RestSys
 {
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
-    public class EntityService : EntityFrameworkDataService<EmptyDbContext>
+    public class EntityService : EntityFrameworkDataService<RSDbContext>
     {
         protected override void HandleException(HandleExceptionArgs args)
         {
@@ -26,10 +26,10 @@ namespace RestSys
 
         public static void InitializeService(DataServiceConfiguration config)
         {
-            //config.UseVerboseErrors = true;
-            //config.SetEntitySetAccessRule("*", EntitySetRights.All);
-            //config.SetServiceOperationAccessRule("*", ServiceOperationRights.All);
-            //config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
+            config.UseVerboseErrors = true;
+            config.SetEntitySetAccessRule("*", EntitySetRights.All);
+            config.SetServiceOperationAccessRule("*", ServiceOperationRights.All);
+            config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
         }
     }
 }

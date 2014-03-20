@@ -79,6 +79,7 @@ namespace RestSys.Client.Tests
 
         public class SampleEntity : IRSEntity
         {
+            public int Id { get; set; }
             public string Data { get; set; }
         }
     }

@@ -9,6 +9,8 @@ namespace RestSys.Models
 {
     public class RSDiscount : IRSEntity
     {
+        public int Id { get; set; }
+
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
         [Required]

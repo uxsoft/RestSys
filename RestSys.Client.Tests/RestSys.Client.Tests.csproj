@@ -138,10 +138,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RestSys.ClientCore\RestSys.ClientCore.csproj">
-      <Project>{8e6814f6-27ec-44ca-93ab-3e1f8ebfe686}</Project>
-      <Name>RestSys.ClientCore</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RestSys.Client\RestSys.Client.csproj">
       <Project>{5b6c4856-bed0-45ec-a58f-e18411b3f4fd}</Project>
       <Name>RestSys.Client</Name>

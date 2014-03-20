@@ -18,7 +18,6 @@ namespace RestSys.Client.Exports
         private ApplicationDataContainer CreateContainer<T>()
         {
             return ApplicationData.Current.LocalSettings.CreateContainer(typeof(T).FullName, ApplicationDataCreateDisposition.Always);
-
         }
 
         public static string Serialize<T>(T objectToSerialize)
@@ -80,7 +79,7 @@ namespace RestSys.Client.Exports
             object value = container.Values[id.ToString()];
             if (value != null)
                 return Deserialize<T>(value.ToString());
-            else return null;
+            else return default(T);
         }
     }
 }

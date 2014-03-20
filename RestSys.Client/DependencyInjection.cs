@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-using RestSys.ClientCore.Exports;
 
 namespace RestSys.Client
 {
@@ -15,8 +14,7 @@ namespace RestSys.Client
         static DependencyInjectionExtensions()
         {
             Configuration = new ContainerConfiguration()
-                .WithAssembly(typeof(DependencyInjectionExtensions).GetTypeInfo().Assembly)
-                .WithAssembly(typeof(NaiveApiConnector<>).GetTypeInfo().Assembly);
+                .WithAssembly(typeof(DependencyInjectionExtensions).GetTypeInfo().Assembly);
         }
 
         public static ContainerConfiguration Configuration { get; set; }

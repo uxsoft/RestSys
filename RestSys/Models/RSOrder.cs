@@ -9,22 +9,16 @@ namespace RestSys.Models
 {
     public class RSOrder : IRSEntity
     {
+        public int Id { get; set; }
+
         public DateTime DateOrdered { get; set; }
         public double TotalPrice { get; set; }
+        public double TotalPaid { get; set; }
         public string Notes { get; set; }
-        public RSOrderPaymentStatus PaymentStatus { get; set; }
 
         [Required]
         public virtual RSUser Waiter { get; set; }
         public virtual ICollection<RSDiscount> Discounts { get; set; }
         public virtual ICollection<RSProduct> Products { get; set; }
-    }
-
-    public enum RSOrderPaymentStatus
-    {
-        NotPaid,
-        CreditCard,
-        Cash,
-        Check
     }
 }

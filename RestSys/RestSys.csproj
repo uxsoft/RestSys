@@ -193,9 +193,16 @@
       <DependentUpon>201403191122168_styles.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\EmptyDbContext.cs" />
     <Compile Include="Models\Exports\HMACSHA1CryptographyModule.cs" />
     <Compile Include="Models\RSDbContext.cs" />
+    <Compile Include="Models\RSDiscount.cs" />
+    <Compile Include="Models\RSOrder.cs" />
+    <Compile Include="Models\RSPrincipal.cs" />
+    <Compile Include="Models\RSProduct.cs" />
+    <Compile Include="Models\RSShift.cs" />
+    <Compile Include="Models\RSStock.cs" />
+    <Compile Include="Models\RSStyle.cs" />
+    <Compile Include="Models\RSUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
