@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="DependencyInjection.cs" />
     <Compile Include="Exports\SettingsPersistenceProvider.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="GroupedItemsPage.xaml.cs">
       <DependentUpon>GroupedItemsPage.xaml</DependentUpon>
     </Compile>
@@ -122,15 +123,25 @@
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Service References\Services.EntityService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.datasvcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Service References\Services.EntityService\Reference.datasvcmap">
+      <Generator>DataServicesCoreClientGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Common\ReadMe.txt" />
     <None Include="packages.config" />
     <None Include="RestSys.Client_TemporaryKey.pfx" />
     <Content Include="DataModel\SampleData.json" />
+    <None Include="Service References\Services.EntityService\service.edmx" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +178,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Data.Edm.Portable">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.0\lib\portable-net40+sl5+wp8+win8\Microsoft.Data.Edm.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData.Portable">
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\portable-net40+sl5+wp8+win8\Microsoft.Data.OData.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client.Portable">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.0\lib\portable-net45+sl5+wp8+win8\Microsoft.Data.Services.Client.Portable.dll</HintPath>
+    </Reference>
     <Reference Include="System.Composition.AttributedModel, Version=1.0.20.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -201,9 +221,17 @@
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\win8\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="System.Spatial.Portable">
+      <HintPath>..\packages\System.Spatial.5.6.0\lib\portable-net40+sl5+wp8+win8\System.Spatial.Portable.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ServiceReferenceMetadataStorage Include="Service References\Services.EntityService\">
+      <Type>datasvcmap</Type>
+    </ServiceReferenceMetadataStorage>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

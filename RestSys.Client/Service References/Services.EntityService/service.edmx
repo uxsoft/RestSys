@@ -1,0 +1,151 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="RestSys.Models" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityType Name="RSDiscount">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ValidFrom" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="ValidTo" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="ModuleId" Type="Edm.String" />
+        <Property Name="Data" Type="Edm.String" />
+        <Property Name="Notes" Type="Edm.String" />
+        <NavigationProperty Name="Author" Relationship="RestSys.Models.RSDiscount_Author_RSUser_Discounts" ToRole="RSUser_Discounts" FromRole="RSDiscount_Author" />
+        <NavigationProperty Name="DependentOrders" Relationship="RestSys.Models.RSDiscount_DependentOrders_RSOrder_Discounts" ToRole="RSOrder_Discounts" FromRole="RSDiscount_DependentOrders" />
+      </EntityType>
+      <EntityType Name="RSUser">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Username" Type="Edm.String" />
+        <Property Name="PasswordHash" Type="Edm.Binary" />
+        <Property Name="PasswordSalt" Type="Edm.Binary" />
+        <Property Name="IsAdmin" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="IsWaiter" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="IsDiscountManager" Type="Edm.Boolean" Nullable="false" />
+        <NavigationProperty Name="Discounts" Relationship="RestSys.Models.RSDiscount_Author_RSUser_Discounts" ToRole="RSDiscount_Author" FromRole="RSUser_Discounts" />
+        <NavigationProperty Name="Orders" Relationship="RestSys.Models.RSUser_Orders_RSOrder_Waiter" ToRole="RSOrder_Waiter" FromRole="RSUser_Orders" />
+        <NavigationProperty Name="Shifts" Relationship="RestSys.Models.RSUser_Shifts_RSShift_User" ToRole="RSShift_User" FromRole="RSUser_Shifts" />
+      </EntityType>
+      <EntityType Name="RSOrder">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DateOrdered" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="TotalPrice" Type="Edm.Double" Nullable="false" />
+        <Property Name="TotalPaid" Type="Edm.Double" Nullable="false" />
+        <Property Name="Notes" Type="Edm.String" />
+        <NavigationProperty Name="Discounts" Relationship="RestSys.Models.RSDiscount_DependentOrders_RSOrder_Discounts" ToRole="RSDiscount_DependentOrders" FromRole="RSOrder_Discounts" />
+        <NavigationProperty Name="Products" Relationship="RestSys.Models.RSOrder_Products_RSProduct_DependentOrders" ToRole="RSProduct_DependentOrders" FromRole="RSOrder_Products" />
+        <NavigationProperty Name="Waiter" Relationship="RestSys.Models.RSUser_Orders_RSOrder_Waiter" ToRole="RSUser_Orders" FromRole="RSOrder_Waiter" />
+      </EntityType>
+      <EntityType Name="RSProduct">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="Price" Type="Edm.Double" Nullable="false" />
+        <Property Name="ShowOnMenu" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="SerialNumber" Type="Edm.String" />
+        <Property Name="Amount" Type="Edm.Double" Nullable="false" />
+        <NavigationProperty Name="DependentOrders" Relationship="RestSys.Models.RSOrder_Products_RSProduct_DependentOrders" ToRole="RSOrder_Products" FromRole="RSProduct_DependentOrders" />
+        <NavigationProperty Name="Stocks" Relationship="RestSys.Models.RSProduct_Stocks_RSStock_DependentProducts" ToRole="RSStock_DependentProducts" FromRole="RSProduct_Stocks" />
+      </EntityType>
+      <EntityType Name="RSStock">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" />
+        <Property Name="Quantity" Type="Edm.Double" Nullable="false" />
+        <Property Name="Notes" Type="Edm.String" />
+        <Property Name="SerialNumber" Type="Edm.String" />
+        <NavigationProperty Name="DependentProducts" Relationship="RestSys.Models.RSProduct_Stocks_RSStock_DependentProducts" ToRole="RSProduct_Stocks" FromRole="RSStock_DependentProducts" />
+      </EntityType>
+      <EntityType Name="RSShift">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="From" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="To" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Notes" Type="Edm.String" />
+        <NavigationProperty Name="User" Relationship="RestSys.Models.RSUser_Shifts_RSShift_User" ToRole="RSUser_Shifts" FromRole="RSShift_User" />
+      </EntityType>
+      <EntityType Name="RSStyle">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Code" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Type" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" />
+        <Property Name="Notes" Type="Edm.String" />
+        <Property Name="Selected" Type="Edm.Boolean" Nullable="false" />
+      </EntityType>
+      <Association Name="RSDiscount_Author_RSUser_Discounts">
+        <End Type="RestSys.Models.RSUser" Role="RSUser_Discounts" Multiplicity="0..1" />
+        <End Type="RestSys.Models.RSDiscount" Role="RSDiscount_Author" Multiplicity="*" />
+      </Association>
+      <Association Name="RSDiscount_DependentOrders_RSOrder_Discounts">
+        <End Type="RestSys.Models.RSOrder" Role="RSOrder_Discounts" Multiplicity="*" />
+        <End Type="RestSys.Models.RSDiscount" Role="RSDiscount_DependentOrders" Multiplicity="*" />
+      </Association>
+      <Association Name="RSUser_Orders_RSOrder_Waiter">
+        <End Type="RestSys.Models.RSOrder" Role="RSOrder_Waiter" Multiplicity="*" />
+        <End Type="RestSys.Models.RSUser" Role="RSUser_Orders" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RSUser_Shifts_RSShift_User">
+        <End Type="RestSys.Models.RSShift" Role="RSShift_User" Multiplicity="*" />
+        <End Type="RestSys.Models.RSUser" Role="RSUser_Shifts" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RSOrder_Products_RSProduct_DependentOrders">
+        <End Type="RestSys.Models.RSProduct" Role="RSProduct_DependentOrders" Multiplicity="*" />
+        <End Type="RestSys.Models.RSOrder" Role="RSOrder_Products" Multiplicity="*" />
+      </Association>
+      <Association Name="RSProduct_Stocks_RSStock_DependentProducts">
+        <End Type="RestSys.Models.RSStock" Role="RSStock_DependentProducts" Multiplicity="*" />
+        <End Type="RestSys.Models.RSProduct" Role="RSProduct_Stocks" Multiplicity="*" />
+      </Association>
+      <EntityContainer Name="RSDbContext" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Discounts" EntityType="RestSys.Models.RSDiscount" />
+        <EntitySet Name="Users" EntityType="RestSys.Models.RSUser" />
+        <EntitySet Name="Orders" EntityType="RestSys.Models.RSOrder" />
+        <EntitySet Name="Products" EntityType="RestSys.Models.RSProduct" />
+        <EntitySet Name="Stocks" EntityType="RestSys.Models.RSStock" />
+        <EntitySet Name="Shifts" EntityType="RestSys.Models.RSShift" />
+        <EntitySet Name="Styles" EntityType="RestSys.Models.RSStyle" />
+        <AssociationSet Name="RSUser_Discounts" Association="RestSys.Models.RSDiscount_Author_RSUser_Discounts">
+          <End Role="RSDiscount_Author" EntitySet="Discounts" />
+          <End Role="RSUser_Discounts" EntitySet="Users" />
+        </AssociationSet>
+        <AssociationSet Name="RSOrder_Discounts" Association="RestSys.Models.RSDiscount_DependentOrders_RSOrder_Discounts">
+          <End Role="RSDiscount_DependentOrders" EntitySet="Discounts" />
+          <End Role="RSOrder_Discounts" EntitySet="Orders" />
+        </AssociationSet>
+        <AssociationSet Name="RSOrder_Waiter" Association="RestSys.Models.RSUser_Orders_RSOrder_Waiter">
+          <End Role="RSUser_Orders" EntitySet="Users" />
+          <End Role="RSOrder_Waiter" EntitySet="Orders" />
+        </AssociationSet>
+        <AssociationSet Name="RSShift_User" Association="RestSys.Models.RSUser_Shifts_RSShift_User">
+          <End Role="RSUser_Shifts" EntitySet="Users" />
+          <End Role="RSShift_User" EntitySet="Shifts" />
+        </AssociationSet>
+        <AssociationSet Name="RSProduct_DependentOrders" Association="RestSys.Models.RSOrder_Products_RSProduct_DependentOrders">
+          <End Role="RSOrder_Products" EntitySet="Orders" />
+          <End Role="RSProduct_DependentOrders" EntitySet="Products" />
+        </AssociationSet>
+        <AssociationSet Name="RSStock_DependentProducts" Association="RestSys.Models.RSProduct_Stocks_RSStock_DependentProducts">
+          <End Role="RSProduct_Stocks" EntitySet="Products" />
+          <End Role="RSStock_DependentProducts" EntitySet="Stocks" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
