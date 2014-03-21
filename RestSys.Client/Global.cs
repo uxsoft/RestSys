@@ -10,9 +10,10 @@ namespace RestSys.Client
     {
         const string API_ENDPOINT = "http://localhost:56345/EntityService/";
 
-        public static void ApplicationStart()
+        public static async void ApplicationStart()
         {
             Db = new RSDbContext(new Uri(API_ENDPOINT));
+
         }
 
         public static RSDbContext Db { get; set; }

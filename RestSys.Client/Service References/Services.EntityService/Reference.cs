@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 20. 3. 2014 21:14:01
+// Generation date: 21. 3. 2014 0:22:40
 namespace RestSys.Client.Services.EntityService
 {
     
