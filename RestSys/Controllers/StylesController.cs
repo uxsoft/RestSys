@@ -19,16 +19,7 @@ namespace RestSys.Controllers
 
         public ActionResult ReceiptStyle()
         {
-            RSStyle style = db.Styles.Where(s => s.Type == (int)RSStyleType.ReceiptStyle).FirstOrDefault(s => s.Selected);
-            if (System.IO.File.Exists(style.Path))
-            {
-                using (StreamReader sr = new StreamReader(style.Path))
-                {
-                    return View(sr.ReadToEnd());
-                }
-            }
-            else return View(style.Code);
-
+            return View((object)GetStyleCode(RSStyleType.ReceiptStyle));
         }
 
         public ActionResult Menu()
@@ -38,15 +29,23 @@ namespace RestSys.Controllers
 
         public ActionResult MenuStyle()
         {
+            return View((object)GetStyleCode(RSStyleType.MenuStyle));
+        }
+
+        private string GetStyleCode(RSStyleType type)
+        {
             RSStyle style = db.Styles.Where(s => s.Type == (int)RSStyleType.MenuStyle).FirstOrDefault(s => s.Selected);
-            if (System.IO.File.Exists(style.Path))
+            if (style == null)
+                return "";
+
+            if (System.IO.File.Exists(Server.MapPath(style.Path)))
             {
-                using (StreamReader sr = new StreamReader(style.Path))
+                using (StreamReader sr = new StreamReader(Server.MapPath(style.Path)))
                 {
-                    return View(sr.ReadToEnd());
+                    return sr.ReadToEnd();
                 }
             }
-            else return View(style.Code);
+            else return style.Code;
         }
     }
 }

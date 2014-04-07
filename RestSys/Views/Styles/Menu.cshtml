@@ -1,0 +1,29 @@
+﻿@model IEnumerable<RestSys.Models.RSProduct>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Menu</title>
+    <link href="/Styles/MenuStyle" rel="stylesheet" />
+</head>
+<body>
+    <div id="page">
+        <h1>Menu</h1>
+        @foreach (var category in Model.GroupBy(p => p.Category))
+        {
+            <div class="menu-category">
+                <h3>@category.Key</h3>
+                @foreach (var product in category)
+                {
+                    <div class="menu-item">
+                        <h5>@product</h5>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</body>
+</html>
