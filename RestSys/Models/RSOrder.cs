@@ -11,14 +11,11 @@ namespace RestSys.Models
     {
         public int Id { get; set; }
 
-        public DateTime DateOrdered { get; set; }
-        public double TotalPrice { get; set; }
-        public double TotalPaid { get; set; }
+        public DateTime OrderedOn { get; set; }
         public string Notes { get; set; }
 
-        [Required]
-        public virtual RSUser Waiter { get; set; }
-        public virtual ICollection<RSDiscount> Discounts { get; set; }
-        public virtual ICollection<RSProduct> Products { get; set; }
+        //Relations
+        public virtual ICollection<RSOrderItem> Items { get; set; }
+        public virtual ICollection<RSReceipt> Receipts { get; set; }
     }
 }

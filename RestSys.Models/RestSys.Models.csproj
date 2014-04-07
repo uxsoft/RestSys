@@ -47,8 +47,6 @@
     <Compile Include="Exports\IRSEntity.cs" />
     <Compile Include="Exports\IRSPersistencyProvider.cs" />
     <Compile Include="Exports\SyncExtensions.cs" />
-    <Compile Include="Magic\MagicAttribute.cs" />
-    <Compile Include="Magic\NoMagicAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

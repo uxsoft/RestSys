@@ -13,6 +13,7 @@ namespace RestSys.Client
         public static async void ApplicationStart()
         {
             Db = new RSDbContext(new Uri(API_ENDPOINT));
+            
 
         }
 
