@@ -14,6 +14,9 @@ namespace RestSys.Models
         public DbSet<RSReceipt> Receipts { get; set; }
         public DbSet<RSStock> Stocks { get; set; }
         public DbSet<RSStyle> Styles { get; set; }
-        public DbSet<RSUser> Users { get; set; }    
+        public DbSet<RSUser> Users { get; set; }
+
+        public DbSet<RSReceiptItem> ReceiptItems { get; set; }
+        public DbSet<RSOrderItem> OrderItems { get; set; }
     }
 }

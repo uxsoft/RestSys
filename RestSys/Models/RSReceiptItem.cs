@@ -6,14 +6,15 @@ using System.Web;
 
 namespace RestSys.Models
 {
-    public class RSOrderItem : IRSEntity
+    public class RSReceiptItem:IRSEntity
     {
+
         public int Id { get; set; }
 
         public int Quantity { get; set; }
 
         //Relations
         public RSProduct Product { get; set; }
-        public RSOrder Order { get; set; }
+        public RSReceipt Order { get; set; }
     }
 }

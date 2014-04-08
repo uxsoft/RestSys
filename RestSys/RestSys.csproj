@@ -188,8 +188,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\StylesController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="EntityService.svc.cs">
       <DependentUpon>EntityService.svc</DependentUpon>
     </Compile>
@@ -213,6 +213,7 @@
     <Compile Include="Models\RSPrincipal.cs" />
     <Compile Include="Models\RSProduct.cs" />
     <Compile Include="Models\RSReceipt.cs" />
+    <Compile Include="Models\RSReceiptItem.cs" />
     <Compile Include="Models\RSStock.cs" />
     <Compile Include="Models\RSStyle.cs" />
     <Compile Include="Models\RSUser.cs" />
@@ -263,6 +264,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Styles\MenuStyle.cshtml" />
     <Content Include="Views\Styles\Menu.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RestSys.Models\RestSys.Models.csproj">
