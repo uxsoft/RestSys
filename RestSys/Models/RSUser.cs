@@ -17,6 +17,7 @@ namespace RestSys.Models
         {
 
         }
+
         public int Id { get; set; }
 
         [Required]
@@ -31,9 +32,7 @@ namespace RestSys.Models
         public bool IsDiscountManager { get; set; }
 
         //Relations
-        public virtual ICollection<RSShift> Shifts { get; set; }
-        public virtual ICollection<RSOrder> Orders { get; set; }
-        public virtual ICollection<RSDiscount> Discounts { get; set; }
+        public virtual ICollection<RSReceipt> Receipts { get; set; }
 
         public string AuthenticationType
         {

@@ -1,63 +1,51 @@
-﻿using System;
+﻿using RestSys.Models;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using RestSys.Models;
-using RestSys.Models.Exports;
+using System.Web;
+using System.Web.Mvc;
+
 namespace RestSys.Controllers
 {
-    public class StylesController : ApiController
+    public class StylesController : Controller
     {
-        //RSDbContext db = new RSDbContext();
+        RSDbContext db = new RSDbContext();
 
-        //// GET api/<controller>
-        //public IEnumerable<RSStyle> Get()
-        //{
-        //    return db.Styles.ToList();
-        //}
+        public ActionResult Receipt(int orderId)
+        {
+            return View(db.Receipts.Find(orderId));
+        }
 
-        //// GET api/<controller>/5
-        //public RSStyle Get(int id)
-        //{
-        //    return db.Styles.Find(id);
-        //}
+        public ActionResult ReceiptStyle()
+        {
+            return View((object)GetStyleCode(RSStyleType.ReceiptStyle));
+        }
 
-        //// POST api/<controller>
-        //public int Post([FromBody]RSStyle value)
-        //{
-        //    if (value != null)
-        //    {
-        //        value = db.Styles.Add(value);
-        //        db.SaveChanges();
-        //        return value.Id;
-        //    }
-        //    return -1;
-        //}
+        public ActionResult Menu()
+        {
+            return View(db.Products.Where(p => p.ShowOnMenu));
+        }
 
-        //// PUT api/<controller>/5
-        //public void Put(int id, [FromBody]RSStyle value)
-        //{
-        //    if (value != null)
-        //    {
-        //        RSStyle existing = db.Styles.Find(value.Id);
-        //        if (existing != null)
-        //        {
-        //            value.SyncPropertiesTo(existing);
-        //            db.SaveChanges();
-        //        }
-        //    }
-        //}
+        public ActionResult MenuStyle()
+        {
+            return View((object)GetStyleCode(RSStyleType.MenuStyle));
+        }
 
-        //// DELETE api/<controller>/5
-        //public void Delete(int id)
-        //{
-        //    RSStyle victim = db.Styles.Find(id);
-        //    if (victim != null)
-        //        db.Styles.Remove(victim);
+        private string GetStyleCode(RSStyleType type)
+        {
+            RSStyle style = db.Styles.Where(s => s.Type == (int)RSStyleType.MenuStyle).FirstOrDefault(s => s.Selected);
+            if (style == null)
+                return "";
 
-        //    db.SaveChanges();
-        //}
+            if (System.IO.File.Exists(Server.MapPath(style.Path)))
+            {
+                using (StreamReader sr = new StreamReader(Server.MapPath(style.Path)))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
+            else return style.Code;
+        }
     }
 }

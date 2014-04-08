@@ -173,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_GlobalResources\Resources.en.Designer.cs">
@@ -185,6 +186,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StylesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -194,24 +196,41 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201403191122168_styles.cs" />
-    <Compile Include="Migrations\201403191122168_styles.Designer.cs">
-      <DependentUpon>201403191122168_styles.cs</DependentUpon>
+    <Compile Include="Migrations\201404072111348_initial.cs" />
+    <Compile Include="Migrations\201404072111348_initial.Designer.cs">
+      <DependentUpon>201404072111348_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404072210358_style-bad-code-type.cs" />
+    <Compile Include="Migrations\201404072210358_style-bad-code-type.Designer.cs">
+      <DependentUpon>201404072210358_style-bad-code-type.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Exports\HMACSHA1CryptographyModule.cs" />
     <Compile Include="Models\RSDbContext.cs" />
-    <Compile Include="Models\RSDiscount.cs" />
+    <Compile Include="Models\RSNavigationItem.cs" />
     <Compile Include="Models\RSOrder.cs" />
+    <Compile Include="Models\RSOrderItem.cs" />
     <Compile Include="Models\RSPrincipal.cs" />
     <Compile Include="Models\RSProduct.cs" />
-    <Compile Include="Models\RSShift.cs" />
+    <Compile Include="Models\RSReceipt.cs" />
     <Compile Include="Models\RSStock.cs" />
     <Compile Include="Models\RSStyle.cs" />
     <Compile Include="Models\RSUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Menu\default.css">
+      <DependentUpon>default.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Menu\default.min.css">
+      <DependentUpon>default.css</DependentUpon>
+    </Content>
+    <Content Include="Content\site.css">
+      <DependentUpon>site.less</DependentUpon>
+    </Content>
+    <Content Include="Content\site.min.css">
+      <DependentUpon>site.css</DependentUpon>
+    </Content>
     <Content Include="EntityService.svc" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -220,6 +239,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.en.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Content\site.less" />
+    <Content Include="Content\Receipt\default.less" />
+    <Content Include="Content\Menu\default.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -232,7 +254,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -240,6 +261,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Styles\MenuStyle.cshtml" />
+    <Content Include="Views\Styles\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RestSys.Models\RestSys.Models.csproj">
@@ -251,8 +274,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201403191122168_styles.resx">
-      <DependentUpon>201403191122168_styles.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201404072111348_initial.resx">
+      <DependentUpon>201404072111348_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404072210358_style-bad-code-type.resx">
+      <DependentUpon>201404072210358_style-bad-code-type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

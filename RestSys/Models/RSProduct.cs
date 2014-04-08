@@ -18,10 +18,11 @@ namespace RestSys.Models
         public bool ShowOnMenu { get; set; }
         public string SerialNumber { get; set; }
         public double Amount { get; set; }
+        public string Category { get; set; }
 
         //Relations
         public virtual ICollection<RSStock> Stocks { get; set; }
-        public virtual ICollection<RSOrder> DependentOrders { get; set; }
-
+        public virtual ICollection<RSOrderItem> DependentOrderItems { get; set; }
+        public virtual ICollection<RSNavigationItem> DependentNavigationItems { get; set; }
     }
 }
