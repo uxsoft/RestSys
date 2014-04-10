@@ -6,9 +6,8 @@ using System.Web;
 
 namespace RestSys.Models
 {
-    public class RSReceiptItem:IRSEntity
+    public class RSReceiptItem : IRSEntity
     {
-
         public int Id { get; set; }
 
         public int Quantity { get; set; }

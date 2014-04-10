@@ -47,15 +47,12 @@ namespace RestSys.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Quantity = c.Int(nullable: false),
                         Order_Id = c.Int(),
-                        Receipt_Id = c.Int(),
                         Product_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.RSOrders", t => t.Order_Id)
-                .ForeignKey("dbo.RSReceipts", t => t.Receipt_Id)
                 .ForeignKey("dbo.RSProducts", t => t.Product_Id)
                 .Index(t => t.Order_Id)
-                .Index(t => t.Receipt_Id)
                 .Index(t => t.Product_Id);
             
             CreateTable(
@@ -82,6 +79,21 @@ namespace RestSys.Migrations
                 .ForeignKey("dbo.RSUsers", t => t.User_Id, cascadeDelete: true)
                 .Index(t => t.Order_Id)
                 .Index(t => t.User_Id);
+            
+            CreateTable(
+                "dbo.RSReceiptItems",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Quantity = c.Int(nullable: false),
+                        Order_Id = c.Int(),
+                        Product_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.RSReceipts", t => t.Order_Id)
+                .ForeignKey("dbo.RSProducts", t => t.Product_Id)
+                .Index(t => t.Order_Id)
+                .Index(t => t.Product_Id);
             
             CreateTable(
                 "dbo.RSUsers",
@@ -115,7 +127,7 @@ namespace RestSys.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Code = c.Int(nullable: false),
+                        Code = c.String(),
                         Path = c.String(),
                         Type = c.Int(nullable: false),
                         Title = c.String(),
@@ -145,7 +157,8 @@ namespace RestSys.Migrations
             DropForeignKey("dbo.RSStockRSProducts", "RSStock_Id", "dbo.RSStocks");
             DropForeignKey("dbo.RSOrderItems", "Product_Id", "dbo.RSProducts");
             DropForeignKey("dbo.RSReceipts", "User_Id", "dbo.RSUsers");
-            DropForeignKey("dbo.RSOrderItems", "Receipt_Id", "dbo.RSReceipts");
+            DropForeignKey("dbo.RSReceiptItems", "Product_Id", "dbo.RSProducts");
+            DropForeignKey("dbo.RSReceiptItems", "Order_Id", "dbo.RSReceipts");
             DropForeignKey("dbo.RSReceipts", "Order_Id", "dbo.RSOrders");
             DropForeignKey("dbo.RSOrderItems", "Order_Id", "dbo.RSOrders");
             DropForeignKey("dbo.RSNavigationItems", "ProductLink_Id", "dbo.RSProducts");
@@ -154,7 +167,8 @@ namespace RestSys.Migrations
             DropIndex("dbo.RSStockRSProducts", new[] { "RSStock_Id" });
             DropIndex("dbo.RSOrderItems", new[] { "Product_Id" });
             DropIndex("dbo.RSReceipts", new[] { "User_Id" });
-            DropIndex("dbo.RSOrderItems", new[] { "Receipt_Id" });
+            DropIndex("dbo.RSReceiptItems", new[] { "Product_Id" });
+            DropIndex("dbo.RSReceiptItems", new[] { "Order_Id" });
             DropIndex("dbo.RSReceipts", new[] { "Order_Id" });
             DropIndex("dbo.RSOrderItems", new[] { "Order_Id" });
             DropIndex("dbo.RSNavigationItems", new[] { "ProductLink_Id" });
@@ -163,6 +177,7 @@ namespace RestSys.Migrations
             DropTable("dbo.RSStyles");
             DropTable("dbo.RSStocks");
             DropTable("dbo.RSUsers");
+            DropTable("dbo.RSReceiptItems");
             DropTable("dbo.RSReceipts");
             DropTable("dbo.RSOrders");
             DropTable("dbo.RSOrderItems");

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,107 +11,107 @@ using RestSys.Models;
 
 namespace RestSys.Controllers
 {
-    public class ProductsController : Controller
+    public class StocksController : Controller
     {
         private RSDbContext db = new RSDbContext();
 
-        // GET: Products
+        // GET: Stocks
         public async Task<ActionResult> Index()
         {
-            return View(await db.Products.ToListAsync());
+            return View(await db.Stocks.ToListAsync());
         }
 
-        // GET: Products/Details/5
+        // GET: Stocks/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RSProduct rSProduct = await db.Products.FindAsync(id);
-            if (rSProduct == null)
+            RSStock rSStock = await db.Stocks.FindAsync(id);
+            if (rSStock == null)
             {
                 return HttpNotFound();
             }
-            return View(rSProduct);
+            return View(rSStock);
         }
 
-        // GET: Products/Create
+        // GET: Stocks/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Stocks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,Price,ShowOnMenu,SerialNumber,Amount,Category")] RSProduct rSProduct)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Quantity,Notes,SerialNumber")] RSStock rSStock)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(rSProduct);
+                db.Stocks.Add(rSStock);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(rSProduct);
+            return View(rSStock);
         }
 
-        // GET: Products/Edit/5
+        // GET: Stocks/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RSProduct rSProduct = await db.Products.FindAsync(id);
-            if (rSProduct == null)
+            RSStock rSStock = await db.Stocks.FindAsync(id);
+            if (rSStock == null)
             {
                 return HttpNotFound();
             }
-            return View(rSProduct);
+            return View(rSStock);
         }
 
-        // POST: Products/Edit/5
+        // POST: Stocks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Price,ShowOnMenu,SerialNumber,Amount,Category")] RSProduct rSProduct)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Quantity,Notes,SerialNumber")] RSStock rSStock)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(rSProduct).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(rSStock).State = System.Data.Entity.EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(rSProduct);
+            return View(rSStock);
         }
 
-        // GET: Products/Delete/5
+        // GET: Stocks/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RSProduct rSProduct = await db.Products.FindAsync(id);
-            if (rSProduct == null)
+            RSStock rSStock = await db.Stocks.FindAsync(id);
+            if (rSStock == null)
             {
                 return HttpNotFound();
             }
-            return View(rSProduct);
+            return View(rSStock);
         }
 
-        // POST: Products/Delete/5
+        // POST: Stocks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            RSProduct rSProduct = await db.Products.FindAsync(id);
-            db.Products.Remove(rSProduct);
+            RSStock rSStock = await db.Stocks.FindAsync(id);
+            db.Stocks.Remove(rSStock);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

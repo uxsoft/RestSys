@@ -189,6 +189,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\StylesController.cs" />
     <Compile Include="EntityService.svc.cs">
       <DependentUpon>EntityService.svc</DependentUpon>
@@ -196,13 +197,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201404072111348_initial.cs" />
-    <Compile Include="Migrations\201404072111348_initial.Designer.cs">
-      <DependentUpon>201404072111348_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404072210358_style-bad-code-type.cs" />
-    <Compile Include="Migrations\201404072210358_style-bad-code-type.Designer.cs">
-      <DependentUpon>201404072210358_style-bad-code-type.cs</DependentUpon>
+    <Compile Include="Migrations\201404101618282_initial.cs" />
+    <Compile Include="Migrations\201404101618282_initial.Designer.cs">
+      <DependentUpon>201404101618282_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Exports\HMACSHA1CryptographyModule.cs" />
@@ -243,6 +240,9 @@
     <Content Include="Content\site.less" />
     <Content Include="Content\Receipt\default.less" />
     <Content Include="Content\Menu\default.less" />
+    <Content Include="Content\Menu\default.css.map">
+      <DependentUpon>default.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -269,6 +269,11 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Stocks\Create.cshtml" />
+    <Content Include="Views\Stocks\Delete.cshtml" />
+    <Content Include="Views\Stocks\Details.cshtml" />
+    <Content Include="Views\Stocks\Edit.cshtml" />
+    <Content Include="Views\Stocks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RestSys.Models\RestSys.Models.csproj">
@@ -280,11 +285,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201404072111348_initial.resx">
-      <DependentUpon>201404072111348_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404072210358_style-bad-code-type.resx">
-      <DependentUpon>201404072210358_style-bad-code-type.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201404101618282_initial.resx">
+      <DependentUpon>201404101618282_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
