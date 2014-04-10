@@ -20,6 +20,15 @@
                 {
                     <div class="menu-item">
                         <h5>@product</h5>
+                        <p class="menu-stocks">
+                            @String.Join(", ", product.Stocks.Select(stock => stock.Title))
+                        </p>
+                        <p class="menu-description">
+                            @product.Description
+                        </p>
+                        <div class="menu-price">
+                            @product.Price Kč
+                        </div>
                     </div>
                 }
             </div>
