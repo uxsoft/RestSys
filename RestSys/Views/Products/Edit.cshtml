@@ -1,17 +1,22 @@
 ﻿@model RestSys.Models.RSProduct
-
+@using RestSys.Models
+@section Scripts{
+    <script type="text/javascript">
+        ModelId = '@Model.Id';
+    </script>
+}
 @{
     ViewBag.Title = "Edit";
+    var Db = new RSDbContext();
 }
 
 <h2>Edit</h2>
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+
+    <div class="form-horizontal" ng-controller="ProductsController">
         <h4>RSProduct</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -76,6 +81,25 @@
         </div>
 
         <div class="form-group">
+            <h4>Stocks</h4>
+            <ul ng-repeat="stock in stocks">
+                <li>
+                    {{stock.title}}
+                    <button type="button" class="btnRemoveStock" ng-click="remove(stock)">Remove</button>
+                </li>
+            </ul>
+
+            <h4>Add</h4>
+            <select class="selAddStock">
+                @foreach (RSStock stock in Db.Stocks)
+                {
+                    <option value="@stock.Id">@stock.Title</option>
+                }
+            </select>
+            <button class="btnAddStock" type="button" ng-click="add()">Add</button>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
@@ -86,7 +110,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

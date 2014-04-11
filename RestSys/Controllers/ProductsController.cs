@@ -14,6 +14,47 @@ namespace RestSys.Controllers
     {
         private RSDbContext db = new RSDbContext();
 
+        [HttpPost]
+        public async Task<ActionResult> AddStock(int id, int stockId)
+        {
+            RSStock stock = await db.Stocks.FindAsync(stockId);
+            RSProduct product = await db.Products.FindAsync(id);
+            if (stock != null && product != null)
+            {
+                product.Stocks.Add(stock);
+                await db.SaveChangesAsync();
+                return Content("1");
+            }
+            else throw new HttpException(400, "Error inserting item");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> RemoveStock(int id, int stockId)
+        {
+            RSStock stock = await db.Stocks.FindAsync(stockId);
+            RSProduct product = await db.Products.FindAsync(id);
+            if (stock != null && product != null)
+            {
+                if (product.Stocks.Remove(stock))
+                {
+                    await db.SaveChangesAsync();
+                    return Json(true);
+                }
+            }
+            throw new HttpException(400, "Error removing item");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetStocks(int id)
+        {
+            RSProduct product = await db.Products.FindAsync(id);
+            if (product != null)
+            {
+                return Json(product.Stocks.Select(s => new { title = s.Title, id = s.Id }), JsonRequestBehavior.AllowGet);
+            }
+            else throw new HttpException(400, "Error fetching items");
+        }
+
         // GET: Products
         public async Task<ActionResult> Index()
         {
@@ -42,8 +83,6 @@ namespace RestSys.Controllers
         }
 
         // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,Price,ShowOnMenu,SerialNumber,Amount,Category")] RSProduct rSProduct)
@@ -74,8 +113,6 @@ namespace RestSys.Controllers
         }
 
         // POST: Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Price,ShowOnMenu,SerialNumber,Amount,Category")] RSProduct rSProduct)
@@ -113,15 +150,6 @@ namespace RestSys.Controllers
             db.Products.Remove(rSProduct);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
