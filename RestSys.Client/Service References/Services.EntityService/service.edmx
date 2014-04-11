@@ -38,7 +38,6 @@
         <Property Name="Quantity" Type="Edm.Int32" Nullable="false" />
         <NavigationProperty Name="Order" Relationship="RestSys.Models.RSOrderItem_Order_RSOrder_Items" ToRole="RSOrder_Items" FromRole="RSOrderItem_Order" />
         <NavigationProperty Name="Product" Relationship="RestSys.Models.RSProduct_DependentOrderItems_RSOrderItem_Product" ToRole="RSProduct_DependentOrderItems" FromRole="RSOrderItem_Product" />
-        <NavigationProperty Name="Receipt" Relationship="RestSys.Models.RSOrderItem_Receipt_RSReceipt_PaidItems" ToRole="RSReceipt_PaidItems" FromRole="RSOrderItem_Receipt" />
       </EntityType>
       <EntityType Name="RSOrder">
         <Key>
@@ -57,8 +56,17 @@
         <Property Name="Id" Type="Edm.Int32" Nullable="false" />
         <Property Name="CreatedOn" Type="Edm.DateTime" Nullable="false" />
         <NavigationProperty Name="Order" Relationship="RestSys.Models.RSOrder_Receipts_RSReceipt_Order" ToRole="RSOrder_Receipts" FromRole="RSReceipt_Order" />
-        <NavigationProperty Name="PaidItems" Relationship="RestSys.Models.RSOrderItem_Receipt_RSReceipt_PaidItems" ToRole="RSOrderItem_Receipt" FromRole="RSReceipt_PaidItems" />
+        <NavigationProperty Name="PaidItems" Relationship="RestSys.Models.RSReceipt_PaidItems_RSReceiptItem_Order" ToRole="RSReceiptItem_Order" FromRole="RSReceipt_PaidItems" />
         <NavigationProperty Name="User" Relationship="RestSys.Models.RSReceipt_User_RSUser_Receipts" ToRole="RSUser_Receipts" FromRole="RSReceipt_User" />
+      </EntityType>
+      <EntityType Name="RSReceiptItem">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Quantity" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Order" Relationship="RestSys.Models.RSReceipt_PaidItems_RSReceiptItem_Order" ToRole="RSReceipt_PaidItems" FromRole="RSReceiptItem_Order" />
+        <NavigationProperty Name="Product" Relationship="RestSys.Models.RSReceiptItem_Product" ToRole="Product" FromRole="RSReceiptItem" />
       </EntityType>
       <EntityType Name="RSUser">
         <Key>
@@ -90,7 +98,7 @@
           <PropertyRef Name="Id" />
         </Key>
         <Property Name="Id" Type="Edm.Int32" Nullable="false" />
-        <Property Name="Code" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Code" Type="Edm.String" />
         <Property Name="Path" Type="Edm.String" />
         <Property Name="Type" Type="Edm.Int32" Nullable="false" />
         <Property Name="Title" Type="Edm.String" />
@@ -117,24 +125,29 @@
         <End Type="RestSys.Models.RSOrder" Role="RSOrder_Items" Multiplicity="0..1" />
         <End Type="RestSys.Models.RSOrderItem" Role="RSOrderItem_Order" Multiplicity="*" />
       </Association>
-      <Association Name="RSOrderItem_Receipt_RSReceipt_PaidItems">
-        <End Type="RestSys.Models.RSReceipt" Role="RSReceipt_PaidItems" Multiplicity="0..1" />
-        <End Type="RestSys.Models.RSOrderItem" Role="RSOrderItem_Receipt" Multiplicity="*" />
-      </Association>
       <Association Name="RSOrder_Receipts_RSReceipt_Order">
         <End Type="RestSys.Models.RSReceipt" Role="RSReceipt_Order" Multiplicity="*" />
         <End Type="RestSys.Models.RSOrder" Role="RSOrder_Receipts" Multiplicity="0..1" />
+      </Association>
+      <Association Name="RSReceipt_PaidItems_RSReceiptItem_Order">
+        <End Type="RestSys.Models.RSReceiptItem" Role="RSReceiptItem_Order" Multiplicity="*" />
+        <End Type="RestSys.Models.RSReceipt" Role="RSReceipt_PaidItems" Multiplicity="0..1" />
       </Association>
       <Association Name="RSReceipt_User_RSUser_Receipts">
         <End Type="RestSys.Models.RSUser" Role="RSUser_Receipts" Multiplicity="0..1" />
         <End Type="RestSys.Models.RSReceipt" Role="RSReceipt_User" Multiplicity="*" />
       </Association>
+      <Association Name="RSReceiptItem_Product">
+        <End Type="RestSys.Models.RSReceiptItem" Role="RSReceiptItem" Multiplicity="*" />
+        <End Type="RestSys.Models.RSProduct" Role="Product" Multiplicity="0..1" />
+      </Association>
       <EntityContainer Name="RSDbContext" m:IsDefaultEntityContainer="true">
         <EntitySet Name="Navigation" EntityType="RestSys.Models.RSNavigationItem" />
         <EntitySet Name="Products" EntityType="RestSys.Models.RSProduct" />
-        <EntitySet Name="RSOrderItems" EntityType="RestSys.Models.RSOrderItem" />
+        <EntitySet Name="OrderItems" EntityType="RestSys.Models.RSOrderItem" />
         <EntitySet Name="Orders" EntityType="RestSys.Models.RSOrder" />
         <EntitySet Name="Receipts" EntityType="RestSys.Models.RSReceipt" />
+        <EntitySet Name="ReceiptItems" EntityType="RestSys.Models.RSReceiptItem" />
         <EntitySet Name="Users" EntityType="RestSys.Models.RSUser" />
         <EntitySet Name="Stocks" EntityType="RestSys.Models.RSStock" />
         <EntitySet Name="Styles" EntityType="RestSys.Models.RSStyle" />
@@ -148,27 +161,31 @@
         </AssociationSet>
         <AssociationSet Name="RSOrderItem_Product" Association="RestSys.Models.RSProduct_DependentOrderItems_RSOrderItem_Product">
           <End Role="RSProduct_DependentOrderItems" EntitySet="Products" />
-          <End Role="RSOrderItem_Product" EntitySet="RSOrderItems" />
+          <End Role="RSOrderItem_Product" EntitySet="OrderItems" />
         </AssociationSet>
         <AssociationSet Name="RSStock_DependentProducts" Association="RestSys.Models.RSProduct_Stocks_RSStock_DependentProducts">
           <End Role="RSProduct_Stocks" EntitySet="Products" />
           <End Role="RSStock_DependentProducts" EntitySet="Stocks" />
         </AssociationSet>
         <AssociationSet Name="RSOrder_Items" Association="RestSys.Models.RSOrderItem_Order_RSOrder_Items">
-          <End Role="RSOrderItem_Order" EntitySet="RSOrderItems" />
+          <End Role="RSOrderItem_Order" EntitySet="OrderItems" />
           <End Role="RSOrder_Items" EntitySet="Orders" />
-        </AssociationSet>
-        <AssociationSet Name="RSReceipt_PaidItems" Association="RestSys.Models.RSOrderItem_Receipt_RSReceipt_PaidItems">
-          <End Role="RSOrderItem_Receipt" EntitySet="RSOrderItems" />
-          <End Role="RSReceipt_PaidItems" EntitySet="Receipts" />
         </AssociationSet>
         <AssociationSet Name="RSReceipt_Order" Association="RestSys.Models.RSOrder_Receipts_RSReceipt_Order">
           <End Role="RSOrder_Receipts" EntitySet="Orders" />
           <End Role="RSReceipt_Order" EntitySet="Receipts" />
         </AssociationSet>
+        <AssociationSet Name="RSReceiptItem_Order" Association="RestSys.Models.RSReceipt_PaidItems_RSReceiptItem_Order">
+          <End Role="RSReceipt_PaidItems" EntitySet="Receipts" />
+          <End Role="RSReceiptItem_Order" EntitySet="ReceiptItems" />
+        </AssociationSet>
         <AssociationSet Name="RSReceipt_User" Association="RestSys.Models.RSReceipt_User_RSUser_Receipts">
           <End Role="RSReceipt_User" EntitySet="Receipts" />
           <End Role="RSUser_Receipts" EntitySet="Users" />
+        </AssociationSet>
+        <AssociationSet Name="RSReceiptItem_Product" Association="RestSys.Models.RSReceiptItem_Product">
+          <End Role="RSReceiptItem" EntitySet="ReceiptItems" />
+          <End Role="Product" EntitySet="Products" />
         </AssociationSet>
       </EntityContainer>
     </Schema>
