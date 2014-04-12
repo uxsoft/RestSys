@@ -9,9 +9,10 @@ namespace RestSys
         {
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
                         "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-ui-{version}.js",
                         "~/Scripts/jquery.validate.js",
-                        "~/Scripts/jquery.validate.unobtrusive.js",
                         "~/Scripts/angular.js",
+                        "~/Scripts/angular-ui-sortable.js",
                         "~/Scripts/controllers.js"
                         ));
 

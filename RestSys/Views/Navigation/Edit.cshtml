@@ -1,0 +1,94 @@
+﻿@model RestSys.Models.RSNavigationItem
+@using RestSys.Resources
+@using RestSys.Models
+@section Scripts{
+	<script type="text/javascript">
+		ModelId = '@Model.Id';
+
+		$(function () {
+			$("form").submit(function () {
+				order = [];
+				var col = $("#childList li");
+				for (var i = 0; i < col.length; i++) {
+					order[i] = $(col[i]).attr("data-id");
+				}
+				$("#children_order").val(JSON.stringify(order));
+			});
+		});
+	</script>
+}
+@{
+	ViewBag.Title = "Edit";
+	RSDbContext Db = new RSDbContext();
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+
+
+	<div class="form-horizontal" ng-controller="NavigationController">
+		<h4>RSNavigationItem</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		@Html.HiddenFor(model => model.Id)
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<h4>Children</h4>
+			<ul id="childList" data-ui-sortable="" ng-model="children">
+				<li data-id="{{child.id}}" ng-repeat="child in children">
+					{{child.title}}
+					<button type="button" ng-click="remove(child)">@Resources.Remove</button>
+				</li>
+			</ul>
+
+			<h5>Add</h5>
+			<select class="selAddChild">
+				@foreach (RSNavigationItem child in Db.Navigation.Where(ch => ch.Id != Model.Id))
+				{
+					<option value="@child.Id">@child.Title</option>
+				}
+			</select>
+			<button type="button" ng-click="add()">@Resources.Add</button>
+			@Html.HiddenFor(model => model.ChildrenOrder, new { id = "children_order" })
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Save" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+}
+
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>

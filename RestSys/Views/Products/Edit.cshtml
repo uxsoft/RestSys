@@ -1,5 +1,6 @@
 ﻿@model RestSys.Models.RSProduct
 @using RestSys.Models
+@using RestSys.Resources
 @section Scripts{
     <script type="text/javascript">
         ModelId = '@Model.Id';
@@ -82,21 +83,21 @@
 
         <div class="form-group">
             <h4>Stocks</h4>
-            <ul ng-repeat="stock in stocks">
-                <li>
-                    {{stock.title}}
-                    <button type="button" class="btnRemoveStock" ng-click="remove(stock)">Remove</button>
-                </li>
+            <ul>
+				<li ng-repeat="stock in stocks">
+					{{stock.title}}
+					<button type="button" class="btnRemoveStock" ng-click="remove(stock)">@Resources.Remove</button>
+				</li>
             </ul>
 
-            <h4>Add</h4>
+            <h5>Add</h5>
             <select class="selAddStock">
                 @foreach (RSStock stock in Db.Stocks)
                 {
                     <option value="@stock.Id">@stock.Title</option>
                 }
             </select>
-            <button class="btnAddStock" type="button" ng-click="add()">Add</button>
+            <button class="btnAddStock" type="button" ng-click="add()">@Resources.Add</button>
         </div>
 
         <div class="form-group">

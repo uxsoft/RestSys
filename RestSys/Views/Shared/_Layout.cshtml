@@ -1,6 +1,6 @@
 ﻿@using RestSys.Resources
 <!DOCTYPE html>
-<html ng-app="">
+<html ng-app="RestSysAngular">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
@@ -14,6 +14,7 @@
 		<ul id="menu">
 			<li>@Html.ActionLink(Resources.Products, "Index", "Products")</li>
 			<li>@Html.ActionLink(Resources.Stocks, "Index", "Stocks")</li>
+			<li>@Html.ActionLink(Resources.Navigation, "Index", "Navigation")</li>
 		</ul>
 		<div id="content">
 			@RenderBody()
