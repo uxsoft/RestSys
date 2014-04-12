@@ -1,0 +1,98 @@
+@uxsoft_orange: orange;
+@uxsoft_orangeRed: orangeRed;
+@uxsoft_crimson: crimson;
+@uxsoft_maroon: maroon;
+@foreground: #404040;
+@background: #f7f7f7;
+
+#menu {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	font-family: Georgia, 'Times New Roman';
+	font-size: 12px;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+
+	a {
+		text-decoration: none;
+		color: #444;
+	}
+
+	& > li {
+		float: left;
+		position: relative;
+		padding: 0;
+		width: 180px;
+		line-height: 32px;
+		background-color: @background;
+
+		& > a {
+			display: block;
+			padding: 0 15px;
+			border-top: 5px solid #939598;
+		}
+
+		&:hover {
+			background-color: white;
+
+			& > a {
+				border-top-color: black;
+			}
+
+			& > ul {
+				opacity: 1;
+				max-height: 300px;
+			}
+		}
+	}
+
+	ul {
+		position: absolute;
+		left: 0;
+		background-color: white;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		opacity: 0;
+		max-height: 0;
+		font-size: 12px;
+		-moz-transition: opacity 0.75s, max-height 1.5s;
+		-o-transition: opacity 0.75s, max-height 1.5s;
+		-webkit-transition: opacity 0.75s, max-height 1.5s;
+		transition: opacity 0.75s, max-height 1.5s;
+		width: 180px;
+		z-index: 5;
+		overflow: hidden;
+
+		& > li {
+			float: none;
+			position: static;
+			height: 30px;
+			line-height: 30px;
+			background: none;
+			color: #444;
+			padding-left: 6px;
+
+			&:hover a {
+				color: black;
+			}
+		}
+	}
+
+	.menu-color-code(1, @uxsoft_orange);
+	.menu-color-code(2, @uxsoft_orangeRed);
+	.menu-color-code(3, @uxsoft_crimson);
+	.menu-color-code(4, @uxsoft_maroon);
+}
+
+/*mixins*/
+.menu-color-code(@nth, @color) {
+	li:nth-child(@{nth}):hover a {
+		border-top-color: @color;
+	}
+
+	li:nth-child(@{nth}) li:hover a {
+		color: @color;
+	}
+}

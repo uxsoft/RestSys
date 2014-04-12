@@ -129,8 +129,14 @@
   <data name="Product" xml:space="preserve">
     <value>Produkt</value>
   </data>
+  <data name="Products" xml:space="preserve">
+    <value>Produkty</value>
+  </data>
   <data name="Stock" xml:space="preserve">
     <value>Položka skladu</value>
+  </data>
+  <data name="Stocks" xml:space="preserve">
+    <value>Sklad</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Název</value>

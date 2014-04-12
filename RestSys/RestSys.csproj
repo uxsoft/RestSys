@@ -224,6 +224,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\angelfish.css">
+      <DependentUpon>angelfish.less</DependentUpon>
+    </Content>
     <Content Include="Content\Menu\default.css">
       <DependentUpon>default.less</DependentUpon>
     </Content>
@@ -278,6 +281,13 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Content\angelfish.less" />
+    <Content Include="Content\angelfish.css.map">
+      <DependentUpon>angelfish.css</DependentUpon>
+    </Content>
+    <Content Include="Content\site.css.map">
+      <DependentUpon>site.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />

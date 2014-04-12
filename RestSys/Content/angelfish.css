@@ -1,0 +1,92 @@
+﻿#menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-family: Georgia, 'Times New Roman';
+  font-size: 12px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+#menu a {
+  text-decoration: none;
+  color: #444;
+}
+#menu > li {
+  float: left;
+  position: relative;
+  padding: 0;
+  width: 180px;
+  line-height: 32px;
+  background-color: #f7f7f7;
+}
+#menu > li > a {
+  display: block;
+  padding: 0 15px;
+  border-top: 5px solid #939598;
+}
+#menu > li:hover {
+  background-color: white;
+}
+#menu > li:hover > a {
+  border-top-color: black;
+}
+#menu > li:hover > ul {
+  opacity: 1;
+  max-height: 300px;
+}
+#menu ul {
+  position: absolute;
+  left: 0;
+  background-color: white;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  max-height: 0;
+  font-size: 12px;
+  -moz-transition: opacity 0.75s, max-height 1.5s;
+  -o-transition: opacity 0.75s, max-height 1.5s;
+  -webkit-transition: opacity 0.75s, max-height 1.5s;
+  transition: opacity 0.75s, max-height 1.5s;
+  width: 180px;
+  z-index: 5;
+  overflow: hidden;
+}
+#menu ul > li {
+  float: none;
+  position: static;
+  height: 30px;
+  line-height: 30px;
+  background: none;
+  color: #444;
+  padding-left: 6px;
+}
+#menu ul > li:hover a {
+  color: black;
+}
+#menu li:nth-child( 1):hover a {
+  border-top-color: #ffa500;
+}
+#menu li:nth-child( 1) li:hover a {
+  color: #ffa500;
+}
+#menu li:nth-child( 2):hover a {
+  border-top-color: #ff4500;
+}
+#menu li:nth-child( 2) li:hover a {
+  color: #ff4500;
+}
+#menu li:nth-child( 3):hover a {
+  border-top-color: #dc143c;
+}
+#menu li:nth-child( 3) li:hover a {
+  color: #dc143c;
+}
+#menu li:nth-child( 4):hover a {
+  border-top-color: #800000;
+}
+#menu li:nth-child( 4) li:hover a {
+  color: #800000;
+}
+/*mixins*/
+/*# sourceMappingURL=angelfish.css.map */

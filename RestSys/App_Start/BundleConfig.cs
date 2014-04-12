@@ -17,7 +17,8 @@ namespace RestSys
 
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/angelfish.css"));
         }
     }
 }
