@@ -8,7 +8,7 @@ namespace RestSys.Client
 {
     public static class Global
     {
-        const string API_ENDPOINT = "http://localhost:56345/EntityService/";
+        const string API_ENDPOINT = "http://localhost:56345/EntityService.svc/";
 
         public static async void ApplicationStart()
         {

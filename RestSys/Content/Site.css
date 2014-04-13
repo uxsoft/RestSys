@@ -1,9 +1,12 @@
-﻿#page {
+#page {
   width: 980px;
   margin: 0 auto;
 }
 #page #content {
   clear: both;
   padding-top: 2px;
+}
+#page #menu {
+  clear: both;
 }
 /*# sourceMappingURL=site.css.map */

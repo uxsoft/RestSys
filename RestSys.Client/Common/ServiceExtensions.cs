@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestSys.Client.Services.EntityService
+namespace RestSys.Client.Common;
 {
     public static class ServiceExtensions
     {

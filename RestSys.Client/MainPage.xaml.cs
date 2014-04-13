@@ -1,9 +1,9 @@
-﻿using RestSys.Client.Common;
-using RestSys.Client.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using RestSys.Client.Common;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -14,26 +14,17 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Item Detail Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234232
+// The Grouped Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234231
 
 namespace RestSys.Client
 {
     /// <summary>
-    /// A page that displays details for a single item within a group.
+    /// A page that displays a grouped collection of items.
     /// </summary>
-    public sealed partial class ItemDetailPage : Page
+    public sealed partial class MainPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-
-        /// <summary>
-        /// NavigationHelper is used on each page to aid in navigation and 
-        /// process lifetime management
-        /// </summary>
-        public NavigationHelper NavigationHelper
-        {
-            get { return this.navigationHelper; }
-        }
 
         /// <summary>
         /// This can be changed to a strongly typed view model.
@@ -43,7 +34,19 @@ namespace RestSys.Client
             get { return this.defaultViewModel; }
         }
 
-        public ItemDetailPage()
+        /// <summary>
+        /// NavigationHelper is used on each page to aid in navigation and 
+        /// process lifetime management
+        /// </summary>
+        public NavigationHelper NavigationHelper
+        {
+            get
+            {
+                return this.navigationHelper;
+            }
+        }
+
+        public MainPage()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
@@ -61,11 +64,9 @@ namespace RestSys.Client
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session.  The state will be null the first time a page is visited.</param>
-        private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // TODO: Create an appropriate data model for your problem domain to replace the sample data
-            var item = await SampleDataSource.GetItemAsync((String)e.NavigationParameter);
-            this.DefaultViewModel["Item"] = item;
+            
         }
 
         #region NavigationHelper registration
@@ -78,7 +79,6 @@ namespace RestSys.Client
         /// and <see cref="GridCS.Common.NavigationHelper.SaveState"/>.
         /// The navigation parameter is available in the LoadState method 
         /// in addition to page state preserved during an earlier session.
-
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

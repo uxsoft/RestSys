@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201404120237081_navigation_order.Designer.cs">
       <DependentUpon>201404120237081_navigation_order.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404131849588_navigation_root.cs" />
+    <Compile Include="Migrations\201404131849588_navigation_root.Designer.cs">
+      <DependentUpon>201404131849588_navigation_root.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -312,6 +316,9 @@
     <Content Include="ApplicationInsights.config" />
     <EmbeddedResource Include="Migrations\201404120237081_navigation_order.resx">
       <DependentUpon>201404120237081_navigation_order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404131849588_navigation_root.resx">
+      <DependentUpon>201404131849588_navigation_root.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resources.en.resw">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -51,7 +51,8 @@ namespace RestSys.Controllers
             RSNavigationItem navigationItem = await db.Navigation.FindAsync(id);
             if (navigationItem != null)
             {
-                return Json(navigationItem.Children.Select(s => new { title = s.Title, id = s.Id }), JsonRequestBehavior.AllowGet);
+                //TODO Order by ChildrenOrder
+                return Json(navigationItem.OrderedChildren().Select(s => new { title = s.Title, id = s.Id }), JsonRequestBehavior.AllowGet);
             }
             else throw new HttpException(400, "Error fetching items");
         }
@@ -61,7 +62,7 @@ namespace RestSys.Controllers
         // GET: Navigation
         public async Task<ActionResult> Index()
         {
-            return View(await db.Navigation.ToListAsync());
+            return View(await db.Navigation.OrderByDescending(ni => ni.IsRoot).ToListAsync());
         }
 
         // GET: Navigation/Details/5
@@ -88,7 +89,7 @@ namespace RestSys.Controllers
         // POST: Navigation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Position,Title,Description,Image")] RSNavigationItem rSNavigationItem)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Position,Title,Description,Image,IsRoot")] RSNavigationItem rSNavigationItem)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +119,7 @@ namespace RestSys.Controllers
         // POST: Navigation/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,ChildrenOrder,Title,Description,Image")] RSNavigationItem rSNavigationItem)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,ChildrenOrder,Title,Description,Image,IsRoot")] RSNavigationItem rSNavigationItem)
         {
             if (ModelState.IsValid)
             {

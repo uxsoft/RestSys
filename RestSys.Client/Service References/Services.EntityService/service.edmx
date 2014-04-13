@@ -6,10 +6,11 @@
           <PropertyRef Name="Id" />
         </Key>
         <Property Name="Id" Type="Edm.Int32" Nullable="false" />
-        <Property Name="Position" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ChildrenOrder" Type="Edm.String" />
         <Property Name="Title" Type="Edm.String" />
         <Property Name="Description" Type="Edm.String" />
         <Property Name="Image" Type="Edm.String" />
+        <Property Name="IsRoot" Type="Edm.Boolean" Nullable="false" />
         <NavigationProperty Name="Children" Relationship="RestSys.Models.RSNavigationItem_Children_RSNavigationItem_Parent" ToRole="RSNavigationItem_Parent" FromRole="RSNavigationItem_Children" />
         <NavigationProperty Name="Parent" Relationship="RestSys.Models.RSNavigationItem_Children_RSNavigationItem_Parent" ToRole="RSNavigationItem_Children" FromRole="RSNavigationItem_Parent" />
         <NavigationProperty Name="ProductLink" Relationship="RestSys.Models.RSNavigationItem_ProductLink_RSProduct_DependentNavigationItems" ToRole="RSProduct_DependentNavigationItems" FromRole="RSNavigationItem_ProductLink" />
