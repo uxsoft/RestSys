@@ -10,8 +10,23 @@
     d:DesignWidth="400" Loaded="UserControl_Loaded">
     
     <Grid>
-        <GridView ItemsSource="{Binding}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Button Content="Back" Name="btnBack" Click="btnBack_Click" IsEnabled="False">
             
+        </Button>
+        
+        <GridView Name="grdChildren" Grid.Row="1">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding Title}" Name="btnItem" Click="btnItem_Click">
+                        
+                    </Button>
+                </DataTemplate>
+            </GridView.ItemTemplate>
         </GridView>
     </Grid>
 </UserControl>

@@ -33,7 +33,7 @@
         </Grid.RowDefinitions>
 
         <!-- Horizontal scrolling grid -->
-        <views:Navigation></views:Navigation>
+        <views:Navigation Grid.Row="1"></views:Navigation>
 
         <!-- Back button and page title -->
         <Grid>
