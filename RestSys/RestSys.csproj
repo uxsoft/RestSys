@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201404131849588_navigation_root.Designer.cs">
       <DependentUpon>201404131849588_navigation_root.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404132200079_navigation_color.cs" />
+    <Compile Include="Migrations\201404132200079_navigation_color.Designer.cs">
+      <DependentUpon>201404132200079_navigation_color.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -319,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404131849588_navigation_root.resx">
       <DependentUpon>201404131849588_navigation_root.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404132200079_navigation_color.resx">
+      <DependentUpon>201404132200079_navigation_color.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resources.en.resw">
       <Generator>PublicResXFileCodeGenerator</Generator>

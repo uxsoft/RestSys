@@ -89,7 +89,7 @@ namespace RestSys.Controllers
         // POST: Navigation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Position,Title,Description,Image,IsRoot")] RSNavigationItem rSNavigationItem)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Position,Title,Description,Image,IsRoot,Color")] RSNavigationItem rSNavigationItem)
         {
             if (ModelState.IsValid)
             {
@@ -119,7 +119,7 @@ namespace RestSys.Controllers
         // POST: Navigation/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,ChildrenOrder,Title,Description,Image,IsRoot")] RSNavigationItem rSNavigationItem)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,ChildrenOrder,Title,Description,Image,IsRoot,Color")] RSNavigationItem rSNavigationItem)
         {
             if (ModelState.IsValid)
             {

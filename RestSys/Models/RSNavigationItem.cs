@@ -16,6 +16,7 @@ namespace RestSys.Models
         public string Description { get; set; }
         public string Image { get; set; }
         public bool IsRoot { get; set; }
+        public string Color { get; set; }
 
         //Relations
         public RSProduct ProductLink { get; set; }
