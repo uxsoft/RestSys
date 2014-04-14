@@ -41,8 +41,7 @@ namespace RestSys.Models
 
         public bool IsAuthenticated
         {
-            //TODO: RSUser.IsAuthenticated
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
         public void CreatePassword(string newPassword)
@@ -58,6 +57,6 @@ namespace RestSys.Models
         }
 
         [Import]
-        private IRSCryptographyModule CryptoModule { get; set; }
+        public IRSCryptographyModule CryptoModule { get; set; }
     }
 }
