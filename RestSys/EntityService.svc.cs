@@ -13,6 +13,7 @@ using System.ServiceModel.Web;
 using System.Web;
 using RestSys.Models;
 using System.ServiceModel;
+using System.Linq.Expressions;
 
 namespace RestSys
 {
@@ -30,6 +31,11 @@ namespace RestSys
             config.SetEntitySetAccessRule("*", EntitySetRights.All);
             config.SetServiceOperationAccessRule("*", ServiceOperationRights.All);
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
+        }
+
+        protected override void OnStartProcessingRequest(ProcessRequestArgs args)
+        {
+            base.OnStartProcessingRequest(args);
         }
     }
 }

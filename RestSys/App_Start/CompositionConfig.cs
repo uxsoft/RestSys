@@ -11,7 +11,7 @@ namespace RestSys
     {
         public static ContainerConfiguration Configuration { get; set; }
 
-        public static void RegisterComposition()
+        static CompositionConfig()
         {
             Configuration = new ContainerConfiguration()
             .WithAssembly(typeof(CompositionConfig).Assembly);

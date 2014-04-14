@@ -16,6 +16,20 @@ namespace RestSys.Migrations
 
         protected override void Seed(RSDbContext context)
         {
+
+            RSUser user0 = new RSUser()
+            {
+                Id = 0,
+                Username = "uxsoft",
+                IsAdmin = true,
+                IsDiscountManager = true,
+                IsWaiter = true
+            };
+            user0.CreatePassword("TotallySecretPassword");
+            context.Users.AddOrUpdate(user0);
+
+
+
             if (!context.Styles.Any(s => s.Type == (int)RSStyleType.MenuStyle))
             {
                 context.Styles.Add(new Models.RSStyle()

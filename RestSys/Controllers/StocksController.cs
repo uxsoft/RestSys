@@ -11,6 +11,7 @@ using RestSys.Models;
 
 namespace RestSys.Controllers
 {
+    [Authorize]
     public class StocksController : Controller
     {
         private RSDbContext db = new RSDbContext();

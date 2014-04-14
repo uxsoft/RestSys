@@ -175,7 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\NavigationController.cs" />
@@ -191,6 +190,7 @@
     <Compile Include="Migrations\201404132200079_navigation_color.Designer.cs">
       <DependentUpon>201404132200079_navigation_color.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Exports\RSAuthenticationCookieProvider.cs" />
     <Compile Include="Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -660,6 +660,7 @@
     <Content Include="Views\Navigation\Details.cshtml" />
     <Content Include="Views\Navigation\Edit.cshtml" />
     <Content Include="Views\Navigation\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RestSys.Models\RestSys.Models.csproj">

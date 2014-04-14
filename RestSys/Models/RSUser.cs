@@ -15,7 +15,7 @@ namespace RestSys.Models
     {
         public RSUser()
         {
-
+            this.DependencyInjection();
         }
 
         public int Id { get; set; }

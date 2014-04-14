@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace RestSys.Controllers
 {
+    [Authorize]
     public class StylesController : Controller
     {
         RSDbContext db = new RSDbContext();

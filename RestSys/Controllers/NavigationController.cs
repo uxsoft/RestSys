@@ -10,6 +10,7 @@ using RestSys.Models;
 
 namespace RestSys.Controllers
 {
+    [Authorize]
     public class NavigationController : Controller
     {
         private RSDbContext db = new RSDbContext();

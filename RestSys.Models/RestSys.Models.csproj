@@ -43,6 +43,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exports\IAuthenticationCookieProvider.cs" />
     <Compile Include="Exports\IRSCryptographyModule.cs" />
     <Compile Include="Exports\IRSEntity.cs" />
     <Compile Include="Exports\IRSPersistencyProvider.cs" />

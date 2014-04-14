@@ -129,6 +129,12 @@
   <data name="Edit" xml:space="preserve">
     <value>Upravit</value>
   </data>
+  <data name="LoginFailed" xml:space="preserve">
+    <value>Přihlášení selhalo.</value>
+  </data>
+  <data name="LoginRedundant" xml:space="preserve">
+    <value>Jste přihlášeni.</value>
+  </data>
   <data name="Navigation" xml:space="preserve">
     <value>Navigace</value>
   </data>
