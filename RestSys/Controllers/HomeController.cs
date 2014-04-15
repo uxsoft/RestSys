@@ -15,5 +15,10 @@ namespace RestSys.Controllers
 
             return View();
         }
+
+        public ActionResult ServerIdentification()
+        {
+            return Content("A2903CDE-B4EF-455F-BA8B-30465ADD2633");
+        }
     }
 }
