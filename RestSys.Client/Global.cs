@@ -30,13 +30,8 @@ namespace RestSys.Client
 
         public static async void ApplicationStart()
         {
-            Db.BuildingRequest += Db_BuildingRequest;
+            //Db.BuildingRequest += Db_BuildingRequest;
 
-            if (!IsAuthenticated)
-            {
-
-            }
-            await Login("uxsoft", "TotallySecretPassword");
         }
 
         static void Db_BuildingRequest(object sender, System.Data.Services.Client.BuildingRequestEventArgs e)

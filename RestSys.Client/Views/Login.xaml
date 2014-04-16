@@ -9,12 +9,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <!--
-        This grid acts as a root panel for the page that defines two rows:
-        * Row 0 contains the back button and page title
-        * Row 1 contains the rest of the page layout
-    -->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -39,7 +33,7 @@
             <TextBlock x:Name="pageTitle" Text="Login" x:Uid="Login" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
-        <Grid Grid.Row="1" x:Name="contentRegion">
+        <Grid Grid.Row="1" x:Name="contentRegion" VerticalAlignment="Center" HorizontalAlignment="Center" Width="420" KeyDown="contentRegion_KeyDown">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -47,11 +41,11 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Username" x:Uid="Username"/>
-            <TextBox Name="txtUsername" Grid.Row="1"/>
-            <TextBlock Text="Password" x:Uid="Password" Grid.Row="2"/>
-            <PasswordBox Name="txtPassword" Grid.Row="3"/>
-            <Button Content="Login" Grid.Row="4" x:Uid="Login"/>
+            <TextBlock Text="Username" x:Uid="Username" Margin="12" VerticalAlignment="Center" Style="{StaticResource TitleTextBlockStyle}"/>
+            <TextBox Name="txtUsername" Grid.Row="1" VerticalAlignment="Center" Margin="12"/>
+            <TextBlock Text="Password" x:Uid="Password" Grid.Row="2" Margin="12" VerticalAlignment="Center" Style="{StaticResource TitleTextBlockStyle}"/>
+            <PasswordBox Name="txtPassword" Grid.Row="3" VerticalAlignment="Center" Margin="12"/>
+            <Button Name="btnLogin" Content="Login" Grid.Row="4" x:Uid="Login" Click="btnLogin_Click" Margin="12" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         </Grid>
     </Grid>
 </Page>

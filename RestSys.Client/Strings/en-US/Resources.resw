@@ -123,6 +123,9 @@
   <data name="Password" xml:space="preserve">
     <value>Heslo</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
   <data name="Username" xml:space="preserve">
     <value>Uživatelské jméno</value>
   </data>

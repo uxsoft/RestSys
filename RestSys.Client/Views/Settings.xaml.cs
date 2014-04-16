@@ -25,15 +25,8 @@ namespace RestSys.Client.Views
     public sealed partial class Settings : Page
     {
         private NavigationHelper navigationHelper;
-        private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        /// <summary>
-        /// This can be changed to a strongly typed view model.
-        /// </summary>
-        public ObservableDictionary DefaultViewModel
-        {
-            get { return this.defaultViewModel; }
-        }
+        public Windows.Storage.ApplicationDataContainer AppSettings { get { return Global.Settings; } }
 
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
@@ -64,15 +57,7 @@ namespace RestSys.Client.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            object navigationParameter;
-            if (e.PageState != null && e.PageState.ContainsKey("SelectedItem"))
-            {
-                navigationParameter = e.PageState["SelectedItem"];
-            }
-
-            // TODO: Assign a bindable group to this.DefaultViewModel["Group"]
-            // TODO: Assign a collection of bindable items to this.DefaultViewModel["Items"]
-            // TODO: Assign the selected item to this.flipView.SelectedItem
+            
         }
 
         #region NavigationHelper registration
