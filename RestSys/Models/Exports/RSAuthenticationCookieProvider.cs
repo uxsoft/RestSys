@@ -25,7 +25,7 @@ namespace RestSys.Models.Exports
                 string password = HttpContext.Current.Request.Cookies[COOKIE_NAME][COOKIE_PASSWORDHASH];
 
                 if (CurrentUser == null)
-                    CurrentUser = Db.Users.SingleOrDefault(u => u.Name == username && BitConverter.ToString(u.PasswordHash) == password);
+                    CurrentUser = Db.Users.Where(u => u.Name == username).ToList().SingleOrDefault(u => BitConverter.ToString(u.PasswordHash) == password);
 
                 return CurrentUser;
             }

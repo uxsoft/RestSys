@@ -26,8 +26,6 @@ namespace RestSys.Client.Views
     {
         private NavigationHelper navigationHelper;
 
-        public Windows.Storage.ApplicationDataContainer AppSettings { get { return Global.Settings; } }
-
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
         /// process lifetime management
@@ -57,7 +55,10 @@ namespace RestSys.Client.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            
+            DataContext = Windows.Storage.ApplicationData.Current.LocalSettings;
+
+            if (Global.IsConnected)
+                btnConnect.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
         #region NavigationHelper registration
@@ -82,5 +83,18 @@ namespace RestSys.Client.Views
         }
 
         #endregion
+
+        private async void btnConnect_Click(object sender, RoutedEventArgs e)
+        {
+            if (await Global.Connect(Global.ConnectionUrl))
+            {
+                btnConnect.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
+        }
+
+        private void txtServerAddress_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btnConnect.Visibility = Windows.UI.Xaml.Visibility.Visible;
+        }
     }
 }

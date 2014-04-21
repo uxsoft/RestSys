@@ -33,15 +33,16 @@
             <TextBlock x:Name="pageTitle" Text="Settings" x:Uid="Settings" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
-        <Grid Grid.Row="1" x:Name="contentRegion">
+        <Grid x:Name="contentRegion" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Server address"/>
-            <TextBox Name="txtServerAddress" Text="{Binding AppSettings[RestSysServiceUrl]}" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBlock Text="Server address" Style="{StaticResource SubheaderTextBlockStyle}"/>
+            <TextBox Name="txtServerAddress" Text="{Binding Values[RestSysServiceUrl], Mode=TwoWay}" Grid.Row="1" VerticalAlignment="Center" Margin="10,0,98,0" TextChanged="txtServerAddress_TextChanged"/>
+            <Button Name="btnConnect" Content="Connect" x:Uid="Con`anect" Click="btnConnect_Click" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,7,0"/>
         </Grid>
     </Grid>
 </Page>

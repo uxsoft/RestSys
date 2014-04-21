@@ -32,8 +32,9 @@ namespace RestSys.Client
 
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            RootFrame = Window.Current.Content as Frame;
+            Global.ApplicationStart();
 
+            RootFrame = Window.Current.Content as Frame;
 
             if (RootFrame == null)
             {
@@ -50,19 +51,16 @@ namespace RestSys.Client
                         await SuspensionManager.RestoreAsync();
                     }
                     catch (SuspensionManagerException)
-                    {
-                    }
+                    { }
                 }
 
                 Window.Current.Content = RootFrame;
             }
+
             if (RootFrame.Content == null)
-            {
                 RootFrame.Navigate(typeof(Login), e.Arguments);
-            }
 
             Window.Current.Activate();
-            Global.ApplicationStart();
         }
 
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
