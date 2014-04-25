@@ -26,7 +26,7 @@ namespace RestSys.Tests
         public void CodedUITest1()
         {
             IISExpress.Start("RestSys");
-            I.Open("http://localhost:52844/");
+            I.Open("http://localhost:52844/"); //TODO this isn't a global address
             I.Click("#menu li:nth-child(2) a");
             Login();
 
