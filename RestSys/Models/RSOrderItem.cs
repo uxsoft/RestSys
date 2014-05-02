@@ -11,6 +11,8 @@ namespace RestSys.Models
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }
 
+        public int State { get; set; }
+
         //Relations
         public RSProduct Product { get; set; }
         public RSOrder Order { get; set; }
