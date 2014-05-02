@@ -9,8 +9,7 @@ namespace RestSys.Models
     public class RSOrderItem : IRSEntity
     {
         public int Id { get; set; }
-
-        public int Quantity { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         //Relations
         public RSProduct Product { get; set; }

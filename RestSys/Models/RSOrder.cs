@@ -11,7 +11,8 @@ namespace RestSys.Models
     {
         public int Id { get; set; }
 
-        public DateTime OrderedOn { get; set; }
+        public String Title { get; set; }
+        public DateTime CreatedOn { get; set; }
         public string Notes { get; set; }
 
         //Relations
