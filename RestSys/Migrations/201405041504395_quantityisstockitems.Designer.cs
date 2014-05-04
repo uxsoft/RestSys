@@ -6,14 +6,14 @@ namespace RestSys.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class navigation_order : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
+    public sealed partial class quantityisstockitems : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(navigation_order));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(quantityisstockitems));
         
         string IMigrationMetadata.Id
         {
-            get { return "201404120237081_navigation_order"; }
+            get { return "201405041504395_quantityisstockitems"; }
         }
         
         string IMigrationMetadata.Source

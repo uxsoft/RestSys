@@ -14,9 +14,8 @@ namespace RestSys.Models
         public DateTime CreatedOn { get; set; }
 
         //Relations
-        [Required]
         public RSUser User { get; set; }
         public RSOrder Order { get; set; }
-        public virtual ICollection<RSReceiptItem> PaidItems { get; set; }
+        public virtual ICollection<RSOrderItem> PaidItems { get; set; }
     }
 }

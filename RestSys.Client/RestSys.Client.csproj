@@ -107,7 +107,6 @@
     </Compile>
     <Compile Include="Common\ServiceExtensions.cs" />
     <Compile Include="DependencyInjection.cs" />
-    <Compile Include="Exports\SettingsPersistenceProvider.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -242,6 +241,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataModel\" />
+    <Folder Include="Exports\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

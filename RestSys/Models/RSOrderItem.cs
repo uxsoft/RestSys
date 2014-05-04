@@ -10,9 +10,16 @@ namespace RestSys.Models
     {
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }
+        public int State { get; set; }
 
         //Relations
+        public RSReceipt Receipt { get; set; }
         public RSProduct Product { get; set; }
         public RSOrder Order { get; set; }
+    }
+
+    public enum RSOrderState : int
+    {
+
     }
 }

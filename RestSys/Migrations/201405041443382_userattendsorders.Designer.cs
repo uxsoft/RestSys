@@ -6,14 +6,14 @@ namespace RestSys.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class navigation_color : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
+    public sealed partial class userattendsorders : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(navigation_color));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(userattendsorders));
         
         string IMigrationMetadata.Id
         {
-            get { return "201404132200079_navigation_color"; }
+            get { return "201405041443382_userattendsorders"; }
         }
         
         string IMigrationMetadata.Source

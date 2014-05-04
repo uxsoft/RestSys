@@ -1,0 +1,65 @@
+﻿@model RestSys.Models.RSUser
+@using RestSys.Resources
+@{
+    ViewBag.Title = Resources.Delete;
+}
+
+<h2>@Resources.Delete</h2>
+
+<h3>@Resources.AreYouSureYouWantToDeleteThis</h3>
+<div>
+    <h4>@Resources.User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAdmin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAdmin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsWaiter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsWaiter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDiscountManager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDiscountManager)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resources.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Resources.BackToList, "Index")
+        </div>
+    }
+</div>

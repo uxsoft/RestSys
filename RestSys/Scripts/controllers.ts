@@ -18,10 +18,11 @@ RestSysAngular.controller("ProductsController", function ($scope, $http) {
     $scope.add = function () {
         var id = $(".selAddStock").val();
         var title = $(".selAddStock option:selected").text();
+        var amount = $("#amount").val();
 
-        $scope.stocks.push({ 'id': id, 'title': title });
+        $scope.stocks.push({ 'id': id, 'title': title, 'amount': amount });
 
-        $.post("/Products/AddStock/" + ModelId, { "stockId": id }).fail(function () {
+        $.post("/Products/AddStock/" + ModelId, { "stockId": id, "amount": amount }).fail(function () {
             $http.get("/Products/GetStocks/" + ModelId).success(function (data: Stock[]) {
                 $scope.stocks = data;
                 $scope.$apply();

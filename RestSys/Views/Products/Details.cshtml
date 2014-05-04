@@ -68,11 +68,11 @@
             @Html.DisplayNameFor(model => model.Stocks)
         </dt>
         <dd>
-            @String.Join(", ", Model.Stocks.Select(stock => stock.Title))
+            @String.Join(", ", Model.Stocks.Select(stock => stock.Stock.Title))
         </dd>
     </dl>
 </div>
 <p>
     @Html.ActionLink(Resources.Edit, "Edit", new { id = Model.Id }) |
-    @Html.ActionLink(Resources.Back_to_List, "Index")
+    @Html.ActionLink(Resources.BackToList, "Index")
 </p>

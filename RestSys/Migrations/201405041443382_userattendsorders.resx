@@ -117,70 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Add" xml:space="preserve">
-    <value>Přidat</value>
+  <data name="Target" xml:space="preserve">
+    <value>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</value>
   </data>
-  <data name="AreYouSureYouWantToDeleteThis" xml:space="preserve">
-    <value>Opravdu chcete smazat tuto položku?</value>
-  </data>
-  <data name="BackToList" xml:space="preserve">
-    <value>Zpět na seznam</value>
-  </data>
-  <data name="ConfirmPassword" xml:space="preserve">
-    <value>Potvrďte heslo</value>
-  </data>
-  <data name="Create" xml:space="preserve">
-    <value>Vytvořit</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Smazat</value>
-  </data>
-  <data name="Details" xml:space="preserve">
-    <value>Detaily</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Upravit</value>
-  </data>
-  <data name="LoginFailed" xml:space="preserve">
-    <value>Přihlášení selhalo.</value>
-  </data>
-  <data name="LoginRedundant" xml:space="preserve">
-    <value>Jste přihlášeni.</value>
-  </data>
-  <data name="Navigation" xml:space="preserve">
-    <value>Navigace</value>
-  </data>
-  <data name="NewPassword" xml:space="preserve">
-    <value>Nové heslo</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Heslo</value>
-  </data>
-  <data name="PasswordsDontMatch" xml:space="preserve">
-    <value>Hesla se liší</value>
-  </data>
-  <data name="Product" xml:space="preserve">
-    <value>Produkt</value>
-  </data>
-  <data name="Products" xml:space="preserve">
-    <value>Produkty</value>
-  </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Odstranit</value>
-  </data>
-  <data name="Stock" xml:space="preserve">
-    <value>Položka skladu</value>
-  </data>
-  <data name="Stocks" xml:space="preserve">
-    <value>Sklad</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Název</value>
-  </data>
-  <data name="User" xml:space="preserve">
-    <value>Uživatel</value>
-  </data>
-  <data name="Users" xml:space="preserve">
-    <value>Uživatelé</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

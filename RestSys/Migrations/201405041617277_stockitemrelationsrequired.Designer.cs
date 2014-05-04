@@ -6,19 +6,19 @@ namespace RestSys.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class navigation_root : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
+    public sealed partial class stockitemrelationsrequired : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(navigation_root));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(stockitemrelationsrequired));
         
         string IMigrationMetadata.Id
         {
-            get { return "201404131849588_navigation_root"; }
+            get { return "201405041617277_stockitemrelationsrequired"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

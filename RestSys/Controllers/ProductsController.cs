@@ -16,15 +16,21 @@ namespace RestSys.Controllers
         private RSDbContext db = new RSDbContext();
 
         [HttpPost]
-        public async Task<ActionResult> AddStock(int id, int stockId)
+        public async Task<ActionResult> AddStock(int id, int stockId, double amount)
         {
             RSStock stock = await db.Stocks.FindAsync(stockId);
             RSProduct product = await db.Products.FindAsync(id);
+
             if (stock != null && product != null)
             {
-                product.Stocks.Add(stock);
+                RSStockItem stockItem = new RSStockItem();
+                stockItem.Amount = amount;
+                stockItem.Stock = stock;
+                stockItem.Product = product;
+
+                db.StockItems.Add(stockItem);
                 await db.SaveChangesAsync();
-                return Content("1");
+                return Json(true);
             }
             else throw new HttpException(400, "Error inserting item");
         }
@@ -32,12 +38,13 @@ namespace RestSys.Controllers
         [HttpPost]
         public async Task<ActionResult> RemoveStock(int id, int stockId)
         {
-            RSStock stock = await db.Stocks.FindAsync(stockId);
+            RSStockItem stock = await db.StockItems.FindAsync(stockId);
             RSProduct product = await db.Products.FindAsync(id);
             if (stock != null && product != null)
             {
                 if (product.Stocks.Remove(stock))
                 {
+                    db.StockItems.Remove(stock);
                     await db.SaveChangesAsync();
                     return Json(true);
                 }
@@ -48,12 +55,7 @@ namespace RestSys.Controllers
         [HttpGet]
         public async Task<ActionResult> GetStocks(int id)
         {
-            RSProduct product = await db.Products.FindAsync(id);
-            if (product != null)
-            {
-                return Json(product.Stocks.Select(s => new { title = s.Title, id = s.Id }), JsonRequestBehavior.AllowGet);
-            }
-            else throw new HttpException(400, "Error fetching items");
+            return Json(db.StockItems.Where(si => si.Product.Id == id).Select(s => new { title = s.Stock.Title, amount = s.Amount, id = s.Id }), JsonRequestBehavior.AllowGet);
         }
 
         // GET: Products
