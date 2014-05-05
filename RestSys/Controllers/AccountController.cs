@@ -152,6 +152,7 @@ namespace RestSys.Controllers
             return View(user);
         }
 
+        [Authorize]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -166,6 +167,7 @@ namespace RestSys.Controllers
             return View(user);
         }
 
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
