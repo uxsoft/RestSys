@@ -68,14 +68,12 @@ namespace RestSys.Controllers
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            RSProduct rSProduct = await db.Products.FindAsync(id);
+
+            RSProduct rSProduct = await db.Products.Include(p => p.Stocks).SingleOrDefaultAsync(p => p.Id == id);
             if (rSProduct == null)
-            {
                 return HttpNotFound();
-            }
+            
             return View(rSProduct);
         }
 
