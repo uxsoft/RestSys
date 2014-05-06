@@ -28,8 +28,6 @@ namespace RestSys.Models
                     return User.IsAdmin;
                 case "waiter":
                     return User.IsWaiter;
-                case "discountmanager":
-                    return User.IsDiscountManager;
                 default:
                     return false;
             }

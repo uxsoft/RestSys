@@ -23,14 +23,14 @@ namespace RestSys.Tests
         }
 
         [TestMethod]
-        public void CodedUITest1()
+        public void NavigationTests()
         {
             IISExpress.Start("RestSys");
             I.Open("http://localhost:52844/"); //TODO this isn't a global address
             I.Click("#menu li:nth-child(2) a");
             Login();
 
-
+            //TODO rest of testing
         }
 
         public void Login()
@@ -38,10 +38,20 @@ namespace RestSys.Tests
             //Login
             I.Expect.Exists("#username").Exists("#password");
 
-            I.Focus("#username").Type("uxsoft");
-            I.Focus("#password").Type("TotallySecretPassword");
+            I.Focus("#username").Type("test");
+            I.Focus("#password").Type("test");
             I.Click("input[type=submit]");
         }
+
+        [TestMethod]
+        public void StockTests()
+        { 
+            
+        }
+
+        [TestMethod]
+        public void ProductTests()
+        { }
 
         [TestInitialize()]
         public void MyTestInitialize()

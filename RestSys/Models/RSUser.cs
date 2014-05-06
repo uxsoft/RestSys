@@ -29,8 +29,7 @@ namespace RestSys.Models
 
         public bool IsAdmin { get; set; }
         public bool IsWaiter { get; set; }
-        public bool IsDiscountManager { get; set; }
-
+        
         //Relations
         public virtual ICollection<RSReceipt> Receipts { get; set; }
         public virtual ICollection<RSOrder> AttendedOrders { get; set; }

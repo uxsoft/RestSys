@@ -23,9 +23,6 @@
         <th>
             @Html.DisplayNameFor(model => model.IsWaiter)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDiscountManager)
-        </th>
         <th></th>
     </tr>
 
@@ -43,9 +40,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsWaiter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDiscountManager)
             </td>
             <td>
                 @Html.ActionLink(Resources.Edit, "Edit", new { id = item.Id }) |

@@ -9,12 +9,21 @@ namespace RestSys.Models
 {
     public class RSOrder : IRSEntity
     {
+        public RSOrder()
+        {
+            Active = true;
+            CreatedOn = DateTime.Now;
+        }
+
         public int Id { get; set; }
 
+        [Required]
         public String Title { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public string Notes { get; set; }
+        [Required]
+        public DateTime CreatedOn { get; private set; }
+        [Required]
         public bool Active { get; set; }
+        public string Notes { get; set; }
 
         //Relations
         public virtual ICollection<RSOrderItem> Items { get; set; }

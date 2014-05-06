@@ -26,7 +26,6 @@ namespace RestSys.Migrations
                         Name = "Jan Dryk",
                         Username = "uxsoft",
                         IsAdmin = true,
-                        IsDiscountManager = true,
                         IsWaiter = true
                     };
                     user0.CreatePassword("TotallySecretPassword");

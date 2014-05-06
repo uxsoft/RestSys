@@ -12,8 +12,6 @@ namespace RestSys.Models
         public DateTime CreatedOn { get; set; }
         public int State { get; set; }
 
-        public int State { get; set; }
-
         //Relations
         public RSReceipt Receipt { get; set; }
         public RSProduct Product { get; set; }
