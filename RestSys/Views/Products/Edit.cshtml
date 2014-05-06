@@ -85,7 +85,7 @@
             <h4>Stocks</h4>
             <ul>
 				<li ng-repeat="stock in stocks">
-					{{stock.title}}
+					{{stock.title}} {{stock.amount}}
 					<button type="button" class="btnRemoveStock" ng-click="remove(stock)">@Resources.Remove</button>
 				</li>
             </ul>
@@ -97,6 +97,7 @@
                     <option value="@stock.Id">@stock.Title</option>
                 }
             </select>
+            <input type="number" name="amount" id="amount" value="100" title="Amount in basic units SI"/>
             <button class="btnAddStock" type="button" ng-click="add()">@Resources.Add</button>
         </div>
 
@@ -109,5 +110,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(Resources.BackToList, "Index")
 </div>

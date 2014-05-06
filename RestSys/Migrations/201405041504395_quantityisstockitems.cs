@@ -3,16 +3,16 @@ namespace RestSys.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class navigation_color : DbMigration
+    public partial class quantityisstockitems : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.RSNavigationItems", "Color", c => c.String());
+            DropColumn("dbo.RSStocks", "Quantity");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.RSNavigationItems", "Color");
+            AddColumn("dbo.RSStocks", "Quantity", c => c.Double(nullable: false));
         }
     }
 }

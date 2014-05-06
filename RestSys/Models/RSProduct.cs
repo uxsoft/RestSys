@@ -21,7 +21,7 @@ namespace RestSys.Models
         public string Category { get; set; }
 
         //Relations
-        public virtual ICollection<RSStock> Stocks { get; set; }
+        public virtual ICollection<RSStockItem> Stocks { get; set; }
         public virtual ICollection<RSOrderItem> DependentOrderItems { get; set; }
         public virtual ICollection<RSNavigationItem> DependentNavigationItems { get; set; }
     }

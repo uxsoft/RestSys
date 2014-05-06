@@ -6,14 +6,14 @@ namespace RestSys.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
+    [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
     public sealed partial class initial : IMigrationMetadata
     {
         private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201404101618282_initial"; }
+            get { return "201405031603068_initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -33,6 +33,7 @@ namespace RestSys.Models
 
         //Relations
         public virtual ICollection<RSReceipt> Receipts { get; set; }
+        public virtual ICollection<RSOrder> AttendedOrders { get; set; }
 
         public string AuthenticationType
         {

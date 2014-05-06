@@ -182,19 +182,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\NavigationController.cs" />
-    <Compile Include="Migrations\201404120237081_navigation_order.cs" />
-    <Compile Include="Migrations\201404120237081_navigation_order.Designer.cs">
-      <DependentUpon>201404120237081_navigation_order.cs</DependentUpon>
+    <Compile Include="Migrations\201405031603068_initial.cs" />
+    <Compile Include="Migrations\201405031603068_initial.Designer.cs">
+      <DependentUpon>201405031603068_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201404131849588_navigation_root.cs" />
-    <Compile Include="Migrations\201404131849588_navigation_root.Designer.cs">
-      <DependentUpon>201404131849588_navigation_root.cs</DependentUpon>
+    <Compile Include="Migrations\201405032316449_fixstockitem.cs" />
+    <Compile Include="Migrations\201405032316449_fixstockitem.Designer.cs">
+      <DependentUpon>201405032316449_fixstockitem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201404132200079_navigation_color.cs" />
-    <Compile Include="Migrations\201404132200079_navigation_color.Designer.cs">
-      <DependentUpon>201404132200079_navigation_color.cs</DependentUpon>
+    <Compile Include="Migrations\201405041436184_quantityisratheramount.cs" />
+    <Compile Include="Migrations\201405041436184_quantityisratheramount.Designer.cs">
+      <DependentUpon>201405041436184_quantityisratheramount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405041443382_userattendsorders.cs" />
+    <Compile Include="Migrations\201405041443382_userattendsorders.Designer.cs">
+      <DependentUpon>201405041443382_userattendsorders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405041504395_quantityisstockitems.cs" />
+    <Compile Include="Migrations\201405041504395_quantityisstockitems.Designer.cs">
+      <DependentUpon>201405041504395_quantityisstockitems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405041617277_stockitemrelationsrequired.cs" />
+    <Compile Include="Migrations\201405041617277_stockitemrelationsrequired.Designer.cs">
+      <DependentUpon>201405041617277_stockitemrelationsrequired.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Exports\RSAuthenticationCookieProvider.cs" />
+    <Compile Include="Models\RSStockItem.cs" />
     <Compile Include="Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -221,10 +234,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201404101618282_initial.cs" />
-    <Compile Include="Migrations\201404101618282_initial.Designer.cs">
-      <DependentUpon>201404101618282_initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Exports\HMACSHA1CryptographyModule.cs" />
     <Compile Include="Models\RSDbContext.cs" />
@@ -234,7 +243,6 @@
     <Compile Include="Models\RSPrincipal.cs" />
     <Compile Include="Models\RSProduct.cs" />
     <Compile Include="Models\RSReceipt.cs" />
-    <Compile Include="Models\RSReceiptItem.cs" />
     <Compile Include="Models\RSStock.cs" />
     <Compile Include="Models\RSStyle.cs" />
     <Compile Include="Models\RSUser.cs" />
@@ -322,14 +330,23 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config" />
-    <EmbeddedResource Include="Migrations\201404120237081_navigation_order.resx">
-      <DependentUpon>201404120237081_navigation_order.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405031603068_initial.resx">
+      <DependentUpon>201405031603068_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404131849588_navigation_root.resx">
-      <DependentUpon>201404131849588_navigation_root.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405032316449_fixstockitem.resx">
+      <DependentUpon>201405032316449_fixstockitem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404132200079_navigation_color.resx">
-      <DependentUpon>201404132200079_navigation_color.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405041436184_quantityisratheramount.resx">
+      <DependentUpon>201405041436184_quantityisratheramount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405041443382_userattendsorders.resx">
+      <DependentUpon>201405041443382_userattendsorders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405041504395_quantityisstockitems.resx">
+      <DependentUpon>201405041504395_quantityisstockitems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405041617277_stockitemrelationsrequired.resx">
+      <DependentUpon>201405041617277_stockitemrelationsrequired.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resources.en.resw">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -667,6 +684,11 @@
     <Content Include="Views\Navigation\Edit.cshtml" />
     <Content Include="Views\Navigation\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RestSys.Models\RestSys.Models.csproj">
@@ -681,9 +703,6 @@
     <EmbeddedResource Include="Resources\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404101618282_initial.resx">
-      <DependentUpon>201404101618282_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

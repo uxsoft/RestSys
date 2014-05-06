@@ -3,11 +3,16 @@
 @{
     ViewBag.Title = Resources.Details;
 }
+@section Scripts{
+    <script type="text/javascript">
+        ModelId = '@Model.Id';
+    </script>
+}
 <h2>@Resources.Details</h2>
 <div>
     <h4>@Resources.Product</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" ng-controller="ProductsController">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -68,11 +73,15 @@
             @Html.DisplayNameFor(model => model.Stocks)
         </dt>
         <dd>
-            @String.Join(", ", Model.Stocks.Select(stock => stock.Title))
+            <ul>
+                <li ng-repeat="stock in stocks">
+                    {{stock.title}} {{stock.amount}}
+                </li>
+            </ul>
         </dd>
     </dl>
 </div>
 <p>
     @Html.ActionLink(Resources.Edit, "Edit", new { id = Model.Id }) |
-    @Html.ActionLink(Resources.Back_to_List, "Index")
+    @Html.ActionLink(Resources.BackToList, "Index")
 </p>

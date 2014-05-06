@@ -13,11 +13,10 @@ namespace RestSys.Models
 
         [Required]
         public string Title { get; set; }
-        public double Quantity { get; set; }
         public string Notes { get; set; }
         public string SerialNumber { get; set; }
 
         //Relations
-        public virtual ICollection<RSProduct> DependentProducts { get; set; }
+        public virtual ICollection<RSStockItem> Items { get; set; }
     }
 }

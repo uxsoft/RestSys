@@ -6,6 +6,13 @@
 
 @using (Html.BeginForm())
 {
+    if (ViewBag.ShowMessage)
+    {
+        <div class="message @ViewBag.MessageColor">
+            @ViewBag.Message
+        </div>
+    }
+    
     <label for="username">Username:</label><br />
     <input type="text" name="username" value="" id="username" /><br/>
 

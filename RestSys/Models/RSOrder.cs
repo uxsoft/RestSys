@@ -14,9 +14,11 @@ namespace RestSys.Models
         public String Title { get; set; }
         public DateTime CreatedOn { get; set; }
         public string Notes { get; set; }
+        public bool Active { get; set; }
 
         //Relations
         public virtual ICollection<RSOrderItem> Items { get; set; }
         public virtual ICollection<RSReceipt> Receipts { get; set; }
+        public virtual ICollection<RSUser> Attendees { get; set; }
     }
 }
