@@ -17,7 +17,6 @@ namespace RestSys.Models
         public double Price { get; set; }
         public bool ShowOnMenu { get; set; }
         public string SerialNumber { get; set; }
-        public double Amount { get; set; }
         public string Category { get; set; }
 
         //Relations
