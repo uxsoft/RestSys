@@ -13,6 +13,7 @@ namespace RestSys.Models
 
         [Required]
         public string Title { get; set; }
+        public string Unit { get; set; }
         public string Notes { get; set; }
         public string SerialNumber { get; set; }
 

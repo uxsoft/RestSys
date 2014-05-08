@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201405061349370_nodiscountmanager.Designer.cs">
       <DependentUpon>201405061349370_nodiscountmanager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405082227478_StockUnitMigration.cs" />
+    <Compile Include="Migrations\201405082227478_StockUnitMigration.Designer.cs">
+      <DependentUpon>201405082227478_StockUnitMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Exports\RSAuthenticationCookieProvider.cs" />
     <Compile Include="Models\RSStockItem.cs" />
     <Compile Include="Resources\Resources.Designer.cs">
@@ -354,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405061349370_nodiscountmanager.resx">
       <DependentUpon>201405061349370_nodiscountmanager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405082227478_StockUnitMigration.resx">
+      <DependentUpon>201405082227478_StockUnitMigration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resources.en.resw">
       <Generator>PublicResXFileCodeGenerator</Generator>
