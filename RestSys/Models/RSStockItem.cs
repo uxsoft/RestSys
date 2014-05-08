@@ -13,6 +13,8 @@ namespace RestSys.Models
 
         public double Amount { get; set; }
 
+        public string Unit { get; set; }
+
         //Relations
         [Required]
         public RSStock Stock { get; set; }
