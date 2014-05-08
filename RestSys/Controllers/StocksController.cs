@@ -43,12 +43,9 @@ namespace RestSys.Controllers
             return View();
         }
 
-        // POST: Stocks/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Quantity,Notes,SerialNumber")] RSStock rSStock)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Quantity,Notes,SerialNumber,Unit")] RSStock rSStock)
         {
             if (ModelState.IsValid)
             {
@@ -75,12 +72,9 @@ namespace RestSys.Controllers
             return View(rSStock);
         }
 
-        // POST: Stocks/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Quantity,Notes,SerialNumber")] RSStock rSStock)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Quantity,Notes,SerialNumber,Unit")] RSStock rSStock)
         {
             if (ModelState.IsValid)
             {
