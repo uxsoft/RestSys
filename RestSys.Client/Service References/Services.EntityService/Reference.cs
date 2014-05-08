@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 14. 4. 2014 0:15:06
+// Generation date: 5/7/2014 10:15:18 PM
 namespace RestSys.Client.Services.EntityService
 {
     
@@ -129,6 +129,23 @@ namespace RestSys.Client.Services.EntityService
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<RSOrder> _Orders;
         /// <summary>
+        /// There are no comments for Users in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<RSUser> Users
+        {
+            get
+            {
+                if ((this._Users == null))
+                {
+                    this._Users = base.CreateQuery<RSUser>("Users");
+                }
+                return this._Users;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<RSUser> _Users;
+        /// <summary>
         /// There are no comments for Receipts in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -146,39 +163,22 @@ namespace RestSys.Client.Services.EntityService
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<RSReceipt> _Receipts;
         /// <summary>
-        /// There are no comments for ReceiptItems in the schema.
+        /// There are no comments for StockItems in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<RSReceiptItem> ReceiptItems
+        public global::System.Data.Services.Client.DataServiceQuery<RSStockItem> StockItems
         {
             get
             {
-                if ((this._ReceiptItems == null))
+                if ((this._StockItems == null))
                 {
-                    this._ReceiptItems = base.CreateQuery<RSReceiptItem>("ReceiptItems");
+                    this._StockItems = base.CreateQuery<RSStockItem>("StockItems");
                 }
-                return this._ReceiptItems;
+                return this._StockItems;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<RSReceiptItem> _ReceiptItems;
-        /// <summary>
-        /// There are no comments for Users in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<RSUser> Users
-        {
-            get
-            {
-                if ((this._Users == null))
-                {
-                    this._Users = base.CreateQuery<RSUser>("Users");
-                }
-                return this._Users;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<RSUser> _Users;
+        private global::System.Data.Services.Client.DataServiceQuery<RSStockItem> _StockItems;
         /// <summary>
         /// There are no comments for Stocks in the schema.
         /// </summary>
@@ -246,6 +246,14 @@ namespace RestSys.Client.Services.EntityService
             base.AddObject("Orders", rSOrder);
         }
         /// <summary>
+        /// There are no comments for Users in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToUsers(RSUser rSUser)
+        {
+            base.AddObject("Users", rSUser);
+        }
+        /// <summary>
         /// There are no comments for Receipts in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -254,20 +262,12 @@ namespace RestSys.Client.Services.EntityService
             base.AddObject("Receipts", rSReceipt);
         }
         /// <summary>
-        /// There are no comments for ReceiptItems in the schema.
+        /// There are no comments for StockItems in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToReceiptItems(RSReceiptItem rSReceiptItem)
+        public void AddToStockItems(RSStockItem rSStockItem)
         {
-            base.AddObject("ReceiptItems", rSReceiptItem);
-        }
-        /// <summary>
-        /// There are no comments for Users in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToUsers(RSUser rSUser)
-        {
-            base.AddObject("Users", rSUser);
+            base.AddObject("StockItems", rSStockItem);
         }
         /// <summary>
         /// There are no comments for Stocks in the schema.
@@ -320,122 +320,134 @@ namespace RestSys.Client.Services.EntityService
                 "tionProperty Name=\"DependentOrderItems\" Relationship=\"RestSys.Models.RSProduct_D" +
                 "ependentOrderItems_RSOrderItem_Product\" ToRole=\"RSOrderItem_Product\" FromRole=\"R" +
                 "SProduct_DependentOrderItems\" /><NavigationProperty Name=\"Stocks\" Relationship=\"" +
-                "RestSys.Models.RSProduct_Stocks_RSStock_DependentProducts\" ToRole=\"RSStock_Depen" +
-                "dentProducts\" FromRole=\"RSProduct_Stocks\" /></EntityType><EntityType Name=\"RSOrd" +
-                "erItem\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\"" +
-                " Nullable=\"false\" /><Property Name=\"Quantity\" Type=\"Edm.Int32\" Nullable=\"false\" " +
-                "/><NavigationProperty Name=\"Order\" Relationship=\"RestSys.Models.RSOrderItem_Orde" +
-                "r_RSOrder_Items\" ToRole=\"RSOrder_Items\" FromRole=\"RSOrderItem_Order\" /><Navigati" +
-                "onProperty Name=\"Product\" Relationship=\"RestSys.Models.RSProduct_DependentOrderI" +
-                "tems_RSOrderItem_Product\" ToRole=\"RSProduct_DependentOrderItems\" FromRole=\"RSOrd" +
-                "erItem_Product\" /></EntityType><EntityType Name=\"RSOrder\"><Key><PropertyRef Name" +
-                "=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property " +
-                "Name=\"OrderedOn\" Type=\"Edm.DateTime\" Nullable=\"false\" /><Property Name=\"Notes\" T" +
-                "ype=\"Edm.String\" /><NavigationProperty Name=\"Items\" Relationship=\"RestSys.Models" +
-                ".RSOrderItem_Order_RSOrder_Items\" ToRole=\"RSOrderItem_Order\" FromRole=\"RSOrder_I" +
-                "tems\" /><NavigationProperty Name=\"Receipts\" Relationship=\"RestSys.Models.RSOrder" +
-                "_Receipts_RSReceipt_Order\" ToRole=\"RSReceipt_Order\" FromRole=\"RSOrder_Receipts\" " +
-                "/></EntityType><EntityType Name=\"RSReceipt\"><Key><PropertyRef Name=\"Id\" /></Key>" +
-                "<Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"CreatedO" +
-                "n\" Type=\"Edm.DateTime\" Nullable=\"false\" /><NavigationProperty Name=\"Order\" Relat" +
-                "ionship=\"RestSys.Models.RSOrder_Receipts_RSReceipt_Order\" ToRole=\"RSOrder_Receip" +
-                "ts\" FromRole=\"RSReceipt_Order\" /><NavigationProperty Name=\"PaidItems\" Relationsh" +
-                "ip=\"RestSys.Models.RSReceipt_PaidItems_RSReceiptItem_Order\" ToRole=\"RSReceiptIte" +
-                "m_Order\" FromRole=\"RSReceipt_PaidItems\" /><NavigationProperty Name=\"User\" Relati" +
-                "onship=\"RestSys.Models.RSReceipt_User_RSUser_Receipts\" ToRole=\"RSUser_Receipts\" " +
-                "FromRole=\"RSReceipt_User\" /></EntityType><EntityType Name=\"RSReceiptItem\"><Key><" +
-                "PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"fal" +
-                "se\" /><Property Name=\"Quantity\" Type=\"Edm.Int32\" Nullable=\"false\" /><NavigationP" +
-                "roperty Name=\"Order\" Relationship=\"RestSys.Models.RSReceipt_PaidItems_RSReceiptI" +
-                "tem_Order\" ToRole=\"RSReceipt_PaidItems\" FromRole=\"RSReceiptItem_Order\" /><Naviga" +
-                "tionProperty Name=\"Product\" Relationship=\"RestSys.Models.RSReceiptItem_Product\" " +
-                "ToRole=\"Product\" FromRole=\"RSReceiptItem\" /></EntityType><EntityType Name=\"RSUse" +
-                "r\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Null" +
-                "able=\"false\" /><Property Name=\"Name\" Type=\"Edm.String\" /><Property Name=\"Usernam" +
-                "e\" Type=\"Edm.String\" /><Property Name=\"PasswordHash\" Type=\"Edm.Binary\" /><Proper" +
-                "ty Name=\"PasswordSalt\" Type=\"Edm.Binary\" /><Property Name=\"IsAdmin\" Type=\"Edm.Bo" +
-                "olean\" Nullable=\"false\" /><Property Name=\"IsWaiter\" Type=\"Edm.Boolean\" Nullable=" +
-                "\"false\" /><Property Name=\"IsDiscountManager\" Type=\"Edm.Boolean\" Nullable=\"false\"" +
-                " /><NavigationProperty Name=\"Receipts\" Relationship=\"RestSys.Models.RSReceipt_Us" +
-                "er_RSUser_Receipts\" ToRole=\"RSReceipt_User\" FromRole=\"RSUser_Receipts\" /></Entit" +
-                "yType><EntityType Name=\"RSStock\"><Key><PropertyRef Name=\"Id\" /></Key><Property N" +
-                "ame=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Title\" Type=\"Edm.St" +
-                "ring\" /><Property Name=\"Quantity\" Type=\"Edm.Double\" Nullable=\"false\" /><Property" +
-                " Name=\"Notes\" Type=\"Edm.String\" /><Property Name=\"SerialNumber\" Type=\"Edm.String" +
-                "\" /><NavigationProperty Name=\"DependentProducts\" Relationship=\"RestSys.Models.RS" +
-                "Product_Stocks_RSStock_DependentProducts\" ToRole=\"RSProduct_Stocks\" FromRole=\"RS" +
-                "Stock_DependentProducts\" /></EntityType><EntityType Name=\"RSStyle\"><Key><Propert" +
-                "yRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" /><" +
-                "Property Name=\"Code\" Type=\"Edm.String\" /><Property Name=\"Path\" Type=\"Edm.String\"" +
-                " /><Property Name=\"Type\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Tit" +
-                "le\" Type=\"Edm.String\" /><Property Name=\"Notes\" Type=\"Edm.String\" /><Property Nam" +
-                "e=\"Selected\" Type=\"Edm.Boolean\" Nullable=\"false\" /></EntityType><Association Nam" +
-                "e=\"RSNavigationItem_Children_RSNavigationItem_Parent\"><End Type=\"RestSys.Models." +
-                "RSNavigationItem\" Role=\"RSNavigationItem_Parent\" Multiplicity=\"*\" /><End Type=\"R" +
-                "estSys.Models.RSNavigationItem\" Role=\"RSNavigationItem_Children\" Multiplicity=\"0" +
-                "..1\" /></Association><Association Name=\"RSNavigationItem_ProductLink_RSProduct_D" +
-                "ependentNavigationItems\"><End Type=\"RestSys.Models.RSProduct\" Role=\"RSProduct_De" +
-                "pendentNavigationItems\" Multiplicity=\"0..1\" /><End Type=\"RestSys.Models.RSNaviga" +
-                "tionItem\" Role=\"RSNavigationItem_ProductLink\" Multiplicity=\"*\" /></Association><" +
-                "Association Name=\"RSProduct_DependentOrderItems_RSOrderItem_Product\"><End Type=\"" +
-                "RestSys.Models.RSOrderItem\" Role=\"RSOrderItem_Product\" Multiplicity=\"*\" /><End T" +
-                "ype=\"RestSys.Models.RSProduct\" Role=\"RSProduct_DependentOrderItems\" Multiplicity" +
-                "=\"0..1\" /></Association><Association Name=\"RSProduct_Stocks_RSStock_DependentPro" +
-                "ducts\"><End Type=\"RestSys.Models.RSStock\" Role=\"RSStock_DependentProducts\" Multi" +
-                "plicity=\"*\" /><End Type=\"RestSys.Models.RSProduct\" Role=\"RSProduct_Stocks\" Multi" +
-                "plicity=\"*\" /></Association><Association Name=\"RSOrderItem_Order_RSOrder_Items\">" +
-                "<End Type=\"RestSys.Models.RSOrder\" Role=\"RSOrder_Items\" Mul";
+                "RestSys.Models.RSProduct_Stocks_RSStockItem_Product\" ToRole=\"RSStockItem_Product" +
+                "\" FromRole=\"RSProduct_Stocks\" /></EntityType><EntityType Name=\"RSOrderItem\"><Key" +
+                "><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"f" +
+                "alse\" /><Property Name=\"CreatedOn\" Type=\"Edm.DateTime\" Nullable=\"false\" /><Prope" +
+                "rty Name=\"State\" Type=\"Edm.Int32\" Nullable=\"false\" /><NavigationProperty Name=\"O" +
+                "rder\" Relationship=\"RestSys.Models.RSOrderItem_Order_RSOrder_Items\" ToRole=\"RSOr" +
+                "der_Items\" FromRole=\"RSOrderItem_Order\" /><NavigationProperty Name=\"Product\" Rel" +
+                "ationship=\"RestSys.Models.RSProduct_DependentOrderItems_RSOrderItem_Product\" ToR" +
+                "ole=\"RSProduct_DependentOrderItems\" FromRole=\"RSOrderItem_Product\" /><Navigation" +
+                "Property Name=\"Receipt\" Relationship=\"RestSys.Models.RSOrderItem_Receipt_RSRecei" +
+                "pt_PaidItems\" ToRole=\"RSReceipt_PaidItems\" FromRole=\"RSOrderItem_Receipt\" /></En" +
+                "tityType><EntityType Name=\"RSOrder\"><Key><PropertyRef Name=\"Id\" /></Key><Propert" +
+                "y Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Title\" Type=\"Edm" +
+                ".String\" /><Property Name=\"CreatedOn\" Type=\"Edm.DateTime\" Nullable=\"false\" /><Pr" +
+                "operty Name=\"Active\" Type=\"Edm.Boolean\" Nullable=\"false\" /><Property Name=\"Notes" +
+                "\" Type=\"Edm.String\" /><NavigationProperty Name=\"Attendees\" Relationship=\"RestSys" +
+                ".Models.RSOrder_Attendees_RSUser_AttendedOrders\" ToRole=\"RSUser_AttendedOrders\" " +
+                "FromRole=\"RSOrder_Attendees\" /><NavigationProperty Name=\"Items\" Relationship=\"Re" +
+                "stSys.Models.RSOrderItem_Order_RSOrder_Items\" ToRole=\"RSOrderItem_Order\" FromRol" +
+                "e=\"RSOrder_Items\" /><NavigationProperty Name=\"Receipts\" Relationship=\"RestSys.Mo" +
+                "dels.RSOrder_Receipts_RSReceipt_Order\" ToRole=\"RSReceipt_Order\" FromRole=\"RSOrde" +
+                "r_Receipts\" /></EntityType><EntityType Name=\"RSUser\"><Key><PropertyRef Name=\"Id\"" +
+                " /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=" +
+                "\"Name\" Type=\"Edm.String\" /><Property Name=\"Username\" Type=\"Edm.String\" /><Proper" +
+                "ty Name=\"PasswordHash\" Type=\"Edm.Binary\" /><Property Name=\"PasswordSalt\" Type=\"E" +
+                "dm.Binary\" /><Property Name=\"IsAdmin\" Type=\"Edm.Boolean\" Nullable=\"false\" /><Pro" +
+                "perty Name=\"IsWaiter\" Type=\"Edm.Boolean\" Nullable=\"false\" /><NavigationProperty " +
+                "Name=\"AttendedOrders\" Relationship=\"RestSys.Models.RSOrder_Attendees_RSUser_Atte" +
+                "ndedOrders\" ToRole=\"RSOrder_Attendees\" FromRole=\"RSUser_AttendedOrders\" /><Navig" +
+                "ationProperty Name=\"Receipts\" Relationship=\"RestSys.Models.RSUser_Receipts_RSRec" +
+                "eipt_User\" ToRole=\"RSReceipt_User\" FromRole=\"RSUser_Receipts\" /></EntityType><En" +
+                "tityType Name=\"RSReceipt\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id" +
+                "\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"CreatedOn\" Type=\"Edm.DateT" +
+                "ime\" Nullable=\"false\" /><NavigationProperty Name=\"Order\" Relationship=\"RestSys.M" +
+                "odels.RSOrder_Receipts_RSReceipt_Order\" ToRole=\"RSOrder_Receipts\" FromRole=\"RSRe" +
+                "ceipt_Order\" /><NavigationProperty Name=\"PaidItems\" Relationship=\"RestSys.Models" +
+                ".RSOrderItem_Receipt_RSReceipt_PaidItems\" ToRole=\"RSOrderItem_Receipt\" FromRole=" +
+                "\"RSReceipt_PaidItems\" /><NavigationProperty Name=\"User\" Relationship=\"RestSys.Mo" +
+                "dels.RSUser_Receipts_RSReceipt_User\" ToRole=\"RSUser_Receipts\" FromRole=\"RSReceip" +
+                "t_User\" /></EntityType><EntityType Name=\"RSStockItem\"><Key><PropertyRef Name=\"Id" +
+                "\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name" +
+                "=\"Amount\" Type=\"Edm.Double\" Nullable=\"false\" /><NavigationProperty Name=\"Product" +
+                "\" Relationship=\"RestSys.Models.RSProduct_Stocks_RSStockItem_Product\" ToRole=\"RSP" +
+                "roduct_Stocks\" FromRole=\"RSStockItem_Product\" /><NavigationProperty Name=\"Stock\"" +
+                " Relationship=\"RestSys.Models.RSStockItem_Stock_RSStock_Items\" ToRole=\"RSStock_I" +
+                "tems\" FromRole=\"RSStockItem_Stock\" /></EntityType><EntityType Name=\"RSStock\"><Ke" +
+                "y><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"" +
+                "false\" /><Property Name=\"Title\" Type=\"Edm.String\" /><Property Name=\"Notes\" Type=" +
+                "\"Edm.String\" /><Property Name=\"SerialNumber\" Type=\"Edm.String\" /><NavigationProp" +
+                "erty Name=\"Items\" Relationship=\"RestSys.Models.RSStockItem_Stock_RSStock_Items\" " +
+                "ToRole=\"RSStockItem_Stock\" FromRole=\"RSStock_Items\" /></EntityType><EntityType N" +
+                "ame=\"RSStyle\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm." +
+                "Int32\" Nullable=\"false\" /><Property Name=\"Code\" Type=\"Edm.String\" /><Property Na" +
+                "me=\"Path\" Type=\"Edm.String\" /><Property Name=\"Type\" Type=\"Edm.Int32\" Nullable=\"f" +
+                "alse\" /><Property Name=\"Title\" Type=\"Edm.String\" /><Property Name=\"Notes\" Type=\"" +
+                "Edm.String\" /><Property Name=\"Selected\" Type=\"Edm.Boolean\" Nullable=\"false\" /></" +
+                "EntityType><Association Name=\"RSNavigationItem_Children_RSNavigationItem_Parent\"" +
+                "><End Type=\"RestSys.Models.RSNavigationItem\" Role=\"RSNavigationItem_Parent\" Mult" +
+                "iplicity=\"*\" /><End Type=\"RestSys.Models.RSNavigationItem\" Role=\"RSNavigationIte" +
+                "m_Children\" Multiplicity=\"0..1\" /></Association><Association Name=\"RSNavigationI" +
+                "tem_ProductLink_RSProduct_DependentNavigationItems\"><End Type=\"RestSys.Models.RS" +
+                "Product\" Role=\"RSProduct_DependentNavigationItems\" Multiplicity=\"0..1\" /><End Ty" +
+                "pe=\"RestSys.Models.RSNavigationItem\" Role=\"RSNavigationItem_ProductLink\" Multipl" +
+                "icity=\"*\" /></Association><Association Name=\"RSProduct_DependentOrderItems_RSOrd" +
+                "erItem_Product\"><End Type=\"RestSys.Models.RSOrderItem\" Role";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart1 = "tiplicity=\"0..1\" /><End Type=\"RestSys.Models.RSOrderItem\" Role=\"RSOrderItem_Order" +
-                "\" Multiplicity=\"*\" /></Association><Association Name=\"RSOrder_Receipts_RSReceipt" +
-                "_Order\"><End Type=\"RestSys.Models.RSReceipt\" Role=\"RSReceipt_Order\" Multiplicity" +
-                "=\"*\" /><End Type=\"RestSys.Models.RSOrder\" Role=\"RSOrder_Receipts\" Multiplicity=\"" +
-                "0..1\" /></Association><Association Name=\"RSReceipt_PaidItems_RSReceiptItem_Order" +
-                "\"><End Type=\"RestSys.Models.RSReceiptItem\" Role=\"RSReceiptItem_Order\" Multiplici" +
-                "ty=\"*\" /><End Type=\"RestSys.Models.RSReceipt\" Role=\"RSReceipt_PaidItems\" Multipl" +
-                "icity=\"0..1\" /></Association><Association Name=\"RSReceipt_User_RSUser_Receipts\">" +
-                "<End Type=\"RestSys.Models.RSUser\" Role=\"RSUser_Receipts\" Multiplicity=\"0..1\" /><" +
-                "End Type=\"RestSys.Models.RSReceipt\" Role=\"RSReceipt_User\" Multiplicity=\"*\" /></A" +
-                "ssociation><Association Name=\"RSReceiptItem_Product\"><End Type=\"RestSys.Models.R" +
-                "SReceiptItem\" Role=\"RSReceiptItem\" Multiplicity=\"*\" /><End Type=\"RestSys.Models." +
-                "RSProduct\" Role=\"Product\" Multiplicity=\"0..1\" /></Association><EntityContainer N" +
-                "ame=\"RSDbContext\" m:IsDefaultEntityContainer=\"true\"><EntitySet Name=\"Navigation\"" +
-                " EntityType=\"RestSys.Models.RSNavigationItem\" /><EntitySet Name=\"Products\" Entit" +
-                "yType=\"RestSys.Models.RSProduct\" /><EntitySet Name=\"OrderItems\" EntityType=\"Rest" +
-                "Sys.Models.RSOrderItem\" /><EntitySet Name=\"Orders\" EntityType=\"RestSys.Models.RS" +
-                "Order\" /><EntitySet Name=\"Receipts\" EntityType=\"RestSys.Models.RSReceipt\" /><Ent" +
-                "itySet Name=\"ReceiptItems\" EntityType=\"RestSys.Models.RSReceiptItem\" /><EntitySe" +
-                "t Name=\"Users\" EntityType=\"RestSys.Models.RSUser\" /><EntitySet Name=\"Stocks\" Ent" +
-                "ityType=\"RestSys.Models.RSStock\" /><EntitySet Name=\"Styles\" EntityType=\"RestSys." +
-                "Models.RSStyle\" /><AssociationSet Name=\"RSNavigationItem_Children\" Association=\"" +
-                "RestSys.Models.RSNavigationItem_Children_RSNavigationItem_Parent\"><End Role=\"RSN" +
-                "avigationItem_Children\" EntitySet=\"Navigation\" /><End Role=\"RSNavigationItem_Par" +
-                "ent\" EntitySet=\"Navigation\" /></AssociationSet><AssociationSet Name=\"RSProduct_D" +
-                "ependentNavigationItems\" Association=\"RestSys.Models.RSNavigationItem_ProductLin" +
-                "k_RSProduct_DependentNavigationItems\"><End Role=\"RSNavigationItem_ProductLink\" E" +
-                "ntitySet=\"Navigation\" /><End Role=\"RSProduct_DependentNavigationItems\" EntitySet" +
-                "=\"Products\" /></AssociationSet><AssociationSet Name=\"RSOrderItem_Product\" Associ" +
-                "ation=\"RestSys.Models.RSProduct_DependentOrderItems_RSOrderItem_Product\"><End Ro" +
-                "le=\"RSProduct_DependentOrderItems\" EntitySet=\"Products\" /><End Role=\"RSOrderItem" +
-                "_Product\" EntitySet=\"OrderItems\" /></AssociationSet><AssociationSet Name=\"RSStoc" +
-                "k_DependentProducts\" Association=\"RestSys.Models.RSProduct_Stocks_RSStock_Depend" +
-                "entProducts\"><End Role=\"RSProduct_Stocks\" EntitySet=\"Products\" /><End Role=\"RSSt" +
-                "ock_DependentProducts\" EntitySet=\"Stocks\" /></AssociationSet><AssociationSet Nam" +
-                "e=\"RSOrder_Items\" Association=\"RestSys.Models.RSOrderItem_Order_RSOrder_Items\"><" +
-                "End Role=\"RSOrderItem_Order\" EntitySet=\"OrderItems\" /><End Role=\"RSOrder_Items\" " +
-                "EntitySet=\"Orders\" /></AssociationSet><AssociationSet Name=\"RSReceipt_Order\" Ass" +
-                "ociation=\"RestSys.Models.RSOrder_Receipts_RSReceipt_Order\"><End Role=\"RSOrder_Re" +
-                "ceipts\" EntitySet=\"Orders\" /><End Role=\"RSReceipt_Order\" EntitySet=\"Receipts\" />" +
-                "</AssociationSet><AssociationSet Name=\"RSReceiptItem_Order\" Association=\"RestSys" +
-                ".Models.RSReceipt_PaidItems_RSReceiptItem_Order\"><End Role=\"RSReceipt_PaidItems\"" +
-                " EntitySet=\"Receipts\" /><End Role=\"RSReceiptItem_Order\" EntitySet=\"ReceiptItems\"" +
-                " /></AssociationSet><AssociationSet Name=\"RSReceipt_User\" Association=\"RestSys.M" +
-                "odels.RSReceipt_User_RSUser_Receipts\"><End Role=\"RSReceipt_User\" EntitySet=\"Rece" +
-                "ipts\" /><End Role=\"RSUser_Receipts\" EntitySet=\"Users\" /></AssociationSet><Associ" +
-                "ationSet Name=\"RSReceiptItem_Product\" Association=\"RestSys.Models.RSReceiptItem_" +
-                "Product\"><End Role=\"RSReceiptItem\" EntitySet=\"ReceiptItems\" /><End Role=\"Product" +
-                "\" EntitySet=\"Products\" /></AssociationSet></EntityContainer></Schema></edmx:Data" +
-                "Services></edmx:Edmx>";
+            private const string ModelPart1 = "=\"RSOrderItem_Product\" Multiplicity=\"*\" /><End Type=\"RestSys.Models.RSProduct\" Ro" +
+                "le=\"RSProduct_DependentOrderItems\" Multiplicity=\"0..1\" /></Association><Associat" +
+                "ion Name=\"RSProduct_Stocks_RSStockItem_Product\"><End Type=\"RestSys.Models.RSStoc" +
+                "kItem\" Role=\"RSStockItem_Product\" Multiplicity=\"*\" /><End Type=\"RestSys.Models.R" +
+                "SProduct\" Role=\"RSProduct_Stocks\" Multiplicity=\"0..1\" /></Association><Associati" +
+                "on Name=\"RSOrderItem_Order_RSOrder_Items\"><End Type=\"RestSys.Models.RSOrder\" Rol" +
+                "e=\"RSOrder_Items\" Multiplicity=\"0..1\" /><End Type=\"RestSys.Models.RSOrderItem\" R" +
+                "ole=\"RSOrderItem_Order\" Multiplicity=\"*\" /></Association><Association Name=\"RSOr" +
+                "derItem_Receipt_RSReceipt_PaidItems\"><End Type=\"RestSys.Models.RSReceipt\" Role=\"" +
+                "RSReceipt_PaidItems\" Multiplicity=\"0..1\" /><End Type=\"RestSys.Models.RSOrderItem" +
+                "\" Role=\"RSOrderItem_Receipt\" Multiplicity=\"*\" /></Association><Association Name=" +
+                "\"RSOrder_Attendees_RSUser_AttendedOrders\"><End Type=\"RestSys.Models.RSUser\" Role" +
+                "=\"RSUser_AttendedOrders\" Multiplicity=\"*\" /><End Type=\"RestSys.Models.RSOrder\" R" +
+                "ole=\"RSOrder_Attendees\" Multiplicity=\"*\" /></Association><Association Name=\"RSOr" +
+                "der_Receipts_RSReceipt_Order\"><End Type=\"RestSys.Models.RSReceipt\" Role=\"RSRecei" +
+                "pt_Order\" Multiplicity=\"*\" /><End Type=\"RestSys.Models.RSOrder\" Role=\"RSOrder_Re" +
+                "ceipts\" Multiplicity=\"0..1\" /></Association><Association Name=\"RSUser_Receipts_R" +
+                "SReceipt_User\"><End Type=\"RestSys.Models.RSReceipt\" Role=\"RSReceipt_User\" Multip" +
+                "licity=\"*\" /><End Type=\"RestSys.Models.RSUser\" Role=\"RSUser_Receipts\" Multiplici" +
+                "ty=\"0..1\" /></Association><Association Name=\"RSStockItem_Stock_RSStock_Items\"><E" +
+                "nd Type=\"RestSys.Models.RSStock\" Role=\"RSStock_Items\" Multiplicity=\"0..1\" /><End" +
+                " Type=\"RestSys.Models.RSStockItem\" Role=\"RSStockItem_Stock\" Multiplicity=\"*\" /><" +
+                "/Association><EntityContainer Name=\"RSDbContext\" m:IsDefaultEntityContainer=\"tru" +
+                "e\"><EntitySet Name=\"Navigation\" EntityType=\"RestSys.Models.RSNavigationItem\" /><" +
+                "EntitySet Name=\"Products\" EntityType=\"RestSys.Models.RSProduct\" /><EntitySet Nam" +
+                "e=\"OrderItems\" EntityType=\"RestSys.Models.RSOrderItem\" /><EntitySet Name=\"Orders" +
+                "\" EntityType=\"RestSys.Models.RSOrder\" /><EntitySet Name=\"Users\" EntityType=\"Rest" +
+                "Sys.Models.RSUser\" /><EntitySet Name=\"Receipts\" EntityType=\"RestSys.Models.RSRec" +
+                "eipt\" /><EntitySet Name=\"StockItems\" EntityType=\"RestSys.Models.RSStockItem\" /><" +
+                "EntitySet Name=\"Stocks\" EntityType=\"RestSys.Models.RSStock\" /><EntitySet Name=\"S" +
+                "tyles\" EntityType=\"RestSys.Models.RSStyle\" /><AssociationSet Name=\"RSNavigationI" +
+                "tem_Children\" Association=\"RestSys.Models.RSNavigationItem_Children_RSNavigation" +
+                "Item_Parent\"><End Role=\"RSNavigationItem_Children\" EntitySet=\"Navigation\" /><End" +
+                " Role=\"RSNavigationItem_Parent\" EntitySet=\"Navigation\" /></AssociationSet><Assoc" +
+                "iationSet Name=\"RSProduct_DependentNavigationItems\" Association=\"RestSys.Models." +
+                "RSNavigationItem_ProductLink_RSProduct_DependentNavigationItems\"><End Role=\"RSNa" +
+                "vigationItem_ProductLink\" EntitySet=\"Navigation\" /><End Role=\"RSProduct_Dependen" +
+                "tNavigationItems\" EntitySet=\"Products\" /></AssociationSet><AssociationSet Name=\"" +
+                "RSOrderItem_Product\" Association=\"RestSys.Models.RSProduct_DependentOrderItems_R" +
+                "SOrderItem_Product\"><End Role=\"RSProduct_DependentOrderItems\" EntitySet=\"Product" +
+                "s\" /><End Role=\"RSOrderItem_Product\" EntitySet=\"OrderItems\" /></AssociationSet><" +
+                "AssociationSet Name=\"RSStockItem_Product\" Association=\"RestSys.Models.RSProduct_" +
+                "Stocks_RSStockItem_Product\"><End Role=\"RSProduct_Stocks\" EntitySet=\"Products\" />" +
+                "<End Role=\"RSStockItem_Product\" EntitySet=\"StockItems\" /></AssociationSet><Assoc" +
+                "iationSet Name=\"RSOrder_Items\" Association=\"RestSys.Models.RSOrderItem_Order_RSO" +
+                "rder_Items\"><End Role=\"RSOrderItem_Order\" EntitySet=\"OrderItems\" /><End Role=\"RS" +
+                "Order_Items\" EntitySet=\"Orders\" /></AssociationSet><AssociationSet Name=\"RSRecei" +
+                "pt_PaidItems\" Association=\"RestSys.Models.RSOrderItem_Receipt_RSReceipt_PaidItem" +
+                "s\"><End Role=\"RSOrderItem_Receipt\" EntitySet=\"OrderItems\" /><End Role=\"RSReceipt" +
+                "_PaidItems\" EntitySet=\"Receipts\" /></AssociationSet><AssociationSet Name=\"RSUser" +
+                "_AttendedOrders\" Association=\"RestSys.Models.RSOrder_Attendees_RSUser_AttendedOr" +
+                "ders\"><End Role=\"RSOrder_Attendees\" EntitySet=\"Orders\" /><End Role=\"RSUser_Atten" +
+                "dedOrders\" EntitySet=\"Users\" /></AssociationSet><AssociationSet Name=\"RSReceipt_" +
+                "Order\" Association=\"RestSys.Models.RSOrder_Receipts_RSReceipt_Order\"><End Role=\"" +
+                "RSOrder_Receipts\" EntitySet=\"Orders\" /><End Role=\"RSReceipt_Order\" EntitySet=\"Re" +
+                "ceipts\" /></AssociationSet><AssociationSet Name=\"RSReceipt_User\" Association=\"Re" +
+                "stSys.Models.RSUser_Receipts_RSReceipt_User\"><End Role=\"RSUser_Receipts\" EntityS" +
+                "et=\"Users\" /><End Role=\"RSReceipt_User\" EntitySet=\"Receipts\" /></AssociationSet>" +
+                "<AssociationSet Name=\"RSStockItem_Stock\" Association=\"RestSys.Models.RSStockItem" +
+                "_Stock_RSStock_Items\"><End Role=\"RSStockItem_Stock\" EntitySet=\"StockItems\" /><En" +
+                "d Role=\"RSStock_Items\" EntitySet=\"Stocks\" /></AssociationSet></EntityContainer><" +
+                "/Schema></edmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -952,7 +964,7 @@ namespace RestSys.Client.Services.EntityService
         /// There are no comments for Stocks in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceCollection<RSStock> Stocks
+        public global::System.Data.Services.Client.DataServiceCollection<RSStockItem> Stocks
         {
             get
             {
@@ -965,7 +977,7 @@ namespace RestSys.Client.Services.EntityService
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceCollection<RSStock> _Stocks = new global::System.Data.Services.Client.DataServiceCollection<RSStock>(null, global::System.Data.Services.Client.TrackingMode.None);
+        private global::System.Data.Services.Client.DataServiceCollection<RSStockItem> _Stocks = new global::System.Data.Services.Client.DataServiceCollection<RSStockItem>(null, global::System.Data.Services.Client.TrackingMode.None);
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -991,13 +1003,15 @@ namespace RestSys.Client.Services.EntityService
         /// Create a new RSOrderItem object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
-        /// <param name="quantity">Initial value of Quantity.</param>
+        /// <param name="createdOn">Initial value of CreatedOn.</param>
+        /// <param name="state">Initial value of State.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static RSOrderItem CreateRSOrderItem(int ID, int quantity)
+        public static RSOrderItem CreateRSOrderItem(int ID, global::System.DateTime createdOn, int state)
         {
             RSOrderItem rSOrderItem = new RSOrderItem();
             rSOrderItem.Id = ID;
-            rSOrderItem.Quantity = quantity;
+            rSOrderItem.CreatedOn = createdOn;
+            rSOrderItem.State = state;
             return rSOrderItem;
         }
         /// <summary>
@@ -1023,27 +1037,49 @@ namespace RestSys.Client.Services.EntityService
         partial void OnIdChanging(int value);
         partial void OnIdChanged();
         /// <summary>
-        /// There are no comments for Property Quantity in the schema.
+        /// There are no comments for Property CreatedOn in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Quantity
+        public global::System.DateTime CreatedOn
         {
             get
             {
-                return this._Quantity;
+                return this._CreatedOn;
             }
             set
             {
-                this.OnQuantityChanging(value);
-                this._Quantity = value;
-                this.OnQuantityChanged();
-                this.OnPropertyChanged("Quantity");
+                this.OnCreatedOnChanging(value);
+                this._CreatedOn = value;
+                this.OnCreatedOnChanged();
+                this.OnPropertyChanged("CreatedOn");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Quantity;
-        partial void OnQuantityChanging(int value);
-        partial void OnQuantityChanged();
+        private global::System.DateTime _CreatedOn;
+        partial void OnCreatedOnChanging(global::System.DateTime value);
+        partial void OnCreatedOnChanged();
+        /// <summary>
+        /// There are no comments for Property State in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int State
+        {
+            get
+            {
+                return this._State;
+            }
+            set
+            {
+                this.OnStateChanging(value);
+                this._State = value;
+                this.OnStateChanged();
+                this.OnPropertyChanged("State");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _State;
+        partial void OnStateChanging(int value);
+        partial void OnStateChanged();
         /// <summary>
         /// There are no comments for Order in the schema.
         /// </summary>
@@ -1080,6 +1116,24 @@ namespace RestSys.Client.Services.EntityService
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private RSProduct _Product;
+        /// <summary>
+        /// There are no comments for Receipt in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public RSReceipt Receipt
+        {
+            get
+            {
+                return this._Receipt;
+            }
+            set
+            {
+                this._Receipt = value;
+                this.OnPropertyChanged("Receipt");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private RSReceipt _Receipt;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1105,13 +1159,15 @@ namespace RestSys.Client.Services.EntityService
         /// Create a new RSOrder object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
-        /// <param name="orderedOn">Initial value of OrderedOn.</param>
+        /// <param name="createdOn">Initial value of CreatedOn.</param>
+        /// <param name="active">Initial value of Active.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static RSOrder CreateRSOrder(int ID, global::System.DateTime orderedOn)
+        public static RSOrder CreateRSOrder(int ID, global::System.DateTime createdOn, bool active)
         {
             RSOrder rSOrder = new RSOrder();
             rSOrder.Id = ID;
-            rSOrder.OrderedOn = orderedOn;
+            rSOrder.CreatedOn = createdOn;
+            rSOrder.Active = active;
             return rSOrder;
         }
         /// <summary>
@@ -1137,27 +1193,71 @@ namespace RestSys.Client.Services.EntityService
         partial void OnIdChanging(int value);
         partial void OnIdChanged();
         /// <summary>
-        /// There are no comments for Property OrderedOn in the schema.
+        /// There are no comments for Property Title in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.DateTime OrderedOn
+        public string Title
         {
             get
             {
-                return this._OrderedOn;
+                return this._Title;
             }
             set
             {
-                this.OnOrderedOnChanging(value);
-                this._OrderedOn = value;
-                this.OnOrderedOnChanged();
-                this.OnPropertyChanged("OrderedOn");
+                this.OnTitleChanging(value);
+                this._Title = value;
+                this.OnTitleChanged();
+                this.OnPropertyChanged("Title");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.DateTime _OrderedOn;
-        partial void OnOrderedOnChanging(global::System.DateTime value);
-        partial void OnOrderedOnChanged();
+        private string _Title;
+        partial void OnTitleChanging(string value);
+        partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for Property CreatedOn in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.DateTime CreatedOn
+        {
+            get
+            {
+                return this._CreatedOn;
+            }
+            set
+            {
+                this.OnCreatedOnChanging(value);
+                this._CreatedOn = value;
+                this.OnCreatedOnChanged();
+                this.OnPropertyChanged("CreatedOn");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.DateTime _CreatedOn;
+        partial void OnCreatedOnChanging(global::System.DateTime value);
+        partial void OnCreatedOnChanged();
+        /// <summary>
+        /// There are no comments for Property Active in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool Active
+        {
+            get
+            {
+                return this._Active;
+            }
+            set
+            {
+                this.OnActiveChanging(value);
+                this._Active = value;
+                this.OnActiveChanged();
+                this.OnPropertyChanged("Active");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _Active;
+        partial void OnActiveChanging(bool value);
+        partial void OnActiveChanged();
         /// <summary>
         /// There are no comments for Property Notes in the schema.
         /// </summary>
@@ -1180,6 +1280,24 @@ namespace RestSys.Client.Services.EntityService
         private string _Notes;
         partial void OnNotesChanging(string value);
         partial void OnNotesChanged();
+        /// <summary>
+        /// There are no comments for Attendees in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceCollection<RSUser> Attendees
+        {
+            get
+            {
+                return this._Attendees;
+            }
+            set
+            {
+                this._Attendees = value;
+                this.OnPropertyChanged("Attendees");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceCollection<RSUser> _Attendees = new global::System.Data.Services.Client.DataServiceCollection<RSUser>(null, global::System.Data.Services.Client.TrackingMode.None);
         /// <summary>
         /// There are no comments for Items in the schema.
         /// </summary>
@@ -1228,252 +1346,6 @@ namespace RestSys.Client.Services.EntityService
         }
     }
     /// <summary>
-    /// There are no comments for RestSys.Models.RSReceipt in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("Receipts")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class RSReceipt : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new RSReceipt object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="createdOn">Initial value of CreatedOn.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static RSReceipt CreateRSReceipt(int ID, global::System.DateTime createdOn)
-        {
-            RSReceipt rSReceipt = new RSReceipt();
-            rSReceipt.Id = ID;
-            rSReceipt.CreatedOn = createdOn;
-            return rSReceipt;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property CreatedOn in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.DateTime CreatedOn
-        {
-            get
-            {
-                return this._CreatedOn;
-            }
-            set
-            {
-                this.OnCreatedOnChanging(value);
-                this._CreatedOn = value;
-                this.OnCreatedOnChanged();
-                this.OnPropertyChanged("CreatedOn");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.DateTime _CreatedOn;
-        partial void OnCreatedOnChanging(global::System.DateTime value);
-        partial void OnCreatedOnChanged();
-        /// <summary>
-        /// There are no comments for Order in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public RSOrder Order
-        {
-            get
-            {
-                return this._Order;
-            }
-            set
-            {
-                this._Order = value;
-                this.OnPropertyChanged("Order");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private RSOrder _Order;
-        /// <summary>
-        /// There are no comments for PaidItems in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceCollection<RSReceiptItem> PaidItems
-        {
-            get
-            {
-                return this._PaidItems;
-            }
-            set
-            {
-                this._PaidItems = value;
-                this.OnPropertyChanged("PaidItems");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceCollection<RSReceiptItem> _PaidItems = new global::System.Data.Services.Client.DataServiceCollection<RSReceiptItem>(null, global::System.Data.Services.Client.TrackingMode.None);
-        /// <summary>
-        /// There are no comments for User in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public RSUser User
-        {
-            get
-            {
-                return this._User;
-            }
-            set
-            {
-                this._User = value;
-                this.OnPropertyChanged("User");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private RSUser _User;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for RestSys.Models.RSReceiptItem in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("ReceiptItems")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class RSReceiptItem : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new RSReceiptItem object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="quantity">Initial value of Quantity.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static RSReceiptItem CreateRSReceiptItem(int ID, int quantity)
-        {
-            RSReceiptItem rSReceiptItem = new RSReceiptItem();
-            rSReceiptItem.Id = ID;
-            rSReceiptItem.Quantity = quantity;
-            return rSReceiptItem;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Quantity in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Quantity
-        {
-            get
-            {
-                return this._Quantity;
-            }
-            set
-            {
-                this.OnQuantityChanging(value);
-                this._Quantity = value;
-                this.OnQuantityChanged();
-                this.OnPropertyChanged("Quantity");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Quantity;
-        partial void OnQuantityChanging(int value);
-        partial void OnQuantityChanged();
-        /// <summary>
-        /// There are no comments for Order in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public RSReceipt Order
-        {
-            get
-            {
-                return this._Order;
-            }
-            set
-            {
-                this._Order = value;
-                this.OnPropertyChanged("Order");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private RSReceipt _Order;
-        /// <summary>
-        /// There are no comments for Product in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public RSProduct Product
-        {
-            get
-            {
-                return this._Product;
-            }
-            set
-            {
-                this._Product = value;
-                this.OnPropertyChanged("Product");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private RSProduct _Product;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
     /// There are no comments for RestSys.Models.RSUser in the schema.
     /// </summary>
     /// <KeyProperties>
@@ -1489,15 +1361,13 @@ namespace RestSys.Client.Services.EntityService
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="isAdmin">Initial value of IsAdmin.</param>
         /// <param name="isWaiter">Initial value of IsWaiter.</param>
-        /// <param name="isDiscountManager">Initial value of IsDiscountManager.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static RSUser CreateRSUser(int ID, bool isAdmin, bool isWaiter, bool isDiscountManager)
+        public static RSUser CreateRSUser(int ID, bool isAdmin, bool isWaiter)
         {
             RSUser rSUser = new RSUser();
             rSUser.Id = ID;
             rSUser.IsAdmin = isAdmin;
             rSUser.IsWaiter = isWaiter;
-            rSUser.IsDiscountManager = isDiscountManager;
             return rSUser;
         }
         /// <summary>
@@ -1669,27 +1539,23 @@ namespace RestSys.Client.Services.EntityService
         partial void OnIsWaiterChanging(bool value);
         partial void OnIsWaiterChanged();
         /// <summary>
-        /// There are no comments for Property IsDiscountManager in the schema.
+        /// There are no comments for AttendedOrders in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public bool IsDiscountManager
+        public global::System.Data.Services.Client.DataServiceCollection<RSOrder> AttendedOrders
         {
             get
             {
-                return this._IsDiscountManager;
+                return this._AttendedOrders;
             }
             set
             {
-                this.OnIsDiscountManagerChanging(value);
-                this._IsDiscountManager = value;
-                this.OnIsDiscountManagerChanged();
-                this.OnPropertyChanged("IsDiscountManager");
+                this._AttendedOrders = value;
+                this.OnPropertyChanged("AttendedOrders");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private bool _IsDiscountManager;
-        partial void OnIsDiscountManagerChanging(bool value);
-        partial void OnIsDiscountManagerChanged();
+        private global::System.Data.Services.Client.DataServiceCollection<RSOrder> _AttendedOrders = new global::System.Data.Services.Client.DataServiceCollection<RSOrder>(null, global::System.Data.Services.Client.TrackingMode.None);
         /// <summary>
         /// There are no comments for Receipts in the schema.
         /// </summary>
@@ -1720,6 +1586,252 @@ namespace RestSys.Client.Services.EntityService
         }
     }
     /// <summary>
+    /// There are no comments for RestSys.Models.RSReceipt in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Receipts")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class RSReceipt : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new RSReceipt object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="createdOn">Initial value of CreatedOn.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static RSReceipt CreateRSReceipt(int ID, global::System.DateTime createdOn)
+        {
+            RSReceipt rSReceipt = new RSReceipt();
+            rSReceipt.Id = ID;
+            rSReceipt.CreatedOn = createdOn;
+            return rSReceipt;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _Id;
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property CreatedOn in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.DateTime CreatedOn
+        {
+            get
+            {
+                return this._CreatedOn;
+            }
+            set
+            {
+                this.OnCreatedOnChanging(value);
+                this._CreatedOn = value;
+                this.OnCreatedOnChanged();
+                this.OnPropertyChanged("CreatedOn");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.DateTime _CreatedOn;
+        partial void OnCreatedOnChanging(global::System.DateTime value);
+        partial void OnCreatedOnChanged();
+        /// <summary>
+        /// There are no comments for Order in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public RSOrder Order
+        {
+            get
+            {
+                return this._Order;
+            }
+            set
+            {
+                this._Order = value;
+                this.OnPropertyChanged("Order");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private RSOrder _Order;
+        /// <summary>
+        /// There are no comments for PaidItems in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceCollection<RSOrderItem> PaidItems
+        {
+            get
+            {
+                return this._PaidItems;
+            }
+            set
+            {
+                this._PaidItems = value;
+                this.OnPropertyChanged("PaidItems");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceCollection<RSOrderItem> _PaidItems = new global::System.Data.Services.Client.DataServiceCollection<RSOrderItem>(null, global::System.Data.Services.Client.TrackingMode.None);
+        /// <summary>
+        /// There are no comments for User in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public RSUser User
+        {
+            get
+            {
+                return this._User;
+            }
+            set
+            {
+                this._User = value;
+                this.OnPropertyChanged("User");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private RSUser _User;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for RestSys.Models.RSStockItem in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("StockItems")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class RSStockItem : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new RSStockItem object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="amount">Initial value of Amount.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static RSStockItem CreateRSStockItem(int ID, double amount)
+        {
+            RSStockItem rSStockItem = new RSStockItem();
+            rSStockItem.Id = ID;
+            rSStockItem.Amount = amount;
+            return rSStockItem;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _Id;
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Amount in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public double Amount
+        {
+            get
+            {
+                return this._Amount;
+            }
+            set
+            {
+                this.OnAmountChanging(value);
+                this._Amount = value;
+                this.OnAmountChanged();
+                this.OnPropertyChanged("Amount");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private double _Amount;
+        partial void OnAmountChanging(double value);
+        partial void OnAmountChanged();
+        /// <summary>
+        /// There are no comments for Product in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public RSProduct Product
+        {
+            get
+            {
+                return this._Product;
+            }
+            set
+            {
+                this._Product = value;
+                this.OnPropertyChanged("Product");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private RSProduct _Product;
+        /// <summary>
+        /// There are no comments for Stock in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public RSStock Stock
+        {
+            get
+            {
+                return this._Stock;
+            }
+            set
+            {
+                this._Stock = value;
+                this.OnPropertyChanged("Stock");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private RSStock _Stock;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
     /// There are no comments for RestSys.Models.RSStock in the schema.
     /// </summary>
     /// <KeyProperties>
@@ -1733,13 +1845,11 @@ namespace RestSys.Client.Services.EntityService
         /// Create a new RSStock object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
-        /// <param name="quantity">Initial value of Quantity.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static RSStock CreateRSStock(int ID, double quantity)
+        public static RSStock CreateRSStock(int ID)
         {
             RSStock rSStock = new RSStock();
             rSStock.Id = ID;
-            rSStock.Quantity = quantity;
             return rSStock;
         }
         /// <summary>
@@ -1787,28 +1897,6 @@ namespace RestSys.Client.Services.EntityService
         partial void OnTitleChanging(string value);
         partial void OnTitleChanged();
         /// <summary>
-        /// There are no comments for Property Quantity in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public double Quantity
-        {
-            get
-            {
-                return this._Quantity;
-            }
-            set
-            {
-                this.OnQuantityChanging(value);
-                this._Quantity = value;
-                this.OnQuantityChanged();
-                this.OnPropertyChanged("Quantity");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private double _Quantity;
-        partial void OnQuantityChanging(double value);
-        partial void OnQuantityChanged();
-        /// <summary>
         /// There are no comments for Property Notes in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1853,23 +1941,23 @@ namespace RestSys.Client.Services.EntityService
         partial void OnSerialNumberChanging(string value);
         partial void OnSerialNumberChanged();
         /// <summary>
-        /// There are no comments for DependentProducts in the schema.
+        /// There are no comments for Items in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceCollection<RSProduct> DependentProducts
+        public global::System.Data.Services.Client.DataServiceCollection<RSStockItem> Items
         {
             get
             {
-                return this._DependentProducts;
+                return this._Items;
             }
             set
             {
-                this._DependentProducts = value;
-                this.OnPropertyChanged("DependentProducts");
+                this._Items = value;
+                this.OnPropertyChanged("Items");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceCollection<RSProduct> _DependentProducts = new global::System.Data.Services.Client.DataServiceCollection<RSProduct>(null, global::System.Data.Services.Client.TrackingMode.None);
+        private global::System.Data.Services.Client.DataServiceCollection<RSStockItem> _Items = new global::System.Data.Services.Client.DataServiceCollection<RSStockItem>(null, global::System.Data.Services.Client.TrackingMode.None);
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
