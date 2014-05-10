@@ -29,11 +29,6 @@ namespace RestSys.Client.Views
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            Global.Authenticated += Global_Authenticated;
-        }
-
-        async void Global_Authenticated(object sender, EventArgs e)
-        {
             var navigationItems = await Global.Db.Navigation.ExecuteAsync();
             NavigateTo(navigationItems.FirstOrDefault(ni => ni.IsRoot));
         }

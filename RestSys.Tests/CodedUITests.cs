@@ -4,10 +4,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Windows.Forms;
 using System.Drawing;
-using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VisualStudio.TestTools.UITest.Extension;
-using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
 using FluentAutomation;
 using Trackyon.CUIT.Helpers;
 
@@ -26,7 +23,7 @@ namespace RestSys.Tests
         public void NavigationTests()
         {
             IISExpress.Start("RestSys");
-            I.Open("http://localhost:52844/"); //TODO this isn't a global address
+            I.Open("http://localhost:56345/"); //TODO this isn't a global address
             I.Click("#menu li:nth-child(2) a");
             Login();
 

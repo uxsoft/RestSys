@@ -120,10 +120,11 @@ namespace RestSys.Controllers
         // POST: Navigation/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,ChildrenOrder,Title,Description,Image,IsRoot,Color")] RSNavigationItem rSNavigationItem)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,ChildrenOrder,Title,Description,Image,IsRoot,Color")] RSNavigationItem rSNavigationItem, int productid)
         {
             if (ModelState.IsValid)
             {
+                rSNavigationItem.ProductLink = await db.Products.FindAsync(productid);
                 db.Entry(rSNavigationItem).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
