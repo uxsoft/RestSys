@@ -17,7 +17,7 @@
             @Html.DisplayNameFor(model => model.Title)
         </dt>
 
-        <dd>
+        <dd id="detailTitle">
             @Html.DisplayFor(model => model.Title)
         </dd>
 
@@ -65,7 +65,7 @@
             @Html.DisplayNameFor(model => model.Stocks)
         </dt>
         <dd>
-            <ul>
+            <ul id="detailStock">
                 <li ng-repeat="stock in stocks">
                     {{stock.title}} {{stock.amount}}
                 </li>
