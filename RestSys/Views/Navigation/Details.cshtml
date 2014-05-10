@@ -50,6 +50,17 @@
         <dd>
             @Html.DisplayFor(model => model.Color)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductLink)
+        </dt>
+
+        <dd>
+            @if (Model.ProductLink != null)
+            {
+                @Html.DisplayFor(model => model.ProductLink.Title)
+            }
+        </dd>
     </dl>
 </div>
 <p>

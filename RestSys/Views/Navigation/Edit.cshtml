@@ -78,6 +78,21 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.ProductLink, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="productid">
+                    <option value="-1">None</option>
+                    @foreach (RSProduct product in Db.Products)
+                    {
+                        <option value="@product.Id" selected="@(product == Model.ProductLink)">@product.Title</option>
+                    }
+                </select>
+
+                @Html.ValidationMessageFor(model => model.ProductLink, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <h4>Children</h4>
             <ul id="childList" data-ui-sortable="" ng-model="children">
                 <li data-id="{{child.id}}" ng-repeat="child in children">

@@ -26,7 +26,6 @@
         <Property Name="Price" Type="Edm.Double" Nullable="false" />
         <Property Name="ShowOnMenu" Type="Edm.Boolean" Nullable="false" />
         <Property Name="SerialNumber" Type="Edm.String" />
-        <Property Name="Amount" Type="Edm.Double" Nullable="false" />
         <Property Name="Category" Type="Edm.String" />
         <NavigationProperty Name="DependentNavigationItems" Relationship="RestSys.Models.RSNavigationItem_ProductLink_RSProduct_DependentNavigationItems" ToRole="RSNavigationItem_ProductLink" FromRole="RSProduct_DependentNavigationItems" />
         <NavigationProperty Name="DependentOrderItems" Relationship="RestSys.Models.RSProduct_DependentOrderItems_RSOrderItem_Product" ToRole="RSOrderItem_Product" FromRole="RSProduct_DependentOrderItems" />
@@ -95,6 +94,7 @@
         </Key>
         <Property Name="Id" Type="Edm.Int32" Nullable="false" />
         <Property Name="Title" Type="Edm.String" />
+        <Property Name="Unit" Type="Edm.String" />
         <Property Name="Notes" Type="Edm.String" />
         <Property Name="SerialNumber" Type="Edm.String" />
         <NavigationProperty Name="Items" Relationship="RestSys.Models.RSStockItem_Stock_RSStock_Items" ToRole="RSStockItem_Stock" FromRole="RSStock_Items" />

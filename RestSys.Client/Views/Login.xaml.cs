@@ -51,9 +51,15 @@ namespace RestSys.Client.Views
             Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
                 if (!Global.IsConnected)
+                {
                     this.Frame.Navigate(typeof(Settings));
+                    return;
+                }
                 if (Global.IsAuthenticated)
+                {
                     this.Frame.Navigate(typeof(MainPage));
+                    return;
+                }
             });
 
             navigationHelper.OnNavigatedTo(e);

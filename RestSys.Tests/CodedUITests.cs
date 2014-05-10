@@ -4,10 +4,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Windows.Forms;
 using System.Drawing;
-//using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-//using Microsoft.VisualStudio.TestTools.UITest.Extension;
-//using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
 using FluentAutomation;
 using Trackyon.CUIT.Helpers;
 
@@ -51,7 +48,7 @@ namespace RestSys.Tests
 
            //WORKING
 
-           IISExpress.Start("RestSys");
+            IISExpress.Start("RestSys");
             I.Open("http://localhost:56345/"); //TODO this isn't a global address
             I.Click("#menu li:nth-child(4) a");
 
@@ -89,9 +86,9 @@ namespace RestSys.Tests
 
              IISExpress.Start("RestSys");
                I.Open("http://localhost:56345/"); //TODO this isn't a global address
-               I.Click("#menu li:nth-child(2) a");
+            I.Click("#menu li:nth-child(2) a");
 
-               Login();
+            Login();
 
                I.Click("#content p a");
   
@@ -203,7 +200,7 @@ namespace RestSys.Tests
 
         [TestMethod]
         public void EditUser() 
-        {
+        { 
             //WORKING
 
             IISExpress.Start("RestSys");
@@ -243,8 +240,8 @@ namespace RestSys.Tests
             // removing user test12345
             I.Click("tbody tr:last-child > td:last-child > a:last-child");
             I.Click("input[type=submit]"); 
-           
-        } 
+            
+        }
 
         public void Login()
         {
