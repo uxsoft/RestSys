@@ -153,6 +153,12 @@
   <data name="NewPassword" xml:space="preserve">
     <value>Nové heslo</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>Objednávka</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>Objednávky</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Heslo</value>
   </data>

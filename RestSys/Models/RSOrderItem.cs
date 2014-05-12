@@ -8,6 +8,10 @@ namespace RestSys.Models
 {
     public class RSOrderItem : IRSEntity
     {
+        public RSOrderItem()
+        {
+            CreatedOn = DateTime.Now;
+        }
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }
         public int State { get; set; }

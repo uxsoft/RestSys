@@ -1,0 +1,80 @@
+﻿@model RestSys.Models.RSOrder
+@using RestSys.Models
+@using RestSys.Resources
+@section Scripts{
+    <script type="text/javascript">
+        ModelId = '@Model.Id';
+    </script>
+}
+@{
+    ViewBag.Title = "Edit";
+    var Db = new RSDbContext();
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>RSOrder</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Active, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Active)
+                @Html.ValidationMessageFor(model => model.Active)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Notes)
+                @Html.ValidationMessageFor(model => model.Notes)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>Products</h4>
+            <ul>
+                <li ng-repeat="product in products">
+                    {{product.title}} {{product.price}}
+                    <button type="button" class="btnRemoveProduct" ng-click="remove(product)">@Resources.Remove</button>
+                </li>
+            </ul>
+
+            <h5>Add</h5>
+            <select class="selAddProduct">
+                @foreach (RSProduct product in Db.Products)
+                {
+                    <option value="@product.Id">@product.Title</option>
+                }
+            </select>
+            <button class="btnAddProduct" type="button" ng-click="add()">@Resources.Add</button>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

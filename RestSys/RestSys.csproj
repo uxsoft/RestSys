@@ -183,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Migrations\201405031603068_initial.cs" />
     <Compile Include="Migrations\201405031603068_initial.Designer.cs">
       <DependentUpon>201405031603068_initial.cs</DependentUpon>
@@ -705,6 +706,11 @@
     <Content Include="Views\Account\Create.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\RSProduct.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RestSys.Models\RestSys.Models.csproj">
