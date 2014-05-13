@@ -11,10 +11,20 @@ namespace RestSys.Models
         public RSOrderItem()
         {
             CreatedOn = DateTime.Now;
+            State = (int)RSOrderState.New;
+        }
+
+        public RSOrderItem(RSProduct product, RSOrder order)
+            : this()
+        {
+            Product = product;
+            Order = order;
+            Price = product.Price;
         }
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }
         public int State { get; set; }
+        public double Price { get; set; }
 
         //Relations
         public RSReceipt Receipt { get; set; }
@@ -24,6 +34,9 @@ namespace RestSys.Models
 
     public enum RSOrderState : int
     {
-
+        New,
+        Canceled, 
+        Dispatched,
+        Paid
     }
 }

@@ -23,10 +23,7 @@ namespace RestSys.Controllers
 
             if (product != null && order != null)
             {
-                RSOrderItem orderItem = new RSOrderItem();
-
-                orderItem.Order = order;
-                orderItem.Product = product;
+                RSOrderItem orderItem = new RSOrderItem(product, order);
 
                 db.OrderItems.Add(orderItem);
                 await db.SaveChangesAsync();
@@ -65,17 +62,15 @@ namespace RestSys.Controllers
         }
 
         // GET: /Orders/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            RSOrder rsorder = db.Orders.Find(id);
+
+            RSOrder rsorder = await db.Orders.Include(o => o.Items).SingleOrDefaultAsync(o => o.Id == id);
             if (rsorder == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(rsorder);
         }
 
