@@ -9,11 +9,13 @@ namespace RestSys.Controllers
 {
     public class HomeController : Controller
     {
+        RSDbContext db = new RSDbContext();
+
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
 
-            return View();
+            return View(db);
         }
 
         public ActionResult ServerIdentification()

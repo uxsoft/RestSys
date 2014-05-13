@@ -73,7 +73,7 @@ namespace RestSys.Controllers
             RSProduct rSProduct = await db.Products.Include(p => p.Stocks).SingleOrDefaultAsync(p => p.Id == id);
             if (rSProduct == null)
                 return HttpNotFound();
-            
+
             return View(rSProduct);
         }
 
@@ -86,7 +86,7 @@ namespace RestSys.Controllers
         // POST: Products/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,Price,ShowOnMenu,SerialNumber,Amount,Category")] RSProduct rSProduct)
+        public async Task<ActionResult> Create(RSProduct rSProduct)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +116,7 @@ namespace RestSys.Controllers
         // POST: Products/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Price,ShowOnMenu,SerialNumber,Amount,Category")] RSProduct rSProduct)
+        public async Task<ActionResult> Edit(RSProduct rSProduct)
         {
             if (ModelState.IsValid)
             {

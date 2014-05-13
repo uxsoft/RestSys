@@ -18,6 +18,7 @@ namespace RestSys.Models
         public bool ShowOnMenu { get; set; }
         public string SerialNumber { get; set; }
         public string Category { get; set; }
+        public string SubCategory { get; set; }
 
         //Relations
         public virtual ICollection<RSStockItem> Stocks { get; set; }

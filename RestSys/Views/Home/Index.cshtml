@@ -1,3 +1,6 @@
-﻿<h2>Dashboard</h2>
+﻿@model RSDbContext
+@using RestSys.Models
+<h2>Dashboard</h2>
 
-Statistics and shit
+	Statistics and shit
+@Model.Orders.Sum(o => o.Items.Sum(oi => oi.Price))
