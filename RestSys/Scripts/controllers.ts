@@ -1,9 +1,15 @@
 ﻿interface Stock {
     id: Number;
+    amount: Number;
     title: String;
 }
 
 interface NavigationItem {
+    id: Number;
+    title: String;
+}
+
+interface Product {
     id: Number;
     title: String;
 }
@@ -70,6 +76,36 @@ RestSysAngular.controller("NavigationController", function ($scope, $http) {
         $.post("/Navigation/RemoveChild/" + ModelId, { "childId": navigationItem.id }).fail(function () {
             $http.get("/Navigation/GetChildren/" + ModelId).success(function (data: NavigationItem[]) {
                 $scope.children = data;
+                $scope.$apply();
+            });
+        });
+    };
+});
+
+RestSysAngular.controller("OrdersController", function ($scope, $http) {
+    $http.get("/Orders/GetProducts/" + ModelId).success(function (data: Product[]) { $scope.products = data });
+
+    $scope.add = function () {
+        var id = $(".selAddProduct").val();
+        var title = $(".selAddProduct option:selected").text();
+
+        $scope.products.push({ 'id': id, 'title': title });
+
+        $.post("/Orders/AddProduct/" + ModelId, { "productId": id}).fail(function () {
+            $http.get("/Orders/GetProducts/" + ModelId).success(function (data: Product[]) {
+                $scope.products = data;
+                $scope.$apply();
+            });
+        });
+    };
+
+    $scope.remove = function (product: Product) {
+        if ($scope.products.indexOf(product) > -1) {
+            $scope.products.splice($scope.products.indexOf(product), 1);
+        }
+        $.post("/Orders/RemoveProduct/" + ModelId, { "productId": product.id }).fail(function () {
+            $http.get("/Orders/GetProducts/" + ModelId).success(function (data: Product[]) {
+                $scope.products = data;
                 $scope.$apply();
             });
         });

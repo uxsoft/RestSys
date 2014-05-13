@@ -84,7 +84,7 @@ namespace RestSys.Controllers
             return View(user);
         }
 
-        [Authorize]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -99,7 +99,7 @@ namespace RestSys.Controllers
             return View(user);
         }
 
-        [Authorize]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(RSUser user, string newpassword, string confirmpassword)
@@ -119,13 +119,13 @@ namespace RestSys.Controllers
             return View(user);
         }
 
-        [Authorize]
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View(new RSUser());
         }
 
-        [Authorize]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(RSUser user, string newpassword, string confirmpassword)
@@ -152,7 +152,7 @@ namespace RestSys.Controllers
             return View(user);
         }
 
-        [Authorize]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -167,7 +167,7 @@ namespace RestSys.Controllers
             return View(user);
         }
 
-        [Authorize]
+        [Authorize(Roles = "admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)

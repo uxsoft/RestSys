@@ -67,4 +67,36 @@ RestSysAngular.controller("NavigationController", function ($scope, $http) {
         });
     };
 });
+
+RestSysAngular.controller("OrdersController", function ($scope, $http) {
+    $http.get("/Orders/GetProducts/" + ModelId).success(function (data) {
+        $scope.products = data;
+    });
+
+    $scope.add = function () {
+        var id = $(".selAddProduct").val();
+        var title = $(".selAddProduct option:selected").text();
+
+        $scope.products.push({ 'id': id, 'title': title });
+
+        $.post("/Orders/AddProduct/" + ModelId, { "productId": id }).fail(function () {
+            $http.get("/Orders/GetProducts/" + ModelId).success(function (data) {
+                $scope.products = data;
+                $scope.$apply();
+            });
+        });
+    };
+
+    $scope.remove = function (product) {
+        if ($scope.products.indexOf(product) > -1) {
+            $scope.products.splice($scope.products.indexOf(product), 1);
+        }
+        $.post("/Orders/RemoveProduct/" + ModelId, { "productId": product.id }).fail(function () {
+            $http.get("/Orders/GetProducts/" + ModelId).success(function (data) {
+                $scope.products = data;
+                $scope.$apply();
+            });
+        });
+    };
+});
 //# sourceMappingURL=controllers.js.map

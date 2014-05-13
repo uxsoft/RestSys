@@ -10,6 +10,7 @@ using RestSys.Models;
 
 namespace RestSys.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class OrdersController : Controller
     {
         private RSDbContext db = new RSDbContext();
@@ -25,6 +26,7 @@ namespace RestSys.Controllers
                 RSOrderItem orderItem = new RSOrderItem();
 
                 orderItem.Order = order;
+                orderItem.Product = product;
 
                 db.OrderItems.Add(orderItem);
                 await db.SaveChangesAsync();
@@ -48,6 +50,12 @@ namespace RestSys.Controllers
                 }
             }
             throw new HttpException(400, "Error removing item");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetProducts(int id)
+        {
+            return Json(db.OrderItems.Where(p => p.Order.Id == id).Select(p => new { title = p.Product.Title, id = p.Id }), JsonRequestBehavior.AllowGet);
         }
 
         // GET: /Orders/
@@ -82,7 +90,7 @@ namespace RestSys.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,Title,CreatedOn,Active,Notes")] RSOrder rsorder)
+        public ActionResult Create([Bind(Include = "Id,Title,CreatedOn,Active,Notes")] RSOrder rsorder)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +122,7 @@ namespace RestSys.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Title,CreatedOn,Active,Notes")] RSOrder rsorder)
+        public ActionResult Edit([Bind(Include = "Id,Title,CreatedOn,Active,Notes")] RSOrder rsorder)
         {
             if (ModelState.IsValid)
             {

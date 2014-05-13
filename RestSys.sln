@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSys", "RestSys\RestSys.csproj", "{C2200F2B-84D9-4527-B822-5609E503AFC7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSys.Client", "RestSys.Client\RestSys.Client.csproj", "{5B6C4856-BED0-45EC-A58F-E18411B3F4FD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C2200F2B-84D9-4527-B822-5609E503AFC7} = {C2200F2B-84D9-4527-B822-5609E503AFC7}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSys.Models", "RestSys.Models\RestSys.Models.csproj", "{CBDC4359-B0D3-4885-AE22-FF79D5244248}"
 EndProject
