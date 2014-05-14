@@ -34,9 +34,9 @@ namespace RestSys.Models
 
     public enum RSOrderState : int
     {
-        New,
-        Canceled, 
-        Dispatched,
-        Paid
+        New = 0,
+        Dispatched = 1,
+        Canceled = 2,
+        Paid = 3
     }
 }

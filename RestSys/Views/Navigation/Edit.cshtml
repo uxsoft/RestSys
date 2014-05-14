@@ -82,7 +82,7 @@
                     <option value="-1">None</option>
                     @foreach (RSProduct product in Db.Products)
                     {
-                        <option value="@product.Id" selected="@(product == Model.ProductLink)">@product.Title</option>
+                        <option value="@product.Id" selected="@(Model.ProductLink != null ? product.Id == Model.ProductLink.Id : false)">@product.Title</option>
                     }
                 </select>
 

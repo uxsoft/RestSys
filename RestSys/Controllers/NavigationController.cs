@@ -90,7 +90,7 @@ namespace RestSys.Controllers
         // POST: Navigation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Position,Title,Description,Image,IsRoot,Color")] RSNavigationItem rSNavigationItem)
+        public async Task<ActionResult> Create(RSNavigationItem rSNavigationItem)
         {
             if (ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace RestSys.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RSNavigationItem rSNavigationItem = await db.Navigation.FindAsync(id);
+            RSNavigationItem rSNavigationItem = await db.Navigation.Include("ProductLink").SingleOrDefaultAsync(i => i.Id == id);
             if (rSNavigationItem == null)
             {
                 return HttpNotFound();
@@ -120,13 +120,17 @@ namespace RestSys.Controllers
         // POST: Navigation/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,ChildrenOrder,Title,Description,Image,IsRoot,Color")] RSNavigationItem rSNavigationItem, int productid)
+        public async Task<ActionResult> Edit(RSNavigationItem rSNavigationItem, int productid)
         {
             if (ModelState.IsValid)
             {
-                rSNavigationItem.ProductLink = await db.Products.FindAsync(productid);
                 db.Entry(rSNavigationItem).State = EntityState.Modified;
                 await db.SaveChangesAsync();
+
+                rSNavigationItem = db.Navigation.Find(rSNavigationItem.Id);
+                rSNavigationItem.ProductLink = await db.Products.FindAsync(productid);
+                await db.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
             return View(rSNavigationItem);

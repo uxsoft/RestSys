@@ -2,6 +2,7 @@
 using RestSys.Models.Exports;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -12,6 +13,7 @@ namespace RestSys.Models
         public int Id { get; set; }
 
         public string ChildrenOrder { get; set; }
+        [Display(Name = "Název")]
         public string Title { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
@@ -30,7 +32,8 @@ namespace RestSys.Models
                 JArray order = JArray.Parse(ChildrenOrder);
                 return Children.OrderBy(ni => order.IndexOf(order.Single(jt => jt.Value<int>() == ni.Id)));
             }
-            catch {
+            catch
+            {
                 return Children;
             }
         }
