@@ -32,7 +32,7 @@ namespace RestSys.Client
 
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            Global.ApplicationStart();
+            await Global.ApplicationStart();
 
             RootFrame = Window.Current.Content as Frame;
 
@@ -58,7 +58,7 @@ namespace RestSys.Client
             }
 
             if (RootFrame.Content == null)
-                RootFrame.Navigate(typeof(Login), e.Arguments);
+                RootFrame.Navigate(typeof(Orders), e.Arguments);
 
             Window.Current.Activate();
         }

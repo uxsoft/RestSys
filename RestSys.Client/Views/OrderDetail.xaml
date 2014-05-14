@@ -1,6 +1,6 @@
 ﻿<Page
     x:Name="pageRoot"
-    x:Class="RestSys.Client.Views.Login"
+    x:Class="RestSys.Client.Views.OrderDetail"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,6 +9,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -19,6 +20,24 @@
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" x:Name="contentRegion">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListBox Name="lstOrderItems">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Text="{Binding Product.Title}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <local:Navigation Name="navProductMenu" Grid.Column="2"/>
+        </Grid>
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
@@ -30,22 +49,8 @@
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Text="Login" x:Uid="Login" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+            <TextBlock x:Name="pageTitle" Text="{Binding Title}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
-        </Grid>
-        <Grid Grid.Row="1" x:Name="contentRegion" VerticalAlignment="Center" HorizontalAlignment="Center" Width="420" KeyDown="contentRegion_KeyDown">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Text="Username" x:Uid="Username" Margin="12" VerticalAlignment="Center" Style="{StaticResource TitleTextBlockStyle}"/>
-            <TextBox Name="txtUsername" Grid.Row="1" VerticalAlignment="Center" Margin="12"/>
-            <TextBlock Text="Password" x:Uid="Password" Grid.Row="2" Margin="12" VerticalAlignment="Center" Style="{StaticResource TitleTextBlockStyle}"/>
-            <PasswordBox Name="txtPassword" Grid.Row="3" VerticalAlignment="Center" Margin="12"/>
-            <Button Name="btnLogin" Content="Login" Grid.Row="4" x:Uid="Login" Click="btnLogin_Click" Margin="12" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         </Grid>
     </Grid>
 </Page>

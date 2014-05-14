@@ -1,48 +1,40 @@
-﻿<Page
+﻿<SettingsFlyout
     x:Name="pageRoot"
     x:Class="RestSys.Client.Views.Settings"
-    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RestSys.Client.Views"
     xmlns:common="using:RestSys.Client.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition/>
-            </TransitionCollection>
-        </Grid.ChildrenTransitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
-                        Style="{StaticResource NavigationBackButtonNormalStyle}"
-                        VerticalAlignment="Top"
-                        AutomationProperties.Name="Back"
-                        AutomationProperties.AutomationId="BackButton"
-                        AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Text="Settings" x:Uid="Settings" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
-                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
-        </Grid>
-        <Grid x:Name="contentRegion" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Text="Server address" Style="{StaticResource SubheaderTextBlockStyle}"/>
-            <TextBox Name="txtServerAddress" Text="{Binding Values[RestSysServiceUrl], Mode=TwoWay}" Grid.Row="1" VerticalAlignment="Center" Margin="10,0,98,0" TextChanged="txtServerAddress_TextChanged"/>
-            <Button Name="btnConnect" Content="Connect" x:Uid="Con`anect" Click="btnConnect_Click" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,7,0"/>
-        </Grid>
-    </Grid>
-</Page>
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Title="Nastavení"
+    mc:Ignorable="d" IconSource="Assets/SmallLogo.png" d:DesignWidth="346">
+    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="266">
+        <StackPanel Name="areaConnect" Style="{StaticResource SettingsFlyoutSectionStyle}">
+            <TextBlock Text="Spojení" Style="{StaticResource TitleTextBlockStyle}"/>
+            <TextBlock Text="Adresa serveru:" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="txtServerAddress" Text="{Binding Values[RestSysServiceUrl]}" TextChanged="txtServerAddress_TextChanged" Margin="0,8,0,0"/>
+            <Button Name="btnConnect" Content="Připojit"  Click="btnConnect_Click" Grid.Row="1" HorizontalAlignment="Right" Margin="0,6,0,0"/>
+        </StackPanel>
+
+        <StackPanel Name="areaDisconnect" Style="{StaticResource SettingsFlyoutSectionStyle}" Visibility="Collapsed">
+            <TextBlock Text="Spojení" Style="{StaticResource TitleTextBlockStyle}"/>
+            <TextBlock Text="{Binding Values[RestSysServiceUrl]}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <Button Name="btnDisconnect" Content="Odpojit" Click="btnDisconnect_Click" HorizontalAlignment="Right" Margin="0,6,0,0"/>
+        </StackPanel>
+        
+        <StackPanel Name="areaLogin">
+            <TextBlock Text="Přihlášení" Style="{StaticResource TitleTextBlockStyle}"/>
+            <TextBlock Text="Uživatelské jméno:" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="txtUsername" Margin="0,8,0,0"/>
+            <TextBlock Text="Heslo:" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <PasswordBox Name="txtPassword" Margin="0,8,0,0"/>
+            <Button Name="btnLogin" Content="Přihlásit" Click="btnLogin_Click" HorizontalAlignment="Right" Margin="0,6,0,0"/>
+        </StackPanel>
+        
+        <StackPanel Name="areaLogOut" Visibility="Collapsed">
+            <TextBlock Text="Přihlášení" Style="{StaticResource TitleTextBlockStyle}"/>
+            <TextBlock Text="{Binding Values[username], Mode=TwoWay}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <Button Name="btnLogOut" Content="Odhlásit" Click="btnLogOut_Click" HorizontalAlignment="Right" Margin="0,6,0,0"/>
+        </StackPanel>
+    </StackPanel>
+</SettingsFlyout>

@@ -27,6 +27,7 @@
         <Property Name="ShowOnMenu" Type="Edm.Boolean" Nullable="false" />
         <Property Name="SerialNumber" Type="Edm.String" />
         <Property Name="Category" Type="Edm.String" />
+        <Property Name="SubCategory" Type="Edm.String" />
         <NavigationProperty Name="DependentNavigationItems" Relationship="RestSys.Models.RSNavigationItem_ProductLink_RSProduct_DependentNavigationItems" ToRole="RSNavigationItem_ProductLink" FromRole="RSProduct_DependentNavigationItems" />
         <NavigationProperty Name="DependentOrderItems" Relationship="RestSys.Models.RSProduct_DependentOrderItems_RSOrderItem_Product" ToRole="RSOrderItem_Product" FromRole="RSProduct_DependentOrderItems" />
         <NavigationProperty Name="Stocks" Relationship="RestSys.Models.RSProduct_Stocks_RSStockItem_Product" ToRole="RSStockItem_Product" FromRole="RSProduct_Stocks" />
@@ -38,6 +39,7 @@
         <Property Name="Id" Type="Edm.Int32" Nullable="false" />
         <Property Name="CreatedOn" Type="Edm.DateTime" Nullable="false" />
         <Property Name="State" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Price" Type="Edm.Double" Nullable="false" />
         <NavigationProperty Name="Order" Relationship="RestSys.Models.RSOrderItem_Order_RSOrder_Items" ToRole="RSOrder_Items" FromRole="RSOrderItem_Order" />
         <NavigationProperty Name="Product" Relationship="RestSys.Models.RSProduct_DependentOrderItems_RSOrderItem_Product" ToRole="RSProduct_DependentOrderItems" FromRole="RSOrderItem_Product" />
         <NavigationProperty Name="Receipt" Relationship="RestSys.Models.RSOrderItem_Receipt_RSReceipt_PaidItems" ToRole="RSReceipt_PaidItems" FromRole="RSOrderItem_Receipt" />
