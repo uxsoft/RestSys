@@ -4,15 +4,13 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>@Resources.AccountEdit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>RSUser</h4>
-        <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Id)
 
@@ -71,5 +69,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(@Resources.BackToList, "Index")
 </div>

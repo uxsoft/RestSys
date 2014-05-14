@@ -1,10 +1,11 @@
 ﻿@model RestSys.Models.RSOrder
+@using RestSys.Resources
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>@Resources.OrderCreate</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,8 +13,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>RSOrder</h4>
-        <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
@@ -49,7 +48,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(@Resources.BackToList, "Index")
 </div>
 
 @section Scripts {

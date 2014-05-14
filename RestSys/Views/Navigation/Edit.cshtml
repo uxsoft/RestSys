@@ -22,7 +22,7 @@
     RSDbContext Db = new RSDbContext();
 }
 
-<h2>Edit</h2>
+<h2>@Resources.NavigationEdit</h2>
 
 
 @using (Html.BeginForm())
@@ -32,8 +32,6 @@
 
 
     <div class="form-horizontal" ng-controller="NavigationController">
-        <h4>RSNavigationItem</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
@@ -121,5 +119,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(@Resources.BackToList, "Index")
 </div>

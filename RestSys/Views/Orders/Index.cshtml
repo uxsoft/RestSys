@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<RestSys.Models.RSOrder>
-
+@using RestSys.Resources
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>@Resources.OrderIndex</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.Notes)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink(@Resources.Edit, "Edit", new { id=item.Id }) |
+            @Html.ActionLink(@Resources.Details, "Details", new { id=item.Id }) |
+            @Html.ActionLink(@Resources.Delete, "Delete", new { id=item.Id })
         </td>
     </tr>
 }

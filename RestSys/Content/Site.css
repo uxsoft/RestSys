@@ -1,6 +1,40 @@
-﻿#page {
+﻿body {
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #111;
+  text-shadow: 1px 1px 1px #FFF;
+}
+a,
+a:visited {
+  color: #3a89c9;
+}
+a:hover {
+  color: #f26c4f;
+}
+b,
+strong,
+th {
+  color: #1b325f;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1b325f;
+  font-family: 'Oswald', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1,
+h2 {
+  text-align: center;
+}
+.actionTab {
+  text-align: right;
+}
+#page {
   width: 980px;
   margin: 0 auto;
+  padding: 20px;
 }
 #page #content {
   clear: both;
@@ -8,5 +42,36 @@
 }
 #page #menu {
   clear: both;
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
+  font-variant: small-caps;
+}
+.form-horizontal label {
+  color: #1b325f;
+  font-weight: bold;
+  text-align: right;
+}
+input[type="text"],
+input[type="password"],
+select {
+  width: 260px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-horizontal input[type="number"] {
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-horizontal .form-group {
+  margin-bottom: 15px;
 }
 /*# sourceMappingURL=site.css.map */

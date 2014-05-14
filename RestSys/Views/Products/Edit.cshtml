@@ -11,15 +11,13 @@
     var Db = new RSDbContext();
 }
 
-<h2>Edit</h2>
+<h2>@Resources.ProductEdit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal" ng-controller="ProductsController">
-        <h4>RSProduct</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
@@ -48,16 +46,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ShowOnMenu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.ShowOnMenu)
-                    @Html.ValidationMessageFor(model => model.ShowOnMenu, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.SerialNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control" } })
@@ -73,21 +61,31 @@
             </div>
         </div>
 
-		<div class="form-group">
-			@Html.LabelFor(model => model.SubCategory, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.SubCategory, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.SubCategory, "", new { @class = "text-danger" })
-			</div>
-		</div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SubCategory, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SubCategory, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SubCategory, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
-            <h4>Stocks</h4>
+            @Html.LabelFor(model => model.ShowOnMenu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.ShowOnMenu)
+                    @Html.ValidationMessageFor(model => model.ShowOnMenu, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>@Resources.Stocks</label>
             <ul>
-				<li ng-repeat="stock in stocks">
-					{{stock.title}} {{stock.amount}}
-					<button type="button" class="btnRemoveStock" ng-click="remove(stock)">@Resources.Remove</button>
-				</li>
+                <li ng-repeat="stock in stocks">
+                    {{stock.title}} {{stock.amount}}
+                    <button type="button" class="btnRemoveStock" ng-click="remove(stock)">@Resources.Remove</button>
+                </li>
             </ul>
 
             <h5>Add</h5>
@@ -97,7 +95,7 @@
                     <option value="@stock.Id">@stock.Title</option>
                 }
             </select>
-            <input type="number" name="amount" id="amount" value="100" title="Amount in basic units SI"/>
+            <input type="number" name="amount" id="amount" value="100" title="Amount in basic units SI" />
             <button class="btnAddStock" type="button" ng-click="add()">@Resources.Add</button>
         </div>
 

@@ -1,15 +1,14 @@
 ﻿@model RestSys.Models.RSProduct
+@using RestSys.Resources
 
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>@Resources.ProductDelete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>@Resources.AreYouSureYouWantToDeleteThis</h3>
 <div>
-    <h4>RSProduct</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -73,8 +72,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="@Resources.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(@Resources.BackToList, "Index")
         </div>
     }
 </div>

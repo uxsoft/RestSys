@@ -1,8 +1,9 @@
-﻿@{
+﻿@using RestSys.Resources;
+@{
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
+<h2>@Resources.RestSysLogin</h2>
 
 @using (Html.BeginForm())
 {
@@ -13,10 +14,10 @@
         </div>
     }
     
-    <label for="username">Username:</label><br />
+    <label for="username">@Resources.Username:</label><br />
     <input type="text" name="username" value="" id="username" /><br/>
 
-    <label for="password">Password:</label><br />
+    <label for="password">@Resources.Password:</label><br />
     <input type="password" name="password" value="" id="password" /><br />
     
     <input type="submit" value="Submit"/>

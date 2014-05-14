@@ -1,52 +1,55 @@
 ﻿@model RestSys.Models.RSOrder
+@using RestSys.Models
+@using RestSys.Resources
 
 @{
-	ViewBag.Title = "Details";
+    ViewBag.Title = "Details";
+    var Db = new RSDbContext();
 }
 
 <h2>Details</h2>
 
 <div>
-	<h4>RSOrder</h4>
-	<hr />
-	<dl class="dl-horizontal">
-		<dt>
-			@Html.DisplayNameFor(model => model.Title)
-		</dt>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
 
-		<dd>
-			@Html.DisplayFor(model => model.Title)
-		</dd>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
 
-		<dt>
-			@Html.DisplayNameFor(model => model.CreatedOn)
-		</dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
 
-		<dd>
-			@Html.DisplayFor(model => model.CreatedOn)
-		</dd>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
 
-		<dt>
-			@Html.DisplayNameFor(model => model.Active)
-		</dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
 
-		<dd>
-			@Html.DisplayFor(model => model.Active)
-		</dd>
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
 
-		<dt>
-			@Html.DisplayNameFor(model => model.Notes)
-		</dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
 
-		<dd>
-			@Html.DisplayFor(model => model.Notes)
-		</dd>
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
 
-		@Model.Items.Sum(i => i.Price)
+        <dd>@Resources.TotalPrice</dd>
+        <dt>@Model.Items.Sum(i => i.Price)</dt>
+    </dl>
 
-	</dl>
+    
 </div>
 <p>
-	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-	@Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(@Resources.Edit, "Edit", new { id = Model.Id }) |
+    @Html.ActionLink(@Resources.BackToList, "Index")
 </p>

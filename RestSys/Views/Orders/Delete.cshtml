@@ -1,15 +1,13 @@
 ﻿@model RestSys.Models.RSOrder
-
+@using RestSys.Resources
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>@Resources.OrderDelete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>@Resources.AreYouSureYouWantToDeleteThis</h3>
 <div>
-    <h4>RSOrder</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -50,7 +48,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink(@Resources.BackToList, "Index")
         </div>
     }
 </div>

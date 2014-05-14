@@ -11,7 +11,7 @@
     var Db = new RSDbContext();
 }
 
-<h2>Edit</h2>
+<h2>@Resources.OrderEdit</h2>
 
 
 @using (Html.BeginForm())
@@ -19,8 +19,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal" ng-controller="OrdersController">
-        <h4>RSOrder</h4>
-        <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Id)
 

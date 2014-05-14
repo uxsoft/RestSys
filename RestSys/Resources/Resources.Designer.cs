@@ -61,6 +61,51 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vytvořit uživatele.
+        /// </summary>
+        public static string AccountCreate {
+            get {
+                return ResourceManager.GetString("AccountCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smazat uživatele.
+        /// </summary>
+        public static string AccountDelete {
+            get {
+                return ResourceManager.GetString("AccountDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podrobnosti o uživateli.
+        /// </summary>
+        public static string AccountDetails {
+            get {
+                return ResourceManager.GetString("AccountDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upravit uživatele.
+        /// </summary>
+        public static string AccountEdit {
+            get {
+                return ResourceManager.GetString("AccountEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Přehled uživatelů.
+        /// </summary>
+        public static string AccountIndex {
+            get {
+                return ResourceManager.GetString("AccountIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Přidat.
         /// </summary>
         public static string Add {
@@ -88,7 +133,7 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Potvrďte heslo.
+        ///   Looks up a localized string similar to Ověření hesla.
         /// </summary>
         public static string ConfirmPassword {
             get {
@@ -115,7 +160,7 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Detaily.
+        ///   Looks up a localized string similar to Podrobnosti.
         /// </summary>
         public static string Details {
             get {
@@ -133,7 +178,7 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Přihlášení selhalo..
+        ///   Looks up a localized string similar to Přihlášení selhalo.
         /// </summary>
         public static string LoginFailed {
             get {
@@ -142,7 +187,7 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jste přihlášeni..
+        ///   Looks up a localized string similar to Jste již přihlášeni.
         /// </summary>
         public static string LoginRedundant {
             get {
@@ -156,6 +201,51 @@ namespace RestSys.Resources {
         public static string Navigation {
             get {
                 return ResourceManager.GetString("Navigation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vytvořit položku navigace.
+        /// </summary>
+        public static string NavigationCreate {
+            get {
+                return ResourceManager.GetString("NavigationCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smazatpoložku navigace.
+        /// </summary>
+        public static string NavigationDelete {
+            get {
+                return ResourceManager.GetString("NavigationDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podrobnosti o položce navigace.
+        /// </summary>
+        public static string NavigationDetails {
+            get {
+                return ResourceManager.GetString("NavigationDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upravit položku navigace.
+        /// </summary>
+        public static string NavigationEdit {
+            get {
+                return ResourceManager.GetString("NavigationEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Přehled navigace v klientské aplikaci.
+        /// </summary>
+        public static string NavigationIndex {
+            get {
+                return ResourceManager.GetString("NavigationIndex", resourceCulture);
             }
         }
         
@@ -174,6 +264,51 @@ namespace RestSys.Resources {
         public static string Order {
             get {
                 return ResourceManager.GetString("Order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vytvořit objednávku.
+        /// </summary>
+        public static string OrderCreate {
+            get {
+                return ResourceManager.GetString("OrderCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smazat objednávku.
+        /// </summary>
+        public static string OrderDelete {
+            get {
+                return ResourceManager.GetString("OrderDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podrobnosti o objednávce.
+        /// </summary>
+        public static string OrderDetails {
+            get {
+                return ResourceManager.GetString("OrderDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upravit objednávku.
+        /// </summary>
+        public static string OrderEdit {
+            get {
+                return ResourceManager.GetString("OrderEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Přehled objednávek.
+        /// </summary>
+        public static string OrderIndex {
+            get {
+                return ResourceManager.GetString("OrderIndex", resourceCulture);
             }
         }
         
@@ -214,6 +349,51 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vytvořit produkt.
+        /// </summary>
+        public static string ProductCreate {
+            get {
+                return ResourceManager.GetString("ProductCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smazat produkt.
+        /// </summary>
+        public static string ProductDelete {
+            get {
+                return ResourceManager.GetString("ProductDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podrobnosti o produktu.
+        /// </summary>
+        public static string ProductDetails {
+            get {
+                return ResourceManager.GetString("ProductDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upravit produkt.
+        /// </summary>
+        public static string ProductEdit {
+            get {
+                return ResourceManager.GetString("ProductEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Přehled produktů.
+        /// </summary>
+        public static string ProductIndex {
+            get {
+                return ResourceManager.GetString("ProductIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Produkty.
         /// </summary>
         public static string Products {
@@ -232,11 +412,65 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Přihlášení do systému.
+        /// </summary>
+        public static string RestSysLogin {
+            get {
+                return ResourceManager.GetString("RestSysLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Položka skladu.
         /// </summary>
         public static string Stock {
             get {
                 return ResourceManager.GetString("Stock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vytvořit zboží.
+        /// </summary>
+        public static string StockCreate {
+            get {
+                return ResourceManager.GetString("StockCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smazat zboží.
+        /// </summary>
+        public static string StockDelete {
+            get {
+                return ResourceManager.GetString("StockDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podrobnosti o zboží.
+        /// </summary>
+        public static string StockDetails {
+            get {
+                return ResourceManager.GetString("StockDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upravit zboží.
+        /// </summary>
+        public static string StockEdit {
+            get {
+                return ResourceManager.GetString("StockEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sklad.
+        /// </summary>
+        public static string StockIndex {
+            get {
+                return ResourceManager.GetString("StockIndex", resourceCulture);
             }
         }
         
@@ -250,6 +484,15 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uložit.
+        /// </summary>
+        public static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Název.
         /// </summary>
         public static string Title {
@@ -259,11 +502,29 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Celková cena.
+        /// </summary>
+        public static string TotalPrice {
+            get {
+                return ResourceManager.GetString("TotalPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uživatel.
         /// </summary>
         public static string User {
             get {
                 return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uživatelské jméno.
+        /// </summary>
+        public static string Username {
+            get {
+                return ResourceManager.GetString("Username", resourceCulture);
             }
         }
         

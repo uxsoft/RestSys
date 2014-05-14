@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<RestSys.Models.RSStock>
-
+@using RestSys.Resources
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>@Resources.StockIndex</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(@Resources.StockCreate, "Create")
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.SerialNumber)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink(@Resources.Edit, "Edit", new { id=item.Id }) |
+            @Html.ActionLink(@Resources.Details, "Details", new { id=item.Id }) |
+            @Html.ActionLink(@Resources.Delete, "Delete", new { id=item.Id })
         </td>
     </tr>
 }
