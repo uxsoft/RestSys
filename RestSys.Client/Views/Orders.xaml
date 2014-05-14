@@ -32,15 +32,15 @@
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1"  IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+            <TextBlock x:Name="pageTitle" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1"  IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40" Text="Objednávky"/>
         </Grid>
-        <Grid Name="contentRoot" Grid.Row="1" Margin="12">
-            <GridView Name="grdOrders" SelectionChanged="grdOrders_SelectionChanged" SelectionMode="Single">
+        <Grid Name="contentRoot" Grid.Row="1" Margin="20">
+            <GridView Name="grdOrders" SelectionMode="Single">
                 <GridView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Width="100" Height="100">
+                        <Button Width="100" Height="100" Padding="2" Name="btnSelectOrder" Click="btnSelectOrder_Click">
                             <TextBlock Text="{Binding Title}"/>
-                        </Grid>
+                        </Button>
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
@@ -48,7 +48,19 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Refresh" Content="Obnovit" Name="btnRefresh" Click="btnRefresh_Click"/>
+            <AppBarButton Icon="Add" Label="Nová objednávka" Name="btnNewOrder">
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel Width="200">
+                            <TextBlock Text="Nová objednávka" Style="{StaticResource TitleTextBlockStyle}"/>
+                            <TextBlock Text="Název:" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBox Name="txtNewOrderName" Margin="0,8,0,0"/>
+                            <Button HorizontalAlignment="Right" Name="btnAddOrder" Content="Vytvořit" Margin="0,6,0,0" Click="btnAddOrder_Click"/>
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarButton Icon="Refresh" Label="Obnovit" Name="btnRefresh" Click="btnRefresh_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

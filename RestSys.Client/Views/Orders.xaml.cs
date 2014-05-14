@@ -70,13 +70,6 @@ namespace RestSys.Client.Views
         {
         }
 
-
-
-        private void grdOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(OrderDetail), grdOrders.SelectedItem);
-        }
-
         private async void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -85,6 +78,23 @@ namespace RestSys.Client.Views
                 grdOrders.ItemsSource = orders;
             }
             catch { }
+        }
+
+        private async void btnAddOrder_Click(object sender, RoutedEventArgs e)
+        {
+            RSOrder order = new RSOrder();
+            order.Title = txtNewOrderName.Text;
+            order.CreatedOn = DateTime.Now;
+
+            Global.Db.AddToOrders(order);
+            await Global.Db.SaveChangesAsync();
+            btnRefresh_Click(null, null);
+            btnNewOrder.Flyout.Hide();
+        }
+
+        private void btnSelectOrder_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(OrderDetail), grdOrders.SelectedItem);
         }
     }
 }

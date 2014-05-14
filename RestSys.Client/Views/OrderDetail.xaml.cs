@@ -50,15 +50,14 @@ namespace RestSys.Client.Views
 
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            int? id = null;
             if (e.NavigationParameter is int)
-                id = e.NavigationParameter as int?;
-            if (e.NavigationParameter is RSOrder)
-                id = (e.NavigationParameter as RSOrder).Id;
+                order = (await Global.Db.Orders.ExecuteAsync()).SingleOrDefault(o => o.Id == (int)e.NavigationParameter);
 
-            if (id.HasValue)
+            if (e.NavigationParameter is RSOrder)
+                order = (RSOrder)e.NavigationParameter;
+
+            if (order != null)
             {
-                order = (await Global.Db.Orders.ExecuteAsync()).SingleOrDefault(o => o.Id == id.Value);
                 await Global.Db.LoadPropertyAsync<object>(order, "Items");
 
                 await Task.WhenAll(order.Items.Select(i => Global.Db.LoadPropertyAsync<object>(i, "Product")));
