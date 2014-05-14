@@ -14,30 +14,35 @@ namespace RestSys.Client
     {
         static Global()
         {
-            if (!Settings.ContainsKey(CONNETIONURL_NAME))
-                Settings[CONNETIONURL_NAME] = "";
+            if (!Settings.ContainsKey(SETTINGS_CONNECTIONURL))
+                Settings[SETTINGS_CONNECTIONURL] = "";
         }
 
         const string API_ENDPOINT = "{0}/EntityService.svc/";
         const string LOGIN_ENDPOINT = "{0}/Account/Login";
         const string IDENTIFICATION_ENDPOINT = "{0}/Home/ServerIdentification";
-        const string COOKIE_NAME = "RestSysAuthenticationCookie";
-        const string CONNETIONURL_NAME = "RestSysServiceUrl";
+        const string SETTINGS_COOKIE = "RestSysAuthenticationCookie";
+        const string SETTINGS_CONNECTIONURL = "RestSysServiceUrl";
+        const string SETTINGS_USERNAME = "username";
         const string SERVICEGUID = "A2903CDE-B4EF-455F-BA8B-30465ADD2633";
 
         public static RSDbContext Db { get; set; }
         public static bool IsConnected { get { return Db != null; } }
-        public static string ConnectionUrl { get { return Settings[CONNETIONURL_NAME].ToString().TrimEnd("/ ".ToCharArray()); } set { Settings[CONNETIONURL_NAME] = value; } }
-        public static bool IsAuthenticated { get { return Settings.ContainsKey(COOKIE_NAME); } }
-        private static string AuthenticationCookie { get { return Settings[COOKIE_NAME].ToString(); } set { Settings[COOKIE_NAME] = value; } }
+        public static string ConnectionUrl { get { return Settings[SETTINGS_CONNECTIONURL].ToString().TrimEnd("/ ".ToCharArray()); } set { Settings[SETTINGS_CONNECTIONURL] = value; } }
+        public static bool IsAuthenticated { get { return Settings.ContainsKey(SETTINGS_COOKIE); } }
+        private static string AuthenticationCookie { get { return Settings[SETTINGS_COOKIE].ToString(); } set { Settings[SETTINGS_COOKIE] = value; } }
+        public static string Username { get { return Settings[SETTINGS_USERNAME].ToString(); } set {Settings[SETTINGS_USERNAME] =value;}}
         public static IPropertySet Settings { get { return Windows.Storage.ApplicationData.Current.LocalSettings.Values; } }
 
-        public static async void ApplicationStart()
+        public static async Task ApplicationStart()
         {
             Connected += (a1, a2) => Db.BuildingRequest += Db_BuildingRequest;
 
             //Try connect with saved settings
-            await Connect(Settings[CONNETIONURL_NAME].ToString());
+            await Connect(Settings[SETTINGS_CONNECTIONURL].ToString());
+
+            if (!IsAuthenticated || !IsConnected)
+                new RestSys.Client.Views.Settings().ShowIndependent();
         }
 
         static void Db_BuildingRequest(object sender, System.Data.Services.Client.BuildingRequestEventArgs e)
@@ -58,7 +63,7 @@ namespace RestSys.Client
                 return false;
 
             var cookies = response.Headers.GetValues("Set-Cookie");
-            string cookie = cookies.SingleOrDefault(s => s.StartsWith(COOKIE_NAME));
+            string cookie = cookies.SingleOrDefault(s => s.StartsWith(SETTINGS_COOKIE));
 
             if (cookie == null)
                 return false;
@@ -69,6 +74,7 @@ namespace RestSys.Client
             if (Authenticated != null)
                 Authenticated(null, EventArgs.Empty);
 
+            Username = username;
             return true;
         }
 
@@ -96,6 +102,17 @@ namespace RestSys.Client
             {
             }
             return false;
+        }
+
+        public static void Disconnect()
+        {
+            Db = null;
+        }
+
+        public static void LogOut()
+        {
+            Settings.Remove(SETTINGS_USERNAME);
+            Settings.Remove(SETTINGS_COOKIE);
         }
 
         public static event EventHandler Authenticated;

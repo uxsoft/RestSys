@@ -393,18 +393,5 @@ namespace RestSys.Client.Common
 
             return eventArgs;
         }
-
-        public static async Task<IEnumerable<RSNavigationItem>> OrderedChildren(this RSNavigationItem me)
-        {
-            try
-            {
-                JArray order = JArray.Parse(me.ChildrenOrder);
-                return me.Children.OrderBy(ni => order.IndexOf(order.Single(jt => jt.Value<int>() == ni.Id)));
-            }
-            catch
-            {
-                return me.Children;
-            }
-        }
     }
 }

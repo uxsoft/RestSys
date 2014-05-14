@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 9. 5. 2014 0:57:40
+// Generation date: 14. 5. 2014 17:26:51
 namespace RestSys.Client.Services.EntityService
 {
     
@@ -313,141 +313,142 @@ namespace RestSys.Client.Services.EntityService
                 "ame=\"Description\" Type=\"Edm.String\" /><Property Name=\"Price\" Type=\"Edm.Double\" N" +
                 "ullable=\"false\" /><Property Name=\"ShowOnMenu\" Type=\"Edm.Boolean\" Nullable=\"false" +
                 "\" /><Property Name=\"SerialNumber\" Type=\"Edm.String\" /><Property Name=\"Category\" " +
-                "Type=\"Edm.String\" /><NavigationProperty Name=\"DependentNavigationItems\" Relation" +
-                "ship=\"RestSys.Models.RSNavigationItem_ProductLink_RSProduct_DependentNavigationI" +
-                "tems\" ToRole=\"RSNavigationItem_ProductLink\" FromRole=\"RSProduct_DependentNavigat" +
-                "ionItems\" /><NavigationProperty Name=\"DependentOrderItems\" Relationship=\"RestSys" +
-                ".Models.RSProduct_DependentOrderItems_RSOrderItem_Product\" ToRole=\"RSOrderItem_P" +
-                "roduct\" FromRole=\"RSProduct_DependentOrderItems\" /><NavigationProperty Name=\"Sto" +
-                "cks\" Relationship=\"RestSys.Models.RSProduct_Stocks_RSStockItem_Product\" ToRole=\"" +
-                "RSStockItem_Product\" FromRole=\"RSProduct_Stocks\" /></EntityType><EntityType Name" +
-                "=\"RSOrderItem\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm" +
-                ".Int32\" Nullable=\"false\" /><Property Name=\"CreatedOn\" Type=\"Edm.DateTime\" Nullab" +
-                "le=\"false\" /><Property Name=\"State\" Type=\"Edm.Int32\" Nullable=\"false\" /><Navigat" +
-                "ionProperty Name=\"Order\" Relationship=\"RestSys.Models.RSOrderItem_Order_RSOrder_" +
-                "Items\" ToRole=\"RSOrder_Items\" FromRole=\"RSOrderItem_Order\" /><NavigationProperty" +
-                " Name=\"Product\" Relationship=\"RestSys.Models.RSProduct_DependentOrderItems_RSOrd" +
-                "erItem_Product\" ToRole=\"RSProduct_DependentOrderItems\" FromRole=\"RSOrderItem_Pro" +
-                "duct\" /><NavigationProperty Name=\"Receipt\" Relationship=\"RestSys.Models.RSOrderI" +
-                "tem_Receipt_RSReceipt_PaidItems\" ToRole=\"RSReceipt_PaidItems\" FromRole=\"RSOrderI" +
-                "tem_Receipt\" /></EntityType><EntityType Name=\"RSOrder\"><Key><PropertyRef Name=\"I" +
-                "d\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Nam" +
-                "e=\"Title\" Type=\"Edm.String\" /><Property Name=\"CreatedOn\" Type=\"Edm.DateTime\" Nul" +
-                "lable=\"false\" /><Property Name=\"Active\" Type=\"Edm.Boolean\" Nullable=\"false\" /><P" +
-                "roperty Name=\"Notes\" Type=\"Edm.String\" /><NavigationProperty Name=\"Attendees\" Re" +
-                "lationship=\"RestSys.Models.RSOrder_Attendees_RSUser_AttendedOrders\" ToRole=\"RSUs" +
-                "er_AttendedOrders\" FromRole=\"RSOrder_Attendees\" /><NavigationProperty Name=\"Item" +
-                "s\" Relationship=\"RestSys.Models.RSOrderItem_Order_RSOrder_Items\" ToRole=\"RSOrder" +
-                "Item_Order\" FromRole=\"RSOrder_Items\" /><NavigationProperty Name=\"Receipts\" Relat" +
-                "ionship=\"RestSys.Models.RSOrder_Receipts_RSReceipt_Order\" ToRole=\"RSReceipt_Orde" +
-                "r\" FromRole=\"RSOrder_Receipts\" /></EntityType><EntityType Name=\"RSUser\"><Key><Pr" +
-                "opertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false" +
-                "\" /><Property Name=\"Name\" Type=\"Edm.String\" /><Property Name=\"Username\" Type=\"Ed" +
-                "m.String\" /><Property Name=\"PasswordHash\" Type=\"Edm.Binary\" /><Property Name=\"Pa" +
-                "sswordSalt\" Type=\"Edm.Binary\" /><Property Name=\"IsAdmin\" Type=\"Edm.Boolean\" Null" +
-                "able=\"false\" /><Property Name=\"IsWaiter\" Type=\"Edm.Boolean\" Nullable=\"false\" /><" +
-                "NavigationProperty Name=\"AttendedOrders\" Relationship=\"RestSys.Models.RSOrder_At" +
-                "tendees_RSUser_AttendedOrders\" ToRole=\"RSOrder_Attendees\" FromRole=\"RSUser_Atten" +
-                "dedOrders\" /><NavigationProperty Name=\"Receipts\" Relationship=\"RestSys.Models.RS" +
-                "User_Receipts_RSReceipt_User\" ToRole=\"RSReceipt_User\" FromRole=\"RSUser_Receipts\"" +
-                " /></EntityType><EntityType Name=\"RSReceipt\"><Key><PropertyRef Name=\"Id\" /></Key" +
-                "><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Created" +
-                "On\" Type=\"Edm.DateTime\" Nullable=\"false\" /><NavigationProperty Name=\"Order\" Rela" +
-                "tionship=\"RestSys.Models.RSOrder_Receipts_RSReceipt_Order\" ToRole=\"RSOrder_Recei" +
-                "pts\" FromRole=\"RSReceipt_Order\" /><NavigationProperty Name=\"PaidItems\" Relations" +
-                "hip=\"RestSys.Models.RSOrderItem_Receipt_RSReceipt_PaidItems\" ToRole=\"RSOrderItem" +
-                "_Receipt\" FromRole=\"RSReceipt_PaidItems\" /><NavigationProperty Name=\"User\" Relat" +
-                "ionship=\"RestSys.Models.RSUser_Receipts_RSReceipt_User\" ToRole=\"RSUser_Receipts\"" +
-                " FromRole=\"RSReceipt_User\" /></EntityType><EntityType Name=\"RSStockItem\"><Key><P" +
-                "ropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"fals" +
-                "e\" /><Property Name=\"Amount\" Type=\"Edm.Double\" Nullable=\"false\" /><NavigationPro" +
-                "perty Name=\"Product\" Relationship=\"RestSys.Models.RSProduct_Stocks_RSStockItem_P" +
-                "roduct\" ToRole=\"RSProduct_Stocks\" FromRole=\"RSStockItem_Product\" /><NavigationPr" +
-                "operty Name=\"Stock\" Relationship=\"RestSys.Models.RSStockItem_Stock_RSStock_Items" +
-                "\" ToRole=\"RSStock_Items\" FromRole=\"RSStockItem_Stock\" /></EntityType><EntityType" +
-                " Name=\"RSStock\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Ed" +
-                "m.Int32\" Nullable=\"false\" /><Property Name=\"Title\" Type=\"Edm.String\" /><Property" +
-                " Name=\"Unit\" Type=\"Edm.String\" /><Property Name=\"Notes\" Type=\"Edm.String\" /><Pro" +
-                "perty Name=\"SerialNumber\" Type=\"Edm.String\" /><NavigationProperty Name=\"Items\" R" +
-                "elationship=\"RestSys.Models.RSStockItem_Stock_RSStock_Items\" ToRole=\"RSStockItem" +
-                "_Stock\" FromRole=\"RSStock_Items\" /></EntityType><EntityType Name=\"RSStyle\"><Key>" +
-                "<PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"fa" +
-                "lse\" /><Property Name=\"Code\" Type=\"Edm.String\" /><Property Name=\"Path\" Type=\"Edm" +
-                ".String\" /><Property Name=\"Type\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property N" +
-                "ame=\"Title\" Type=\"Edm.String\" /><Property Name=\"Notes\" Type=\"Edm.String\" /><Prop" +
-                "erty Name=\"Selected\" Type=\"Edm.Boolean\" Nullable=\"false\" /></EntityType><Associa" +
-                "tion Name=\"RSNavigationItem_Children_RSNavigationItem_Parent\"><End Type=\"RestSys" +
-                ".Models.RSNavigationItem\" Role=\"RSNavigationItem_Parent\" Multiplicity=\"*\" /><End" +
-                " Type=\"RestSys.Models.RSNavigationItem\" Role=\"RSNavigationItem_Children\" Multipl" +
-                "icity=\"0..1\" /></Association><Association Name=\"RSNavigationItem_ProductLink_RSP" +
-                "roduct_DependentNavigationItems\"><End Type=\"RestSys.Models.RSProduct\" Role=\"RSPr" +
-                "oduct_DependentNavigationItems\" Multiplicity=\"0..1\" /><End Type=\"RestSys.Models." +
-                "RSNavigationItem\" Role=\"RSNavigationItem_ProductLink\" Multiplicity=\"*\" /></Assoc" +
-                "iation><Association Name=\"RSProduct_DependentOrderItems_RSOrderItem_Product\"><En" +
-                "d Type=\"RestSys.Models.RSOrderItem\" Role=\"RSOrderItem_Produ";
+                "Type=\"Edm.String\" /><Property Name=\"SubCategory\" Type=\"Edm.String\" /><Navigation" +
+                "Property Name=\"DependentNavigationItems\" Relationship=\"RestSys.Models.RSNavigati" +
+                "onItem_ProductLink_RSProduct_DependentNavigationItems\" ToRole=\"RSNavigationItem_" +
+                "ProductLink\" FromRole=\"RSProduct_DependentNavigationItems\" /><NavigationProperty" +
+                " Name=\"DependentOrderItems\" Relationship=\"RestSys.Models.RSProduct_DependentOrde" +
+                "rItems_RSOrderItem_Product\" ToRole=\"RSOrderItem_Product\" FromRole=\"RSProduct_Dep" +
+                "endentOrderItems\" /><NavigationProperty Name=\"Stocks\" Relationship=\"RestSys.Mode" +
+                "ls.RSProduct_Stocks_RSStockItem_Product\" ToRole=\"RSStockItem_Product\" FromRole=\"" +
+                "RSProduct_Stocks\" /></EntityType><EntityType Name=\"RSOrderItem\"><Key><PropertyRe" +
+                "f Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Pro" +
+                "perty Name=\"CreatedOn\" Type=\"Edm.DateTime\" Nullable=\"false\" /><Property Name=\"St" +
+                "ate\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Price\" Type=\"Edm.Double" +
+                "\" Nullable=\"false\" /><NavigationProperty Name=\"Order\" Relationship=\"RestSys.Mode" +
+                "ls.RSOrderItem_Order_RSOrder_Items\" ToRole=\"RSOrder_Items\" FromRole=\"RSOrderItem" +
+                "_Order\" /><NavigationProperty Name=\"Product\" Relationship=\"RestSys.Models.RSProd" +
+                "uct_DependentOrderItems_RSOrderItem_Product\" ToRole=\"RSProduct_DependentOrderIte" +
+                "ms\" FromRole=\"RSOrderItem_Product\" /><NavigationProperty Name=\"Receipt\" Relation" +
+                "ship=\"RestSys.Models.RSOrderItem_Receipt_RSReceipt_PaidItems\" ToRole=\"RSReceipt_" +
+                "PaidItems\" FromRole=\"RSOrderItem_Receipt\" /></EntityType><EntityType Name=\"RSOrd" +
+                "er\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nul" +
+                "lable=\"false\" /><Property Name=\"Title\" Type=\"Edm.String\" /><Property Name=\"Creat" +
+                "edOn\" Type=\"Edm.DateTime\" Nullable=\"false\" /><Property Name=\"Active\" Type=\"Edm.B" +
+                "oolean\" Nullable=\"false\" /><Property Name=\"Notes\" Type=\"Edm.String\" /><Navigatio" +
+                "nProperty Name=\"Attendees\" Relationship=\"RestSys.Models.RSOrder_Attendees_RSUser" +
+                "_AttendedOrders\" ToRole=\"RSUser_AttendedOrders\" FromRole=\"RSOrder_Attendees\" /><" +
+                "NavigationProperty Name=\"Items\" Relationship=\"RestSys.Models.RSOrderItem_Order_R" +
+                "SOrder_Items\" ToRole=\"RSOrderItem_Order\" FromRole=\"RSOrder_Items\" /><NavigationP" +
+                "roperty Name=\"Receipts\" Relationship=\"RestSys.Models.RSOrder_Receipts_RSReceipt_" +
+                "Order\" ToRole=\"RSReceipt_Order\" FromRole=\"RSOrder_Receipts\" /></EntityType><Enti" +
+                "tyType Name=\"RSUser\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Typ" +
+                "e=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Name\" Type=\"Edm.String\" /><Prop" +
+                "erty Name=\"Username\" Type=\"Edm.String\" /><Property Name=\"PasswordHash\" Type=\"Edm" +
+                ".Binary\" /><Property Name=\"PasswordSalt\" Type=\"Edm.Binary\" /><Property Name=\"IsA" +
+                "dmin\" Type=\"Edm.Boolean\" Nullable=\"false\" /><Property Name=\"IsWaiter\" Type=\"Edm." +
+                "Boolean\" Nullable=\"false\" /><NavigationProperty Name=\"AttendedOrders\" Relationsh" +
+                "ip=\"RestSys.Models.RSOrder_Attendees_RSUser_AttendedOrders\" ToRole=\"RSOrder_Atte" +
+                "ndees\" FromRole=\"RSUser_AttendedOrders\" /><NavigationProperty Name=\"Receipts\" Re" +
+                "lationship=\"RestSys.Models.RSUser_Receipts_RSReceipt_User\" ToRole=\"RSReceipt_Use" +
+                "r\" FromRole=\"RSUser_Receipts\" /></EntityType><EntityType Name=\"RSReceipt\"><Key><" +
+                "PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"fal" +
+                "se\" /><Property Name=\"CreatedOn\" Type=\"Edm.DateTime\" Nullable=\"false\" /><Navigat" +
+                "ionProperty Name=\"Order\" Relationship=\"RestSys.Models.RSOrder_Receipts_RSReceipt" +
+                "_Order\" ToRole=\"RSOrder_Receipts\" FromRole=\"RSReceipt_Order\" /><NavigationProper" +
+                "ty Name=\"PaidItems\" Relationship=\"RestSys.Models.RSOrderItem_Receipt_RSReceipt_P" +
+                "aidItems\" ToRole=\"RSOrderItem_Receipt\" FromRole=\"RSReceipt_PaidItems\" /><Navigat" +
+                "ionProperty Name=\"User\" Relationship=\"RestSys.Models.RSUser_Receipts_RSReceipt_U" +
+                "ser\" ToRole=\"RSUser_Receipts\" FromRole=\"RSReceipt_User\" /></EntityType><EntityTy" +
+                "pe Name=\"RSStockItem\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Ty" +
+                "pe=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Amount\" Type=\"Edm.Double\" Null" +
+                "able=\"false\" /><NavigationProperty Name=\"Product\" Relationship=\"RestSys.Models.R" +
+                "SProduct_Stocks_RSStockItem_Product\" ToRole=\"RSProduct_Stocks\" FromRole=\"RSStock" +
+                "Item_Product\" /><NavigationProperty Name=\"Stock\" Relationship=\"RestSys.Models.RS" +
+                "StockItem_Stock_RSStock_Items\" ToRole=\"RSStock_Items\" FromRole=\"RSStockItem_Stoc" +
+                "k\" /></EntityType><EntityType Name=\"RSStock\"><Key><PropertyRef Name=\"Id\" /></Key" +
+                "><Property Name=\"Id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Title\" " +
+                "Type=\"Edm.String\" /><Property Name=\"Unit\" Type=\"Edm.String\" /><Property Name=\"No" +
+                "tes\" Type=\"Edm.String\" /><Property Name=\"SerialNumber\" Type=\"Edm.String\" /><Navi" +
+                "gationProperty Name=\"Items\" Relationship=\"RestSys.Models.RSStockItem_Stock_RSSto" +
+                "ck_Items\" ToRole=\"RSStockItem_Stock\" FromRole=\"RSStock_Items\" /></EntityType><En" +
+                "tityType Name=\"RSStyle\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" " +
+                "Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Code\" Type=\"Edm.String\" /><P" +
+                "roperty Name=\"Path\" Type=\"Edm.String\" /><Property Name=\"Type\" Type=\"Edm.Int32\" N" +
+                "ullable=\"false\" /><Property Name=\"Title\" Type=\"Edm.String\" /><Property Name=\"Not" +
+                "es\" Type=\"Edm.String\" /><Property Name=\"Selected\" Type=\"Edm.Boolean\" Nullable=\"f" +
+                "alse\" /></EntityType><Association Name=\"RSNavigationItem_Children_RSNavigationIt" +
+                "em_Parent\"><End Type=\"RestSys.Models.RSNavigationItem\" Role=\"RSNavigationItem_Pa" +
+                "rent\" Multiplicity=\"*\" /><End Type=\"RestSys.Models.RSNavigationItem\" Role=\"RSNav" +
+                "igationItem_Children\" Multiplicity=\"0..1\" /></Association><Association Name=\"RSN" +
+                "avigationItem_ProductLink_RSProduct_DependentNavigationItems\"><End Type=\"RestSys" +
+                ".Models.RSProduct\" Role=\"RSProduct_DependentNavigationItems\" Multiplicity=\"0..1\"" +
+                " /><End Type=\"RestSys.Models.RSNavigationItem\" Role=\"RSNavigationItem_ProductLin" +
+                "k\" Multiplicity=\"*\" /></Association><Association Name=\"RSPr";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart1 = "ct\" Multiplicity=\"*\" /><End Type=\"RestSys.Models.RSProduct\" Role=\"RSProduct_Depen" +
-                "dentOrderItems\" Multiplicity=\"0..1\" /></Association><Association Name=\"RSProduct" +
-                "_Stocks_RSStockItem_Product\"><End Type=\"RestSys.Models.RSStockItem\" Role=\"RSStoc" +
-                "kItem_Product\" Multiplicity=\"*\" /><End Type=\"RestSys.Models.RSProduct\" Role=\"RSP" +
-                "roduct_Stocks\" Multiplicity=\"0..1\" /></Association><Association Name=\"RSOrderIte" +
-                "m_Order_RSOrder_Items\"><End Type=\"RestSys.Models.RSOrder\" Role=\"RSOrder_Items\" M" +
-                "ultiplicity=\"0..1\" /><End Type=\"RestSys.Models.RSOrderItem\" Role=\"RSOrderItem_Or" +
-                "der\" Multiplicity=\"*\" /></Association><Association Name=\"RSOrderItem_Receipt_RSR" +
-                "eceipt_PaidItems\"><End Type=\"RestSys.Models.RSReceipt\" Role=\"RSReceipt_PaidItems" +
-                "\" Multiplicity=\"0..1\" /><End Type=\"RestSys.Models.RSOrderItem\" Role=\"RSOrderItem" +
-                "_Receipt\" Multiplicity=\"*\" /></Association><Association Name=\"RSOrder_Attendees_" +
-                "RSUser_AttendedOrders\"><End Type=\"RestSys.Models.RSUser\" Role=\"RSUser_AttendedOr" +
-                "ders\" Multiplicity=\"*\" /><End Type=\"RestSys.Models.RSOrder\" Role=\"RSOrder_Attend" +
-                "ees\" Multiplicity=\"*\" /></Association><Association Name=\"RSOrder_Receipts_RSRece" +
-                "ipt_Order\"><End Type=\"RestSys.Models.RSReceipt\" Role=\"RSReceipt_Order\" Multiplic" +
-                "ity=\"*\" /><End Type=\"RestSys.Models.RSOrder\" Role=\"RSOrder_Receipts\" Multiplicit" +
-                "y=\"0..1\" /></Association><Association Name=\"RSUser_Receipts_RSReceipt_User\"><End" +
-                " Type=\"RestSys.Models.RSReceipt\" Role=\"RSReceipt_User\" Multiplicity=\"*\" /><End T" +
-                "ype=\"RestSys.Models.RSUser\" Role=\"RSUser_Receipts\" Multiplicity=\"0..1\" /></Assoc" +
-                "iation><Association Name=\"RSStockItem_Stock_RSStock_Items\"><End Type=\"RestSys.Mo" +
-                "dels.RSStock\" Role=\"RSStock_Items\" Multiplicity=\"0..1\" /><End Type=\"RestSys.Mode" +
-                "ls.RSStockItem\" Role=\"RSStockItem_Stock\" Multiplicity=\"*\" /></Association><Entit" +
-                "yContainer Name=\"RSDbContext\" m:IsDefaultEntityContainer=\"true\"><EntitySet Name=" +
-                "\"Navigation\" EntityType=\"RestSys.Models.RSNavigationItem\" /><EntitySet Name=\"Pro" +
-                "ducts\" EntityType=\"RestSys.Models.RSProduct\" /><EntitySet Name=\"OrderItems\" Enti" +
-                "tyType=\"RestSys.Models.RSOrderItem\" /><EntitySet Name=\"Orders\" EntityType=\"RestS" +
-                "ys.Models.RSOrder\" /><EntitySet Name=\"Users\" EntityType=\"RestSys.Models.RSUser\" " +
-                "/><EntitySet Name=\"Receipts\" EntityType=\"RestSys.Models.RSReceipt\" /><EntitySet " +
-                "Name=\"StockItems\" EntityType=\"RestSys.Models.RSStockItem\" /><EntitySet Name=\"Sto" +
-                "cks\" EntityType=\"RestSys.Models.RSStock\" /><EntitySet Name=\"Styles\" EntityType=\"" +
-                "RestSys.Models.RSStyle\" /><AssociationSet Name=\"RSNavigationItem_Children\" Assoc" +
-                "iation=\"RestSys.Models.RSNavigationItem_Children_RSNavigationItem_Parent\"><End R" +
-                "ole=\"RSNavigationItem_Children\" EntitySet=\"Navigation\" /><End Role=\"RSNavigation" +
-                "Item_Parent\" EntitySet=\"Navigation\" /></AssociationSet><AssociationSet Name=\"RSP" +
-                "roduct_DependentNavigationItems\" Association=\"RestSys.Models.RSNavigationItem_Pr" +
-                "oductLink_RSProduct_DependentNavigationItems\"><End Role=\"RSNavigationItem_Produc" +
-                "tLink\" EntitySet=\"Navigation\" /><End Role=\"RSProduct_DependentNavigationItems\" E" +
-                "ntitySet=\"Products\" /></AssociationSet><AssociationSet Name=\"RSOrderItem_Product" +
-                "\" Association=\"RestSys.Models.RSProduct_DependentOrderItems_RSOrderItem_Product\"" +
-                "><End Role=\"RSProduct_DependentOrderItems\" EntitySet=\"Products\" /><End Role=\"RSO" +
-                "rderItem_Product\" EntitySet=\"OrderItems\" /></AssociationSet><AssociationSet Name" +
-                "=\"RSStockItem_Product\" Association=\"RestSys.Models.RSProduct_Stocks_RSStockItem_" +
-                "Product\"><End Role=\"RSProduct_Stocks\" EntitySet=\"Products\" /><End Role=\"RSStockI" +
-                "tem_Product\" EntitySet=\"StockItems\" /></AssociationSet><AssociationSet Name=\"RSO" +
-                "rder_Items\" Association=\"RestSys.Models.RSOrderItem_Order_RSOrder_Items\"><End Ro" +
-                "le=\"RSOrderItem_Order\" EntitySet=\"OrderItems\" /><End Role=\"RSOrder_Items\" Entity" +
-                "Set=\"Orders\" /></AssociationSet><AssociationSet Name=\"RSReceipt_PaidItems\" Assoc" +
-                "iation=\"RestSys.Models.RSOrderItem_Receipt_RSReceipt_PaidItems\"><End Role=\"RSOrd" +
-                "erItem_Receipt\" EntitySet=\"OrderItems\" /><End Role=\"RSReceipt_PaidItems\" EntityS" +
-                "et=\"Receipts\" /></AssociationSet><AssociationSet Name=\"RSUser_AttendedOrders\" As" +
-                "sociation=\"RestSys.Models.RSOrder_Attendees_RSUser_AttendedOrders\"><End Role=\"RS" +
-                "Order_Attendees\" EntitySet=\"Orders\" /><End Role=\"RSUser_AttendedOrders\" EntitySe" +
-                "t=\"Users\" /></AssociationSet><AssociationSet Name=\"RSReceipt_Order\" Association=" +
-                "\"RestSys.Models.RSOrder_Receipts_RSReceipt_Order\"><End Role=\"RSOrder_Receipts\" E" +
-                "ntitySet=\"Orders\" /><End Role=\"RSReceipt_Order\" EntitySet=\"Receipts\" /></Associa" +
-                "tionSet><AssociationSet Name=\"RSReceipt_User\" Association=\"RestSys.Models.RSUser" +
-                "_Receipts_RSReceipt_User\"><End Role=\"RSUser_Receipts\" EntitySet=\"Users\" /><End R" +
-                "ole=\"RSReceipt_User\" EntitySet=\"Receipts\" /></AssociationSet><AssociationSet Nam" +
-                "e=\"RSStockItem_Stock\" Association=\"RestSys.Models.RSStockItem_Stock_RSStock_Item" +
-                "s\"><End Role=\"RSStockItem_Stock\" EntitySet=\"StockItems\" /><End Role=\"RSStock_Ite" +
-                "ms\" EntitySet=\"Stocks\" /></AssociationSet></EntityContainer></Schema></edmx:Data" +
-                "Services></edmx:Edmx>";
+            private const string ModelPart1 = "oduct_DependentOrderItems_RSOrderItem_Product\"><End Type=\"RestSys.Models.RSOrderI" +
+                "tem\" Role=\"RSOrderItem_Product\" Multiplicity=\"*\" /><End Type=\"RestSys.Models.RSP" +
+                "roduct\" Role=\"RSProduct_DependentOrderItems\" Multiplicity=\"0..1\" /></Association" +
+                "><Association Name=\"RSProduct_Stocks_RSStockItem_Product\"><End Type=\"RestSys.Mod" +
+                "els.RSStockItem\" Role=\"RSStockItem_Product\" Multiplicity=\"*\" /><End Type=\"RestSy" +
+                "s.Models.RSProduct\" Role=\"RSProduct_Stocks\" Multiplicity=\"0..1\" /></Association>" +
+                "<Association Name=\"RSOrderItem_Order_RSOrder_Items\"><End Type=\"RestSys.Models.RS" +
+                "Order\" Role=\"RSOrder_Items\" Multiplicity=\"0..1\" /><End Type=\"RestSys.Models.RSOr" +
+                "derItem\" Role=\"RSOrderItem_Order\" Multiplicity=\"*\" /></Association><Association " +
+                "Name=\"RSOrderItem_Receipt_RSReceipt_PaidItems\"><End Type=\"RestSys.Models.RSRecei" +
+                "pt\" Role=\"RSReceipt_PaidItems\" Multiplicity=\"0..1\" /><End Type=\"RestSys.Models.R" +
+                "SOrderItem\" Role=\"RSOrderItem_Receipt\" Multiplicity=\"*\" /></Association><Associa" +
+                "tion Name=\"RSOrder_Attendees_RSUser_AttendedOrders\"><End Type=\"RestSys.Models.RS" +
+                "User\" Role=\"RSUser_AttendedOrders\" Multiplicity=\"*\" /><End Type=\"RestSys.Models." +
+                "RSOrder\" Role=\"RSOrder_Attendees\" Multiplicity=\"*\" /></Association><Association " +
+                "Name=\"RSOrder_Receipts_RSReceipt_Order\"><End Type=\"RestSys.Models.RSReceipt\" Rol" +
+                "e=\"RSReceipt_Order\" Multiplicity=\"*\" /><End Type=\"RestSys.Models.RSOrder\" Role=\"" +
+                "RSOrder_Receipts\" Multiplicity=\"0..1\" /></Association><Association Name=\"RSUser_" +
+                "Receipts_RSReceipt_User\"><End Type=\"RestSys.Models.RSReceipt\" Role=\"RSReceipt_Us" +
+                "er\" Multiplicity=\"*\" /><End Type=\"RestSys.Models.RSUser\" Role=\"RSUser_Receipts\" " +
+                "Multiplicity=\"0..1\" /></Association><Association Name=\"RSStockItem_Stock_RSStock" +
+                "_Items\"><End Type=\"RestSys.Models.RSStock\" Role=\"RSStock_Items\" Multiplicity=\"0." +
+                ".1\" /><End Type=\"RestSys.Models.RSStockItem\" Role=\"RSStockItem_Stock\" Multiplici" +
+                "ty=\"*\" /></Association><EntityContainer Name=\"RSDbContext\" m:IsDefaultEntityCont" +
+                "ainer=\"true\"><EntitySet Name=\"Navigation\" EntityType=\"RestSys.Models.RSNavigatio" +
+                "nItem\" /><EntitySet Name=\"Products\" EntityType=\"RestSys.Models.RSProduct\" /><Ent" +
+                "itySet Name=\"OrderItems\" EntityType=\"RestSys.Models.RSOrderItem\" /><EntitySet Na" +
+                "me=\"Orders\" EntityType=\"RestSys.Models.RSOrder\" /><EntitySet Name=\"Users\" Entity" +
+                "Type=\"RestSys.Models.RSUser\" /><EntitySet Name=\"Receipts\" EntityType=\"RestSys.Mo" +
+                "dels.RSReceipt\" /><EntitySet Name=\"StockItems\" EntityType=\"RestSys.Models.RSStoc" +
+                "kItem\" /><EntitySet Name=\"Stocks\" EntityType=\"RestSys.Models.RSStock\" /><EntityS" +
+                "et Name=\"Styles\" EntityType=\"RestSys.Models.RSStyle\" /><AssociationSet Name=\"RSN" +
+                "avigationItem_Children\" Association=\"RestSys.Models.RSNavigationItem_Children_RS" +
+                "NavigationItem_Parent\"><End Role=\"RSNavigationItem_Children\" EntitySet=\"Navigati" +
+                "on\" /><End Role=\"RSNavigationItem_Parent\" EntitySet=\"Navigation\" /></Association" +
+                "Set><AssociationSet Name=\"RSProduct_DependentNavigationItems\" Association=\"RestS" +
+                "ys.Models.RSNavigationItem_ProductLink_RSProduct_DependentNavigationItems\"><End " +
+                "Role=\"RSNavigationItem_ProductLink\" EntitySet=\"Navigation\" /><End Role=\"RSProduc" +
+                "t_DependentNavigationItems\" EntitySet=\"Products\" /></AssociationSet><Association" +
+                "Set Name=\"RSOrderItem_Product\" Association=\"RestSys.Models.RSProduct_DependentOr" +
+                "derItems_RSOrderItem_Product\"><End Role=\"RSProduct_DependentOrderItems\" EntitySe" +
+                "t=\"Products\" /><End Role=\"RSOrderItem_Product\" EntitySet=\"OrderItems\" /></Associ" +
+                "ationSet><AssociationSet Name=\"RSStockItem_Product\" Association=\"RestSys.Models." +
+                "RSProduct_Stocks_RSStockItem_Product\"><End Role=\"RSProduct_Stocks\" EntitySet=\"Pr" +
+                "oducts\" /><End Role=\"RSStockItem_Product\" EntitySet=\"StockItems\" /></Association" +
+                "Set><AssociationSet Name=\"RSOrder_Items\" Association=\"RestSys.Models.RSOrderItem" +
+                "_Order_RSOrder_Items\"><End Role=\"RSOrderItem_Order\" EntitySet=\"OrderItems\" /><En" +
+                "d Role=\"RSOrder_Items\" EntitySet=\"Orders\" /></AssociationSet><AssociationSet Nam" +
+                "e=\"RSReceipt_PaidItems\" Association=\"RestSys.Models.RSOrderItem_Receipt_RSReceip" +
+                "t_PaidItems\"><End Role=\"RSOrderItem_Receipt\" EntitySet=\"OrderItems\" /><End Role=" +
+                "\"RSReceipt_PaidItems\" EntitySet=\"Receipts\" /></AssociationSet><AssociationSet Na" +
+                "me=\"RSUser_AttendedOrders\" Association=\"RestSys.Models.RSOrder_Attendees_RSUser_" +
+                "AttendedOrders\"><End Role=\"RSOrder_Attendees\" EntitySet=\"Orders\" /><End Role=\"RS" +
+                "User_AttendedOrders\" EntitySet=\"Users\" /></AssociationSet><AssociationSet Name=\"" +
+                "RSReceipt_Order\" Association=\"RestSys.Models.RSOrder_Receipts_RSReceipt_Order\"><" +
+                "End Role=\"RSOrder_Receipts\" EntitySet=\"Orders\" /><End Role=\"RSReceipt_Order\" Ent" +
+                "itySet=\"Receipts\" /></AssociationSet><AssociationSet Name=\"RSReceipt_User\" Assoc" +
+                "iation=\"RestSys.Models.RSUser_Receipts_RSReceipt_User\"><End Role=\"RSUser_Receipt" +
+                "s\" EntitySet=\"Users\" /><End Role=\"RSReceipt_User\" EntitySet=\"Receipts\" /></Assoc" +
+                "iationSet><AssociationSet Name=\"RSStockItem_Stock\" Association=\"RestSys.Models.R" +
+                "SStockItem_Stock_RSStock_Items\"><End Role=\"RSStockItem_Stock\" EntitySet=\"StockIt" +
+                "ems\" /><End Role=\"RSStock_Items\" EntitySet=\"Stocks\" /></AssociationSet></EntityC" +
+                "ontainer></Schema></edmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -901,6 +902,28 @@ namespace RestSys.Client.Services.EntityService
         partial void OnCategoryChanging(string value);
         partial void OnCategoryChanged();
         /// <summary>
+        /// There are no comments for Property SubCategory in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string SubCategory
+        {
+            get
+            {
+                return this._SubCategory;
+            }
+            set
+            {
+                this.OnSubCategoryChanging(value);
+                this._SubCategory = value;
+                this.OnSubCategoryChanged();
+                this.OnPropertyChanged("SubCategory");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _SubCategory;
+        partial void OnSubCategoryChanging(string value);
+        partial void OnSubCategoryChanged();
+        /// <summary>
         /// There are no comments for DependentNavigationItems in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -981,13 +1004,15 @@ namespace RestSys.Client.Services.EntityService
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="createdOn">Initial value of CreatedOn.</param>
         /// <param name="state">Initial value of State.</param>
+        /// <param name="price">Initial value of Price.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static RSOrderItem CreateRSOrderItem(int ID, global::System.DateTime createdOn, int state)
+        public static RSOrderItem CreateRSOrderItem(int ID, global::System.DateTime createdOn, int state, double price)
         {
             RSOrderItem rSOrderItem = new RSOrderItem();
             rSOrderItem.Id = ID;
             rSOrderItem.CreatedOn = createdOn;
             rSOrderItem.State = state;
+            rSOrderItem.Price = price;
             return rSOrderItem;
         }
         /// <summary>
@@ -1056,6 +1081,28 @@ namespace RestSys.Client.Services.EntityService
         private int _State;
         partial void OnStateChanging(int value);
         partial void OnStateChanged();
+        /// <summary>
+        /// There are no comments for Property Price in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public double Price
+        {
+            get
+            {
+                return this._Price;
+            }
+            set
+            {
+                this.OnPriceChanging(value);
+                this._Price = value;
+                this.OnPriceChanged();
+                this.OnPropertyChanged("Price");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private double _Price;
+        partial void OnPriceChanging(double value);
+        partial void OnPriceChanged();
         /// <summary>
         /// There are no comments for Order in the schema.
         /// </summary>

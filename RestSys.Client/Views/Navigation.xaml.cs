@@ -15,8 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using RestSys.Client.Common;
 using RestSys.Client.Services.EntityService;
 using Windows.UI.Core;
-
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
+using Newtonsoft.Json.Linq;
 
 namespace RestSys.Client.Views
 {
@@ -25,36 +24,58 @@ namespace RestSys.Client.Views
         public Navigation()
         {
             this.InitializeComponent();
+            History = new Stack<int>();
         }
+
+        private IEnumerable<RSNavigationItem> AllItems { get; set; }
+        private Stack<int> History { get; set; }
+        private int Home = 0;
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            var navigationItems = await Global.Db.Navigation.ExecuteAsync();
-            NavigateTo(navigationItems.FirstOrDefault(ni => ni.IsRoot));
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                AllItems = (await Global.Db.Navigation.ExecuteAsync()).ToList();
+                Home = AllItems.FirstOrDefault(ni => ni.IsRoot).Id;
+                btnHome_Click(null, null);
+            });
         }
 
         public RSNavigationItem CurrentItem { get; set; }
 
-        public async void NavigateTo(RSNavigationItem me)
+        public void NavigateTo(int id)
         {
-            await Global.Db.LoadPropertyAsync<object>(me, "Children");
-            await Global.Db.LoadPropertyAsync<object>(me, "Parent");
-            var items = await me.OrderedChildren();
-
-            btnBack.IsEnabled = me.Parent != null;
-
-            CurrentItem = me;
-            grdChildren.ItemsSource = items;
+            RSNavigationItem me = AllItems.SingleOrDefault(i => i.Id == id);
+            if (me != null)
+            {
+                History.Push(id);
+                grdChildren.ItemsSource = JArray.Parse(me.ChildrenOrder).Values<int>().Select(ch => AllItems.SingleOrDefault(i => i.Id == ch));
+            }
         }
 
         private void btnItem_Click(dynamic sender, RoutedEventArgs e)
         {
-            NavigateTo(sender.DataContext);
+            if (sender.DataContext.ProductLink != null)
+            {
+                if (ProductSelected != null)
+                    ProductSelected(sender.DataContext.ProductLink);
+            }
+            else
+                NavigateTo(sender.DataContext.Id);
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigateTo(CurrentItem.Parent);
+            if (History.Count > 0)
+                NavigateTo(History.Pop());
+        }
+
+        public delegate void ProductHandler(RSProduct product);
+        public event ProductHandler ProductSelected;
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateTo(Home);
         }
     }
 }
