@@ -124,7 +124,7 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zpět na seznam.
+        ///   Looks up a localized string similar to Zpět na přehled.
         /// </summary>
         public static string BackToList {
             get {
@@ -174,6 +174,15 @@ namespace RestSys.Resources {
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Přihlásit.
+        /// </summary>
+        public static string LoginButton {
+            get {
+                return ResourceManager.GetString("LoginButton", resourceCulture);
             }
         }
         
@@ -349,6 +358,24 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Přidat ingredienci.
+        /// </summary>
+        public static string ProductAddIngredient {
+            get {
+                return ResourceManager.GetString("ProductAddIngredient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kategorie.
+        /// </summary>
+        public static string ProductCategory {
+            get {
+                return ResourceManager.GetString("ProductCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vytvořit produkt.
         /// </summary>
         public static string ProductCreate {
@@ -363,6 +390,15 @@ namespace RestSys.Resources {
         public static string ProductDelete {
             get {
                 return ResourceManager.GetString("ProductDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Popis.
+        /// </summary>
+        public static string ProductDescription {
+            get {
+                return ResourceManager.GetString("ProductDescription", resourceCulture);
             }
         }
         
@@ -394,11 +430,65 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Složení produktu.
+        /// </summary>
+        public static string ProductIngredients {
+            get {
+                return ResourceManager.GetString("ProductIngredients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cena.
+        /// </summary>
+        public static string ProductPrice {
+            get {
+                return ResourceManager.GetString("ProductPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Produkty.
         /// </summary>
         public static string Products {
             get {
                 return ResourceManager.GetString("Products", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kód produktu.
+        /// </summary>
+        public static string ProductSerialNumber {
+            get {
+                return ResourceManager.GetString("ProductSerialNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zobrazit v menu.
+        /// </summary>
+        public static string ProductShowOnMenu {
+            get {
+                return ResourceManager.GetString("ProductShowOnMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podkategorie.
+        /// </summary>
+        public static string ProductSubCategory {
+            get {
+                return ResourceManager.GetString("ProductSubCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Název.
+        /// </summary>
+        public static string ProductTitle {
+            get {
+                return ResourceManager.GetString("ProductTitle", resourceCulture);
             }
         }
         

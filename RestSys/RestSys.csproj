@@ -184,7 +184,6 @@
   <ItemGroup>
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
-    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Migrations\201405031603068_initial.cs" />
     <Compile Include="Migrations\201405031603068_initial.Designer.cs">
       <DependentUpon>201405031603068_initial.cs</DependentUpon>
