@@ -63,17 +63,7 @@ namespace RestSys.Client.Views
 
         private async void navProductMenu_ProductSelected(RSProduct product)
         {
-            RSOrderItem orderItem = new RSOrderItem()
-            {
-                Product = product,
-                Order = order,
-                Price = product.Price,
-                CreatedOn = DateTime.Now,
-                State = 0
-            };
-
-            Global.Db.AddToOrderItems(orderItem);
-            await Global.Db.SaveChangesAsync();
+            RSOrderItem orderItem = await Service.AddOrderItem(order.Id, product.Id);
             order.Items.Add(orderItem);
             lstOrderItems.ItemsSource = order.Items.Where(oi => oi.State < 2);
         }

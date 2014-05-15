@@ -37,8 +37,7 @@ namespace RestSys.Client.Views
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
-                AllItems = (await Global.Db.Navigation.ExecuteAsync()).ToList();
-                await Task.WhenAll(AllItems.Select(i => Global.Db.LoadPropertyAsync<object>(i, "ProductLink")));
+                AllItems = await Service.GetNavigationItems();
 
                 Home = AllItems.FirstOrDefault(ni => ni.IsRoot).Id;
                 btnHome_Click(null, null);
