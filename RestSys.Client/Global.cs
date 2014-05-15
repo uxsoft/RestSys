@@ -16,6 +16,8 @@ namespace RestSys.Client
         {
             if (!Settings.ContainsKey(SETTINGS_CONNECTIONURL))
                 Settings[SETTINGS_CONNECTIONURL] = "";
+
+            Client = new HttpClient(new HttpClientHandler() { AllowAutoRedirect = false });
         }
 
         const string API_ENDPOINT = "{0}/EntityService.svc/";
@@ -26,17 +28,19 @@ namespace RestSys.Client
         const string SETTINGS_USERNAME = "username";
         const string SERVICEGUID = "A2903CDE-B4EF-455F-BA8B-30465ADD2633";
 
+        public static HttpClient Client { get; set; }
         public static RSDbContext Db { get; set; }
         public static bool IsConnected { get { return Db != null; } }
         public static string ConnectionUrl { get { return Settings[SETTINGS_CONNECTIONURL].ToString().TrimEnd("/ ".ToCharArray()); } set { Settings[SETTINGS_CONNECTIONURL] = value; } }
         public static bool IsAuthenticated { get { return Settings.ContainsKey(SETTINGS_COOKIE); } }
         private static string AuthenticationCookie { get { return Settings[SETTINGS_COOKIE].ToString(); } set { Settings[SETTINGS_COOKIE] = value; } }
-        public static string Username { get { return Settings[SETTINGS_USERNAME].ToString(); } set {Settings[SETTINGS_USERNAME] =value;}}
+        public static string Username { get { return Settings[SETTINGS_USERNAME].ToString(); } set { Settings[SETTINGS_USERNAME] = value; } }
         public static IPropertySet Settings { get { return Windows.Storage.ApplicationData.Current.LocalSettings.Values; } }
 
         public static async Task ApplicationStart()
         {
             Connected += (a1, a2) => Db.BuildingRequest += Db_BuildingRequest;
+            Connected += (a1, a2) => Client.DefaultRequestHeaders.Add("Cookie", AuthenticationCookie);
 
             //Try connect with saved settings
             await Connect(Settings[SETTINGS_CONNECTIONURL].ToString());
@@ -53,8 +57,7 @@ namespace RestSys.Client
 
         public static async Task<bool> Login(string username, string password)
         {
-            HttpClient client = new HttpClient(new HttpClientHandler() { AllowAutoRedirect = false });
-            HttpResponseMessage response = await client.PostAsync(string.Format(LOGIN_ENDPOINT, ConnectionUrl), new FormUrlEncodedContent(new[] { 
+            HttpResponseMessage response = await Client.PostAsync(string.Format(LOGIN_ENDPOINT, ConnectionUrl), new FormUrlEncodedContent(new[] { 
                 new KeyValuePair<string,string>("username",username),
                 new KeyValuePair<string,string>("password", password)
             }));
@@ -93,6 +96,8 @@ namespace RestSys.Client
                     Db = new RSDbContext(new Uri(string.Format(API_ENDPOINT, url.Trim("/ ".ToCharArray()))));
                     if (Connected != null)
                         Connected(null, EventArgs.Empty);
+
+                    Client.BaseAddress = new Uri(url);
 
                     return true;
                 }

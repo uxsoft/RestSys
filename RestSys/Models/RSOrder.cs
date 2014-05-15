@@ -20,7 +20,7 @@ namespace RestSys.Models
         [Required]
         public String Title { get; set; }
         [Required]
-        public DateTime CreatedOn { get; private set; }
+        public DateTime CreatedOn { get; set; }
         [Required]
         public bool Active { get; set; }
         public string Notes { get; set; }

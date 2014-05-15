@@ -23,7 +23,7 @@
         <GridView Name="grdChildren" Grid.Row="1" SelectionMode="None">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding Title}" Name="btnItem" Click="btnItem_Click" Width="100" Height="100">
+                    <Button Content="{Binding Title}" Name="btnItem" Click="btnItem_Click" Width="100" Height="100" Background="{Binding Color}">
 
                     </Button>
                 </DataTemplate>

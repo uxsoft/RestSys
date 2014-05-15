@@ -11,7 +11,7 @@ namespace RestSys.Models
         public RSOrderItem()
         {
             CreatedOn = DateTime.Now;
-            State = (int)RSOrderState.New;
+            State = (int)RSOrderItemState.New;
         }
 
         public RSOrderItem(RSProduct product, RSOrder order)
@@ -32,7 +32,7 @@ namespace RestSys.Models
         public RSOrder Order { get; set; }
     }
 
-    public enum RSOrderState : int
+    public enum RSOrderItemState : int
     {
         New = 0,
         Dispatched = 1,

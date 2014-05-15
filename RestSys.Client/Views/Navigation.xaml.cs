@@ -16,6 +16,7 @@ using RestSys.Client.Common;
 using RestSys.Client.Services.EntityService;
 using Windows.UI.Core;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 namespace RestSys.Client.Views
 {
@@ -28,6 +29,7 @@ namespace RestSys.Client.Views
         }
 
         private IEnumerable<RSNavigationItem> AllItems { get; set; }
+        private RSNavigationItem CurrentItem { get; set; }
         private Stack<int> History { get; set; }
         private int Home = 0;
 
@@ -36,21 +38,25 @@ namespace RestSys.Client.Views
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
                 AllItems = (await Global.Db.Navigation.ExecuteAsync()).ToList();
+                await Task.WhenAll(AllItems.Select(i => Global.Db.LoadPropertyAsync<object>(i, "ProductLink")));
+
                 Home = AllItems.FirstOrDefault(ni => ni.IsRoot).Id;
                 btnHome_Click(null, null);
             });
         }
 
-        public RSNavigationItem CurrentItem { get; set; }
 
         public void NavigateTo(int id)
         {
-            RSNavigationItem me = AllItems.SingleOrDefault(i => i.Id == id);
-            if (me != null)
+            if (CurrentItem != null)
+                History.Push(CurrentItem.Id);
+
+            CurrentItem = AllItems.SingleOrDefault(i => i.Id == id);
+            if (CurrentItem != null)
             {
-                History.Push(id);
-                grdChildren.ItemsSource = JArray.Parse(me.ChildrenOrder).Values<int>().Select(ch => AllItems.SingleOrDefault(i => i.Id == ch));
+                grdChildren.ItemsSource = JArray.Parse(CurrentItem.ChildrenOrder).Values<int>().Select(ch => AllItems.SingleOrDefault(i => i.Id == ch));
             }
+            btnBack.IsEnabled = History.Count > 0;
         }
 
         private void btnItem_Click(dynamic sender, RoutedEventArgs e)
@@ -61,13 +67,18 @@ namespace RestSys.Client.Views
                     ProductSelected(sender.DataContext.ProductLink);
             }
             else
+            {
                 NavigateTo(sender.DataContext.Id);
+            }
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             if (History.Count > 0)
                 NavigateTo(History.Pop());
+
+            if (History.Count > 0) //Back shouldn't leave history 
+                History.Pop();
         }
 
         public delegate void ProductHandler(RSProduct product);

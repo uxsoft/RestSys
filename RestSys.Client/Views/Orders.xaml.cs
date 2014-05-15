@@ -74,7 +74,7 @@ namespace RestSys.Client.Views
         {
             try
             {
-                orders = (await Global.Db.Orders.ExecuteAsync()).ToList();
+                orders = (await Service.GetOrders()).ToList();
                 grdOrders.ItemsSource = orders;
             }
             catch { }
@@ -85,6 +85,7 @@ namespace RestSys.Client.Views
             RSOrder order = new RSOrder();
             order.Title = txtNewOrderName.Text;
             order.CreatedOn = DateTime.Now;
+            order.Active = true;
 
             Global.Db.AddToOrders(order);
             await Global.Db.SaveChangesAsync();
@@ -92,9 +93,9 @@ namespace RestSys.Client.Views
             btnNewOrder.Flyout.Hide();
         }
 
-        private void btnSelectOrder_Click(object sender, RoutedEventArgs e)
+        private void btnSelectOrder_Click(dynamic sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(OrderDetail), grdOrders.SelectedItem);
+            this.Frame.Navigate(typeof(OrderDetail), sender.DataContext);
         }
     }
 }

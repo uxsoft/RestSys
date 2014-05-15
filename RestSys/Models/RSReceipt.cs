@@ -9,6 +9,11 @@ namespace RestSys.Models
 {
     public class RSReceipt : IRSEntity
     {
+        public RSReceipt()
+        {
+            CreatedOn = DateTime.Now;
+        }
+
         public int Id { get; set; }
 
         public DateTime CreatedOn { get; set; }

@@ -9,6 +9,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <common:IntToBooleanConverter x:Key="i2bConverter"/>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
@@ -23,19 +26,20 @@
 
         <Grid Grid.Row="1" x:Name="contentRegion">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <ListBox Name="lstOrderItems">
+            <ListBox Name="lstOrderItems" SelectionChanged="lstOrderItems_SelectionChanged" Margin="12" RightTapped="lstOrderItems_RightTapped">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <TextBlock Text="{Binding Product.Title}"/>
-                        </Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding State, Mode=TwoWay, Converter={StaticResource i2bConverter}}" Click="chcItemDispatched_Click" Name="chcItemDispatched"/>
+                            <TextBlock Text="{Binding Product.Title}" VerticalAlignment="Center"/>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <local:Navigation Name="navProductMenu" Grid.Column="2"/>
+            <local:Navigation x:Name="navProductMenu" Grid.Column="2" Margin="12" ProductSelected="navProductMenu_ProductSelected"/>
         </Grid>
 
         <Grid>
@@ -53,4 +57,22 @@
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Label="Uzavřít objednávku" Icon="UnPin" Name="btnCloseOrder" Click="btnCloseOrder_Click"/>
+            <AppBarButton Label="Učtenka" Icon="TwoPage" Name="btnReceipt" Click="btnReceipt_Click"/>
+            <AppBarButton Label="Stornovat Položku" Name="btnItemRemoval" Icon="Remove">
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <TextBlock Text="Opravdu chcete tuto položku označit jako zrušenou?" Style="{StaticResource TitleTextBlockStyle}"/>
+                            <TextBlock Text="{Binding ElementName=lstOrderItems, Path=SelectedItem.Product.Title}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <Button Content="Označit" Margin="0,8,0,0" Name="btnRemoveItem" Click="btnRemoveItem_Click" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarButton Label="Obnovit" Name="btnReload" Icon="Refresh" Click="btnReload_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
