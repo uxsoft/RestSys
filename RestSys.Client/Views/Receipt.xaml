@@ -26,9 +26,14 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <GridView Name="grdOrderItems" SelectionMode="Extended" >
-                
+            <GridView Name="grdOrderItems" SelectionMode="Extended" SelectionChanged="grdOrderItems_SelectionChanged">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Product.Title}"/>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
             </GridView>
+            <TextBlock Name="lblReceiptSummary" Grid.Column="1"/>
         </Grid>
 
         <Grid>

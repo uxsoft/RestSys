@@ -133,7 +133,18 @@ namespace RestSys.Controllers
             if (order != null && product != null)
             {
                 RSOrderItem oi = new RSOrderItem(product, order);
-                return oi;
+                await db.SaveChangesAsync();
+                return new RSOrderItem()
+                {
+                    Id = oi.Id,
+                    Price = oi.Price,
+                    State = oi.State,
+                    Product = oi.Product != null ? new RSProduct()
+                    {
+                        Id = oi.Product.Id,
+                        Title = oi.Product.Title
+                    } : null
+                };
             }
             else return null;
         }

@@ -26,7 +26,7 @@ namespace RestSys.Controllers
 
         public ActionResult Menu()
         {
-            return View(db.Products.Where(p => p.ShowOnMenu));
+            return View(db.Products.Include("Stocks.Stock").Where(p => p.ShowOnMenu));
         }
 
         public ActionResult MenuStyle()
