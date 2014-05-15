@@ -1,7 +1,6 @@
 ﻿<Page
     x:Name="pageRoot"
     x:Class="RestSys.Client.Views.Receipt"
-    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RestSys.Client.Views"
@@ -25,15 +24,21 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <GridView Name="grdOrderItems" SelectionMode="Extended" SelectionChanged="grdOrderItems_SelectionChanged">
+            <GridView Name="grdOrderItems" SelectionMode="Extended" SelectionChanged="grdOrderItems_SelectionChanged" Margin="12">
                 <GridView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Product.Title}"/>
+                        <TextBlock Text="{Binding Product.Title}" Margin="6" Width="320"/>
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
-            <TextBlock Name="lblReceiptSummary" Grid.Column="1"/>
+            <StackPanel Grid.Column="1" Margin="12">
+                <TextBlock Text="Shrnutí:" Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock Name="lblReceiptSummary" Style="{StaticResource BodyTextBlockStyle}"/>
+                <TextBlock Name="lblReceiptTotal" Style="{StaticResource BodyTextBlockStyle}"/>
+            </StackPanel>
+            <WebView Name="webReceipt" Grid.Column="2" Margin="12"/>
         </Grid>
 
         <Grid>
@@ -63,7 +68,7 @@
                                 <LineBreak/>
                                 <Run Text="a nebude je již možné upravovat."/>
                             </TextBlock>
-                            <Button HorizontalAlignment="Right" Content="Potvrdit" Margin="0,6,0,0" Name="btnCreateReceipt" Click="btnCreateReceipt_Click"/>
+                            <Button HorizontalAlignment="Right" Content="Potvrdit" Margin="0,20,0,0" Name="btnCreateReceipt" Click="btnCreateReceipt_Click"/>
                         </StackPanel>
                     </Flyout>
                 </AppBarButton.Flyout>
