@@ -19,7 +19,7 @@
                 @foreach (var subcategory in category.GroupBy(p => p.SubCategory))
                 {
                     <div class="menu-subcategory">
-                        <h2>@subcategory.Key</h2>
+                        <h3>@subcategory.Key</h3>
                         @foreach (var product in subcategory)
                         {
                             <div class="menu-item">
