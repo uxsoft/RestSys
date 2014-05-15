@@ -21,7 +21,7 @@ namespace RestSys.Controllers
 
         public ActionResult ReceiptStyle()
         {
-            return View((object)GetStyleCode(RSStyleType.ReceiptStyle));
+            return Content(GetStyleCode(RSStyleType.ReceiptStyle), "text/css");
         }
 
         public ActionResult Menu()
@@ -31,7 +31,7 @@ namespace RestSys.Controllers
 
         public ActionResult MenuStyle()
         {
-            return View((object)GetStyleCode(RSStyleType.MenuStyle));
+            return Content(GetStyleCode(RSStyleType.MenuStyle), "text/css");
         }
 
         private string GetStyleCode(RSStyleType type)

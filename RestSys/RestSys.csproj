@@ -696,7 +696,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Styles\MenuStyle.cshtml" />
     <Content Include="Views\Styles\Menu.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
@@ -726,7 +725,6 @@
     <Content Include="Views\Orders\Delete.cshtml" />
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
-    <Content Include="Views\Styles\ReceiptStyle.cshtml" />
     <Content Include="Views\Styles\Receipt.cshtml" />
   </ItemGroup>
   <ItemGroup>
