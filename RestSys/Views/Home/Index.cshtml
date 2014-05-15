@@ -2,7 +2,6 @@
 @using RestSys.Resources
 @using RestSys.Models;
 
-<h2>Dashboard</h2>
+<h2>@Resources.Dashboard</h2>
 
-	Statistics and shit
 <p>@Model.Orders.Sum(o => o.Items.Sum(oi => oi.Price))</p>
