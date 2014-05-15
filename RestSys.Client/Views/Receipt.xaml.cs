@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Graphics.Printing;
 using Windows.UI.Xaml.Printing;
 using RestSys.Client.Services.EntityService;
+using Windows.UI.Core;
 
 // The Item Detail Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234232
 
@@ -47,7 +48,7 @@ namespace RestSys.Client.Views
         }
 
         #endregion
-        
+
         public Receipt()
         {
             this.InitializeComponent();
@@ -76,22 +77,37 @@ namespace RestSys.Client.Views
 
         private async void btnCreateReceipt_Click(object sender, RoutedEventArgs e)
         {
-            printurl("http://seznam.cz");
+            PrintUrl("http://seznam.cz");
         }
 
-        private async void printurl(string url)
+        private async void PrintUrl(string url)
         {
-            PrintManager.GetForCurrentView().PrintTaskRequested += (sender, e) => e.Request.CreatePrintTask("Účtenka RestSys", args =>
+            PrintManager.GetForCurrentView().PrintTaskRequested += (sender, e) => e.Request.CreatePrintTask("Účtenka RestSys", async args =>
             {
-                WebView doc = new WebView();
-                doc.NavigateToString(url);
+                IPrintDocumentSource docSource = null;
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    WebView doc = new WebView();
+                    doc.NavigateToString(url);
 
-                PrintDocument pd = new PrintDocument();
-                pd.AddPage(doc);
-
-                args.SetSource(pd.DocumentSource);
+                    PrintDocument pd = new PrintDocument();
+                    pd.AddPage(doc);
+                    docSource = pd.DocumentSource;
+                });
+                args.SetSource(docSource);
             });
             await PrintManager.ShowPrintUIAsync();
+        }
+
+        private void grdOrderItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lblReceiptSummary.Text = string.Join("\n", grdOrderItems.SelectedItems
+                .OfType<RSOrderItem>()
+                .GroupBy(oi => oi.Product.Id)
+                .Select(g => string.Format("",
+                    g.First().Product.Title,
+                    g.Count(),
+                    g.Sum(oi => oi.Price))));
         }
     }
 }

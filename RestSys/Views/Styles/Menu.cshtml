@@ -15,20 +15,26 @@
         @foreach (var category in Model.GroupBy(p => p.Category))
         {
             <div class="menu-category">
-                <h3>@category.Key</h3>
-                @foreach (var product in category)
+                <h2>@category.Key</h2>
+                @foreach (var subcategory in category.GroupBy(p => p.SubCategory))
                 {
-                    <div class="menu-item">
-                        <h5>@product</h5>
-                        <p class="menu-stocks">
-                            @String.Join(", ", product.Stocks.Select(stock => stock.Title))
-                        </p>
-                        <p class="menu-description">
-                            @product.Description
-                        </p>
-                        <div class="menu-price">
-                            @product.Price Kč
-                        </div>
+                    <div class="menu-subcategory">
+                        <h3>@subcategory.Key</h3>
+                        @foreach (var product in subcategory)
+                        {
+                            <div class="menu-item">
+                                <h4>@product.Title</h4>
+                                <p class="menu-stocks">
+                                    @String.Join(", ", product.Stocks.Select(si => si.Stock != null ? string.Format("{0} {1}{2}", si.Stock.Title, si.Amount, si.Stock.Unit) : ""))
+                                </p>
+                                <p class="menu-description">
+                                    @product.Description
+                                </p>
+                                <div class="menu-price">
+                                    @product.Price Kč
+                                </div>
+                            </div>
+                        }
                     </div>
                 }
             </div>

@@ -14,7 +14,7 @@ namespace RestSys.Client.Common
             if (value is int)
             {
                 int valueInt = (int)value;
-                return valueInt == 0;
+                return valueInt != 0;
             }
             return false;
         }
