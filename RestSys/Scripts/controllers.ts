@@ -2,6 +2,7 @@
     id: Number;
     amount: Number;
     title: String;
+    unit: String;
 }
 
 interface NavigationItem {
@@ -25,6 +26,7 @@ RestSysAngular.controller("ProductsController", function ($scope, $http) {
         var id = $(".selAddStock").val();
         var title = $(".selAddStock option:selected").text();
         var amount = $("#amount").val();
+        var unit = $("#unit").val();
 
         $scope.stocks.push({ 'id': id, 'title': title, 'amount': amount });
 
