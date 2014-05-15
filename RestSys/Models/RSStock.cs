@@ -12,10 +12,18 @@ namespace RestSys.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Název")]
         public string Title { get; set; }
+
+        [Display(Name = "Jednotky")]
         public string Unit { get; set; }
+
+        [Display(Name = "Poznámky")]
         public string Notes { get; set; }
+
+        [Display(Name = "Kód")]
         public string SerialNumber { get; set; }
+
 
         //Relations
         public virtual ICollection<RSStockItem> Items { get; set; }

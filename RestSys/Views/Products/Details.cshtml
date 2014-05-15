@@ -68,12 +68,12 @@
 		</dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Stocks)
+            @Resources.ProductIngredients
         </dt>
         <dd>
             <ul id="detailStock">
                 <li ng-repeat="stock in stocks">
-                    {{stock.title}} {{stock.amount}}
+                    {{stock.title}} - {{stock.amount}} - {{stock.unit}}
                 </li>
             </ul>
         </dd>

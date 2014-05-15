@@ -277,6 +277,15 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Přidat produkt.
+        /// </summary>
+        public static string OrderAddProduct {
+            get {
+                return ResourceManager.GetString("OrderAddProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vytvořit objednávku.
         /// </summary>
         public static string OrderCreate {
@@ -318,6 +327,15 @@ namespace RestSys.Resources {
         public static string OrderIndex {
             get {
                 return ResourceManager.GetString("OrderIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Objednané položky.
+        /// </summary>
+        public static string OrderOrderItems {
+            get {
+                return ResourceManager.GetString("OrderOrderItems", resourceCulture);
             }
         }
         

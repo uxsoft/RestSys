@@ -21,14 +21,24 @@ namespace RestSys.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Jméno")]
         public string Name { get; set; }
+
         [Required]
+        [Display(Name = "Uživatelské jméno")]
         public string Username { get; set; }
+
         public byte[] PasswordHash { get; set; }
+
         public byte[] PasswordSalt { get; set; }
 
+
+        [Display(Name = "Vedoucí")]
         public bool IsAdmin { get; set; }
+
+        [Display(Name = "Číšník")]
         public bool IsWaiter { get; set; }
+
         
         //Relations
         public virtual ICollection<RSReceipt> Receipts { get; set; }

@@ -18,12 +18,20 @@ namespace RestSys.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Název")]
         public String Title { get; set; }
+
         [Required]
+        [Display(Name = "Vytvořeno")]
         public DateTime CreatedOn { get; set; }
+
         [Required]
+        [Display(Name = "Aktivní")]
         public bool Active { get; set; }
+
+        [Display(Name = "Poznámky")]
         public string Notes { get; set; }
+
 
         //Relations
         public virtual ICollection<RSOrderItem> Items { get; set; }

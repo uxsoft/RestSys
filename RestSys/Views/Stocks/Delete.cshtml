@@ -8,8 +8,6 @@
 
 <h3>@Resources.AreYouSureYouWantToDeleteThis</h3>
 <div>
-    <h4>RSStock</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -45,12 +43,15 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="@Resources.Delete" class="btn btn-default" /> |
-            @Html.ActionLink(@Resources.BackToList, "Index")
+            <input type="submit" value="@Resources.Delete" class="btn btn-default" />
+            <p>
+                @Html.ActionLink(@Resources.BackToList, "Index")
+            </p>
         </div>
     }
 </div>

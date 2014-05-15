@@ -14,11 +14,20 @@ namespace RestSys.Models
         public int Id { get; set; }
 
         public string ChildrenOrder { get; set; }
+
         [Display(Name = "Název")]
         public string Title { get; set; }
+
+        [Display(Name = "Popis")]
         public string Description { get; set; }
+
+        [Display(Name = "Obrázek")]
         public string Image { get; set; }
+
+        [Display(Name = "Hlavní položka (Root)")]
         public bool IsRoot { get; set; }
+
+        [Display(Name = "Barva")]
         public string Color { get; set; }
 
         //Relations
