@@ -67,7 +67,7 @@
                         <StackPanel>
                             <TextBlock Text="Opravdu chcete tuto položku označit jako zrušenou?" Style="{StaticResource TitleTextBlockStyle}"/>
                             <TextBlock Text="{Binding ElementName=lstOrderItems, Path=SelectedItem.Product.Title}" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                            <Button Content="Označit" Margin="0,8,0,0" Name="btnRemoveItem" Click="btnRemoveItem_Click" HorizontalAlignment="Right"/>
+                            <Button Content="Označit" Margin="0,20,0,0" Name="btnRemoveItem" Click="btnRemoveItem_Click" HorizontalAlignment="Right"/>
                         </StackPanel>
                     </Flyout>
                 </AppBarButton.Flyout>

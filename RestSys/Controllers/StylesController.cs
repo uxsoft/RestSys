@@ -14,9 +14,9 @@ namespace RestSys.Controllers
     {
         RSDbContext db = new RSDbContext();
 
-        public ActionResult Receipt(int orderId)
+        public ActionResult Receipt(int id)
         {
-            return View(db.Receipts.Find(orderId));
+            return View(db.Receipts.Find(id));
         }
 
         public ActionResult ReceiptStyle()

@@ -19,12 +19,11 @@
             <Button Content="Back" Name="btnBack" Click="btnBack_Click" IsEnabled="False"/>
             <Button Content="Home" Name="btnHome" Click="btnHome_Click" IsEnabled="True"/>
         </StackPanel>
-
         <GridView Name="grdChildren" Grid.Row="1" SelectionMode="None">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding Title}" Name="btnItem" Click="btnItem_Click" Width="100" Height="100" Background="{Binding Color}">
-
+                    <Button Name="btnItem" Click="btnItem_Click" Width="100" Height="100" Background="{Binding Color}">
+                        <TextBlock Text="{Binding Title}" TextWrapping="Wrap" Width="72" Height="72" Margin="-4" VerticalAlignment="Center" TextAlignment="Center" Style="{StaticResource BodyTextBlockStyle}" />
                     </Button>
                 </DataTemplate>
             </GridView.ItemTemplate>

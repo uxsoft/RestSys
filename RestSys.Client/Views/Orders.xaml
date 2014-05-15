@@ -55,7 +55,7 @@
                             <TextBlock Text="Nová objednávka" Style="{StaticResource TitleTextBlockStyle}"/>
                             <TextBlock Text="Název:" Style="{StaticResource SubtitleTextBlockStyle}"/>
                             <TextBox Name="txtNewOrderName" Margin="0,8,0,0"/>
-                            <Button HorizontalAlignment="Right" Name="btnAddOrder" Content="Vytvořit" Margin="0,6,0,0" Click="btnAddOrder_Click"/>
+                            <Button HorizontalAlignment="Right" Name="btnAddOrder" Content="Vytvořit" Margin="0,20,0,0" Click="btnAddOrder_Click"/>
                         </StackPanel>
                     </Flyout>
                 </AppBarButton.Flyout>

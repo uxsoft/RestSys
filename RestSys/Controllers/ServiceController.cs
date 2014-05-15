@@ -10,11 +10,11 @@ using System.Web.Http;
 
 namespace RestSys.Controllers
 {
+    [Authorize]
     public class ServiceController : ApiController
     {
         RSDbContext db = new RSDbContext();
 
-        // GET api/<controller>
         public IEnumerable<object> GetNavigationItems()
         {
             return db.Navigation.Include("ProductLink").ToList().Select(n => new RSNavigationItem()
@@ -38,13 +38,14 @@ namespace RestSys.Controllers
         public async Task<bool> SetOrderItemState(int id, [FromBody]int state)
         {
             RSOrderItem oi = await db.OrderItems.FindAsync(id);
-            if (oi.State < 2)
-            {
-                oi.State = state;
-                await db.SaveChangesAsync();
-                return true;
-            }
-            else return false;
+            if (oi != null)
+                if (oi.State < 2)
+                {
+                    oi.State = state;
+                    await db.SaveChangesAsync();
+                    return true;
+                }
+            return false;
         }
 
         public IEnumerable<RSOrder> GetOrders()
@@ -107,32 +108,48 @@ namespace RestSys.Controllers
         }
 
         [HttpPost]
-        public async Task<RSReceipt> CreateReceipt(int id, [FromBody]IEnumerable<int> orderItemIds)
+        public RSReceipt CreateReceipt(int id, [FromBody]IEnumerable<int> orderItemIds)
         {
-            RSReceipt receipt = new RSReceipt();
-            RSOrder order = await db.Orders.FindAsync(id);
-            receipt.Order = order;
-            receipt.User = User.Identity as RSUser;
-
-            foreach (int orderItemId in orderItemIds)
+            try
             {
-                RSOrderItem orderItem = await db.OrderItems.FindAsync(orderItemId);
-                receipt.PaidItems.Add(orderItem);
-            }
+                RSReceipt receipt = new RSReceipt();
+                RSOrder order = db.Orders.Find(id);
+                receipt.Order = order;
+                receipt.User = User.Identity as RSUser;
 
-            db.Receipts.Add(receipt);
-            await db.SaveChangesAsync();
-            return receipt;
+                var orderItems = orderItemIds.Select(oiid => db.OrderItems.Find(oiid));
+                if (orderItems.All(oi => oi != null ? oi.State < 2 : false))
+                    foreach (var orderItem in orderItems)
+                    {
+                        orderItem.Receipt = receipt;
+                        orderItem.State = (int)RSOrderItemState.Paid;
+                    }
+                else return null;
+
+                db.Receipts.Add(receipt);
+
+                db.SaveChanges();
+                return receipt;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         [HttpPost]
         public async Task<RSOrderItem> AddOrderItem(int id, [FromBody]int productId)
         {
             RSOrder order = await db.Orders.FindAsync(id);
+            
+            if (!order.Active) //Disallow editing closed orders
+                return null;
+
             RSProduct product = await db.Products.FindAsync(productId);
             if (order != null && product != null)
             {
                 RSOrderItem oi = new RSOrderItem(product, order);
+                db.OrderItems.Add(oi);
                 await db.SaveChangesAsync();
                 return new RSOrderItem()
                 {
@@ -147,6 +164,15 @@ namespace RestSys.Controllers
                 };
             }
             else return null;
+        }
+        [HttpPost]
+        public async Task<RSOrder> CreateOrder([FromBody]string title)
+        {
+            RSOrder order = new RSOrder();
+            order.Title = title;
+            db.Orders.Add(order);
+            await db.SaveChangesAsync();
+            return order;
         }
     }
 }

@@ -50,5 +50,17 @@ namespace RestSys.Client
             HttpResponseMessage response = await Global.Client.PostAsJsonAsync("api/Service/AddOrderItem/" + orderId, productId);
             return await response.Content.ReadAsAsync<RSOrderItem>();
         }
+
+        public static async Task<string> GenerateReceipt(int id)
+        {
+            HttpResponseMessage response = await Global.Client.GetAsync("Styles/Receipt/" + id);
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public static async Task<RSOrder> CreateOrder(string title)
+        {
+            HttpResponseMessage response = await Global.Client.PostAsJsonAsync("api/Service/CreateOrder", title);
+            return await response.Content.ReadAsAsync<RSOrder>();
+        }
     }
 }

@@ -64,8 +64,16 @@ namespace RestSys.Client.Views
         private async void navProductMenu_ProductSelected(RSProduct product)
         {
             RSOrderItem orderItem = await Service.AddOrderItem(order.Id, product.Id);
-            order.Items.Add(orderItem);
-            lstOrderItems.ItemsSource = order.Items.Where(oi => oi.State < 2);
+            if (orderItem != null)
+            {
+                order.Items.Add(orderItem);
+                lstOrderItems.ItemsSource = order.Items.Where(oi => oi.State < 2);
+            }
+            else
+            {
+                MessageDialog md = new MessageDialog("Položku nelze přidat.", "Přidání položky");
+                await md.ShowAsync();
+            }
         }
 
         private async void btnReload_Click(object sender, RoutedEventArgs e)

@@ -7,6 +7,7 @@ using RestSys.Client.Services.EntityService;
 using System.Net.Http;
 using Windows.Storage;
 using Windows.Foundation.Collections;
+using System.Net;
 
 namespace RestSys.Client
 {
@@ -16,68 +17,55 @@ namespace RestSys.Client
         {
             if (!Settings.ContainsKey(SETTINGS_CONNECTIONURL))
                 Settings[SETTINGS_CONNECTIONURL] = "";
-
-            Client = new HttpClient(new HttpClientHandler() { AllowAutoRedirect = false });
+            if (!Settings.ContainsKey(SETTINGS_USERNAME))
+                Settings[SETTINGS_USERNAME] = "";
+            if (!Settings.ContainsKey(SETTINGS_PASSWORD))
+                Settings[SETTINGS_PASSWORD] = "";
         }
 
-        const string API_ENDPOINT = "{0}/EntityService.svc/";
         const string LOGIN_ENDPOINT = "{0}/Account/Login";
         const string IDENTIFICATION_ENDPOINT = "{0}/Home/ServerIdentification";
-        const string SETTINGS_COOKIE = "RestSysAuthenticationCookie";
         const string SETTINGS_CONNECTIONURL = "RestSysServiceUrl";
-        const string SETTINGS_USERNAME = "username";
+        const string SETTINGS_USERNAME = "RestSysUsername";
+        const string SETTINGS_PASSWORD = "RestSysPassword";
         const string SERVICEGUID = "A2903CDE-B4EF-455F-BA8B-30465ADD2633";
 
         public static HttpClient Client { get; set; }
-        public static RSDbContext Db { get; set; }
-        public static bool IsConnected { get { return Db != null; } }
+        public static HttpClientHandler Handler { get; set; }
+        public static bool IsConnected { get { return Client != null; } }
         public static string ConnectionUrl { get { return Settings[SETTINGS_CONNECTIONURL].ToString().TrimEnd("/ ".ToCharArray()); } set { Settings[SETTINGS_CONNECTIONURL] = value; } }
-        public static bool IsAuthenticated { get { return Settings.ContainsKey(SETTINGS_COOKIE); } }
-        private static string AuthenticationCookie { get { return Settings[SETTINGS_COOKIE].ToString(); } set { Settings[SETTINGS_COOKIE] = value; } }
+        public static bool IsAuthenticated { get; set; }
         public static string Username { get { return Settings[SETTINGS_USERNAME].ToString(); } set { Settings[SETTINGS_USERNAME] = value; } }
+        public static string Password { get { return Settings[SETTINGS_PASSWORD].ToString(); } set { Settings[SETTINGS_PASSWORD] = value; } }
         public static IPropertySet Settings { get { return Windows.Storage.ApplicationData.Current.LocalSettings.Values; } }
 
         public static async Task ApplicationStart()
         {
-            Connected += (a1, a2) => Db.BuildingRequest += Db_BuildingRequest;
-            Connected += (a1, a2) => Client.DefaultRequestHeaders.Add("Cookie", AuthenticationCookie);
-
             //Try connect with saved settings
-            await Connect(Settings[SETTINGS_CONNECTIONURL].ToString());
+            await Connect(ConnectionUrl);
+            if (IsConnected)
+                await Login(Username, Password);
 
             if (!IsAuthenticated || !IsConnected)
                 new RestSys.Client.Views.Settings().ShowIndependent();
         }
 
-        static void Db_BuildingRequest(object sender, System.Data.Services.Client.BuildingRequestEventArgs e)
-        {
-            e.Headers["Cookie"] = AuthenticationCookie;
-        }
-
-
         public static async Task<bool> Login(string username, string password)
         {
             HttpResponseMessage response = await Client.PostAsync(string.Format(LOGIN_ENDPOINT, ConnectionUrl), new FormUrlEncodedContent(new[] { 
-                new KeyValuePair<string,string>("username",username),
+                new KeyValuePair<string,string>("username", username),
                 new KeyValuePair<string,string>("password", password)
             }));
 
             if (!response.Headers.Contains("Set-Cookie"))
                 return false;
 
-            var cookies = response.Headers.GetValues("Set-Cookie");
-            string cookie = cookies.SingleOrDefault(s => s.StartsWith(SETTINGS_COOKIE));
-
-            if (cookie == null)
-                return false;
-
-            //Save cookie
-            AuthenticationCookie = cookie;
-
             if (Authenticated != null)
                 Authenticated(null, EventArgs.Empty);
 
             Username = username;
+            Password = password;
+            IsAuthenticated = true;
             return true;
         }
 
@@ -87,17 +75,19 @@ namespace RestSys.Client
             {
                 HttpClient client = new HttpClient();
                 HttpResponseMessage message = await client.GetAsync(string.Format(IDENTIFICATION_ENDPOINT, url.Trim("/ ".ToCharArray())));
-                if (!message.IsSuccessStatusCode)
-                    return false;
+                message.EnsureSuccessStatusCode();
 
                 string guid = await message.Content.ReadAsStringAsync();
                 if (guid == SERVICEGUID)
                 {
-                    Db = new RSDbContext(new Uri(string.Format(API_ENDPOINT, url.Trim("/ ".ToCharArray()))));
+                    Handler = new HttpClientHandler() { AllowAutoRedirect = false };
+                    Handler.CookieContainer = new System.Net.CookieContainer();
+                    Handler.UseCookies = true;
+                    Client = new HttpClient(Handler);
+                    Client.BaseAddress = new Uri(url);
+
                     if (Connected != null)
                         Connected(null, EventArgs.Empty);
-
-                    Client.BaseAddress = new Uri(url);
 
                     return true;
                 }
@@ -111,16 +101,18 @@ namespace RestSys.Client
 
         public static void Disconnect()
         {
-            Db = null;
+            Client = null;
         }
 
         public static void LogOut()
         {
-            Settings.Remove(SETTINGS_USERNAME);
-            Settings.Remove(SETTINGS_COOKIE);
+            Username = "";
+            Password = "";
+            IsAuthenticated = false;
         }
 
         public static event EventHandler Authenticated;
         public static event EventHandler Connected;
+
     }
 }

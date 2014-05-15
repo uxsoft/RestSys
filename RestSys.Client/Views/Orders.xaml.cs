@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.ApplicationSettings;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -82,15 +83,18 @@ namespace RestSys.Client.Views
 
         private async void btnAddOrder_Click(object sender, RoutedEventArgs e)
         {
-            RSOrder order = new RSOrder();
-            order.Title = txtNewOrderName.Text;
-            order.CreatedOn = DateTime.Now;
-            order.Active = true;
-
-            Global.Db.AddToOrders(order);
-            await Global.Db.SaveChangesAsync();
-            btnRefresh_Click(null, null);
             btnNewOrder.Flyout.Hide();
+            RSOrder order = await Service.CreateOrder(txtNewOrderName.Text);
+            if (order != null)
+            {
+                btnRefresh_Click(null, null);
+            }
+            else
+            {
+                MessageDialog md = new MessageDialog("Nebylo možno vytvořit objednávku.", "Vytvoření objednávky");
+                await md.ShowAsync();
+            }
+            txtNewOrderName.Text = "";
         }
 
         private void btnSelectOrder_Click(dynamic sender, RoutedEventArgs e)
