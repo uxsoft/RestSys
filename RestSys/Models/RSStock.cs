@@ -15,6 +15,10 @@ namespace RestSys.Models
         [Display(Name = "Název")]
         public string Title { get; set; }
 
+        [Required]
+        [Display(Name = "Množství")]
+        public double Quantity;
+
         [Display(Name = "Jednotky")]
         public string Unit { get; set; }
 

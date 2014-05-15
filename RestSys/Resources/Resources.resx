@@ -306,6 +306,9 @@
   <data name="Users" xml:space="preserve">
     <value>Uživatelé</value>
   </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
   <data name="OrderAddProduct" xml:space="preserve">
     <value>Přidat produkt</value>
   </data>

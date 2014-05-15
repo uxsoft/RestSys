@@ -1,0 +1,16 @@
+namespace RestSys.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class stockquantity : DbMigration
+    {
+        public override void Up()
+        {
+        }
+        
+        public override void Down()
+        {
+        }
+    }
+}

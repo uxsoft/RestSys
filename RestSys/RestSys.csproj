@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201405131834534_subcategory.Designer.cs">
       <DependentUpon>201405131834534_subcategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405151737398_stockquantity.cs" />
+    <Compile Include="Migrations\201405151737398_stockquantity.Designer.cs">
+      <DependentUpon>201405151737398_stockquantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Exports\RSAuthenticationCookieProvider.cs" />
     <Compile Include="Models\RSStockItem.cs" />
     <Compile Include="Resources\Resources.Designer.cs">
@@ -378,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405131834534_subcategory.resx">
       <DependentUpon>201405131834534_subcategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405151737398_stockquantity.resx">
+      <DependentUpon>201405151737398_stockquantity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resources.en.resw">
       <Generator>PublicResXFileCodeGenerator</Generator>
