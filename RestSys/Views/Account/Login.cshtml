@@ -9,16 +9,18 @@
 {
     if (ViewBag.ShowMessage)
     {
-        <div class="message @ViewBag.MessageColor">
+        <div class="message">
             @ViewBag.Message
         </div>
     }
-    
-    <label for="username">@Resources.Username:</label><br />
-    <input type="text" name="username" value="" id="username" /><br/>
 
-    <label for="password">@Resources.Password:</label><br />
-    <input type="password" name="password" value="" id="password" /><br />
-    
-    <input type="submit" value="Submit"/>
+    <div class="form-group">
+        <label for="username">@Resources.Username:</label><br />
+        <input type="text" name="username" value="" id="username" /><br />
+    </div>
+    <div class="form-group">
+        <label for="password">@Resources.Password:</label><br />
+        <input type="password" name="password" value="" id="password" /><br />
+    </div>
+    <input type="submit" value="@Resources.LoginButton" />
 }

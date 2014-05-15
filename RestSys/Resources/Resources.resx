@@ -139,7 +139,7 @@
     <value>Opravdu chcete smazat tuto položku?</value>
   </data>
   <data name="BackToList" xml:space="preserve">
-    <value>Zpět na seznam</value>
+    <value>Zpět na přehled</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Ověření hesla</value>
@@ -155,6 +155,9 @@
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Upravit</value>
+  </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>Přihlásit</value>
   </data>
   <data name="LoginFailed" xml:space="preserve">
     <value>Přihlášení selhalo</value>
@@ -213,11 +216,20 @@
   <data name="Product" xml:space="preserve">
     <value>Produkt</value>
   </data>
+  <data name="ProductAddIngredient" xml:space="preserve">
+    <value>Přidat ingredienci</value>
+  </data>
+  <data name="ProductCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
   <data name="ProductCreate" xml:space="preserve">
     <value>Vytvořit produkt</value>
   </data>
   <data name="ProductDelete" xml:space="preserve">
     <value>Smazat produkt</value>
+  </data>
+  <data name="ProductDescription" xml:space="preserve">
+    <value>Popis</value>
   </data>
   <data name="ProductDetails" xml:space="preserve">
     <value>Podrobnosti o produktu</value>
@@ -228,8 +240,26 @@
   <data name="ProductIndex" xml:space="preserve">
     <value>Přehled produktů</value>
   </data>
+  <data name="ProductIngredients" xml:space="preserve">
+    <value>Složení produktu</value>
+  </data>
+  <data name="ProductPrice" xml:space="preserve">
+    <value>Cena</value>
+  </data>
   <data name="Products" xml:space="preserve">
     <value>Produkty</value>
+  </data>
+  <data name="ProductSerialNumber" xml:space="preserve">
+    <value>Kód produktu</value>
+  </data>
+  <data name="ProductShowOnMenu" xml:space="preserve">
+    <value>Zobrazit v menu</value>
+  </data>
+  <data name="ProductSubCategory" xml:space="preserve">
+    <value>Podkategorie</value>
+  </data>
+  <data name="ProductTitle" xml:space="preserve">
+    <value>Název</value>
   </data>
   <data name="Remove" xml:space="preserve">
     <value>Odstranit</value>

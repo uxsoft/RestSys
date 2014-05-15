@@ -77,10 +77,10 @@
   color: #9cc4e4;
 }
 #menu li:nth-child( 3):hover a {
-  border-top-color: #e9f2f9;
+  border-top-color: #7f44d6;
 }
 #menu li:nth-child( 3) li:hover a {
-  color: #e9f2f9;
+  color: #7f44d6;
 }
 #menu li:nth-child( 4):hover a {
   border-top-color: #3a89c9;

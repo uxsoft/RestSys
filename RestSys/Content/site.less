@@ -1,20 +1,21 @@
 ﻿@threadless1: #1B325F;
 @threadless2: #9CC4E4;
-@threadless3: #E9F2F9;
+@threadless3: #7f44d6;
 @threadless4: #3A89C9;
 @threadless5: #F26C4F;
+
+@threadless_light: #E9F2F9;
 
 body {
     font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #111;
-    text-shadow: 1px 1px 1px #FFF;
 }
 
-a, a:visited {
+a, a:visited, .btnRemoveStock {
     color: @threadless4;
 }
 
-a:hover {
+a:hover, .btnRemoveStock:hover {
     color: @threadless5;
 }
 
@@ -36,11 +37,11 @@ h1, h2 {
 }
 
 #page {
-    width: 980px;
+    width: 900px;
     margin: 0 auto;
-    padding: 20px;
 
     #content {
+        padding: 40px;
         clear: both;
         padding-top: 2px;
     }
@@ -53,34 +54,93 @@ h1, h2 {
     }
 }
 
-.form-horizontal label {
+.message {
+    text-align: center;
+    color: @threadless_light;
+    background-color: @threadless1;
+    width: 240px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/** FORMS **/
+label {
     color: @threadless1;
     font-weight: bold;
     text-align: right;
 }
 
-input[type="text"], input[type="password"], select {
-    width: 260px;
+input[type="text"], input[type="password"], input[type="number"], input[type="submit"], .btnAddStock, select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input[type="text"], input[type="password"], input[type="number"], select {
     padding: 5px;
-    border: 1px solid #ccc;
+    width: 260px;
     box-shadow: inset 0 1px 3px #ddd;
-    border-radius: 4px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
-
-
-.form-horizontal input[type="number"] {
-    border: 1px solid #ccc;
+input[type="number"] {
+    width: 150px;
     box-shadow: inset 0 1px 3px #ddd;
-    border-radius: 4px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
-.form-horizontal .form-group {
+input[type="submit"], .btnAddStock {
+    padding: 5px 15px;
+    margin: 5px 0 5px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px #ddd;
+}
+
+input[type="submit"]:hover, .btnAddStock:hover {
+    box-shadow: inset 0 1px 3px #ddd;
+}
+
+.form-group, .item-group {
     margin-bottom: 15px;
+}
+
+.btnRemoveStock {
+    font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    background: 0 !important;
+    padding: 0 !important;
+    border: 0;
+    text-decoration: underline;
+}
+
+/* DETAILS, DELETE */
+dt {
+    color: @threadless1;
+    font-weight: bold;
+    width: 80px;
+}
+
+dd {
+    margin: 5px 0 15px 0;
+}
+
+/* INDEX, tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+	padding: 10px 5px 5px 5px;
+    border-bottom: 2px solid @threadless1;
+}
+
+td {
+    border-spacing: 0;
+	padding: 5px 5px 5px 10px;
+}
+
+tr:hover {
+    background-color: @threadless_light;
 }
