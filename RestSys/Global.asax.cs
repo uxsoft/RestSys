@@ -29,7 +29,6 @@ namespace RestSys
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-
         [Import]
         public IAuthenticationCookieProvider AuthenticationCookieProvider { get; set; }
 
@@ -37,6 +36,9 @@ namespace RestSys
         {
             if (AuthenticationCookieProvider.IsAuthenticated)
                 HttpContext.Current.User = AuthenticationCookieProvider.CreatePrincipal();
+
+            if (Request.Path == "/api/Service/GetNavigationItems")
+            { }
         }
     }
 }

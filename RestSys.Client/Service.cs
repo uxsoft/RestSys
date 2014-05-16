@@ -33,10 +33,10 @@ namespace RestSys.Client
             return await response.Content.ReadAsAsync<bool>();
         }
 
-        public async static Task<RSReceipt> CreateReceipt(int orderId, IEnumerable<int> orderItemIds)
+        public async static Task<int> CreateReceipt(int orderId, IEnumerable<int> orderItemIds)
         {
             HttpResponseMessage response = await Global.Client.PostAsJsonAsync("api/Service/CreateReceipt/" + orderId, orderItemIds);
-            return await response.Content.ReadAsAsync<RSReceipt>();
+            return await response.Content.ReadAsAsync<int>();
         }
 
         public async static Task<IEnumerable<RSNavigationItem>> GetNavigationItems()

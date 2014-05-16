@@ -47,6 +47,10 @@ namespace RestSys.Client
             if (IsConnected)
                 await Login(Username, Password);
 
+            ////---
+            //var a = await Service.GetNavigationItems();
+            //var b = await Service.GetNavigationItems();
+
             if (!IsAuthenticated || !IsConnected)
                 new RestSys.Client.Views.Settings().ShowIndependent();
         }
@@ -88,6 +92,8 @@ namespace RestSys.Client
                     Handler = new HttpClientHandler() { AllowAutoRedirect = false };
                     Handler.CookieContainer = new System.Net.CookieContainer();
                     Handler.UseCookies = true;
+                    Handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+                    Handler.PreAuthenticate = true;
                     Client = new HttpClient(Handler);
                     Client.BaseAddress = new Uri(url);
 

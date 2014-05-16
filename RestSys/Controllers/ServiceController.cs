@@ -108,7 +108,7 @@ namespace RestSys.Controllers
         }
 
         [HttpPost]
-        public RSReceipt CreateReceipt(int id, [FromBody]IEnumerable<int> orderItemIds)
+        public int CreateReceipt(int id, [FromBody]IEnumerable<int> orderItemIds)
         {
             try
             {
@@ -124,16 +124,16 @@ namespace RestSys.Controllers
                         orderItem.Receipt = receipt;
                         orderItem.State = (int)RSOrderItemState.Paid;
                     }
-                else return null;
+                else return -1;
 
-                receipt = db.Receipts.Add(receipt);
+                db.Receipts.Add(receipt);
 
                 db.SaveChanges();
-                return receipt;
+                return receipt.Id;
             }
             catch (Exception ex)
             {
-                return null;
+                return -1;
             }
         }
 

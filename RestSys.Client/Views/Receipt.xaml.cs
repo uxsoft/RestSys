@@ -89,10 +89,10 @@ namespace RestSys.Client.Views
                 return;
             }
 
-            RSReceipt receipt = await Service.CreateReceipt(order.Id, grdOrderItems.SelectedItems.OfType<RSOrderItem>().Select(oi => oi.Id).ToList());
-            if (receipt != null)
+            int receiptId = await Service.CreateReceipt(order.Id, grdOrderItems.SelectedItems.OfType<RSOrderItem>().Select(oi => oi.Id).ToList());
+            if (receiptId >= 0)
             {
-                string receiptHtml = await Service.GenerateReceipt(receipt.Id);
+                string receiptHtml = await Service.GenerateReceipt(receiptId);
                 webReceipt.NavigateToString(receiptHtml);
                 await PrintManager.ShowPrintUIAsync();
 
