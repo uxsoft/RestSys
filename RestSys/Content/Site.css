@@ -31,11 +31,14 @@ h1,
 h2 {
   text-align: center;
 }
+br {
+  margin-bottom: 0.4em;
+}
 .actionTab {
   text-align: right;
 }
 #page {
-  width: 900px;
+  width: 960px;
   margin: 0 auto;
 }
 #page #content {
@@ -124,7 +127,7 @@ dd {
 }
 /* INDEX, tables */
 table {
-  width: 100%;
+  width: 95%;
   border-collapse: collapse;
 }
 th {
@@ -138,5 +141,29 @@ td {
 }
 tr:hover {
   background-color: #e9f2f9;
+}
+/* DASHBOARD */
+#dashboard {
+  width: 740px;
+  margin: 0 auto;
+}
+.dashboard-item {
+  margin: 10px;
+  padding: 0 12px;
+  width: 345px;
+  border-top: 2px solid #1b325f;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+}
+.dashboard-desc {
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
+  color: #1b325f;
+}
+.dashboard-data {
+  padding-left: 1em;
 }
 /*# sourceMappingURL=site.css.map */

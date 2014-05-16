@@ -315,4 +315,7 @@
   <data name="OrderOrderItems" xml:space="preserve">
     <value>Objednané položky</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Odhlásit</value>
+  </data>
 </root>

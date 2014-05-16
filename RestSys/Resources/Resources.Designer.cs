@@ -214,6 +214,15 @@ namespace RestSys.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Odhlásit.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Navigace.
         /// </summary>
         public static string Navigation {

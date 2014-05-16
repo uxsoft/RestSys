@@ -3,5 +3,41 @@
 @using RestSys.Models;
 
 <h2>@Resources.Dashboard</h2>
+<div id="dashboard">
+    <div class="dashboard-item">
+        <p class="dashboard-desc">Informace o uživateli</p>
+        <p class="dashboard-data">
+            <strong>Přihlašovací jméno: </strong>  JD<br />
+            <strong>Jméno: </strong> John Doe <br />
+            @Html.ActionLink(Resources.Logout, "Logout", "Account")
+        </p>
+    </div>
 
-<p>@Model.Orders.Sum(o => o.Items.Sum(oi => oi.Price))</p>
+    <div class="dashboard-item">
+        <p class="dashboard-desc">Celková hodnota objednávek za dnešní den</p>
+        <p class="dashboard-data">@Model.Orders.Sum(o => o.Items.Sum(oi => oi.Price))  Kč</p>
+    </div>
+
+    <div class="dashboard-item">
+        <p class="dashboard-desc">Zboží s nízkým množství na skladě</p>
+        <p class="dashboard-data">
+            <ul>
+                <li>Cola - 1 l</li>
+                <li>Rum - 0.3 l</li>
+                <li>Limetky - 2 ks</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="dashboard-item">
+        <p class="dashboard-desc">Nejpopulárnější produkty</p>
+        <p class="dashboard-data">
+            <ol>
+                <li>Smažený sýr s hranolkami</li>
+                <li>Fernet Stock</li>
+                <li>Rýžový nákyp</li>
+            </ol>
+        </p>
+    </div>
+
+</div>

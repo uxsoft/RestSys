@@ -15,7 +15,7 @@
   float: left;
   position: relative;
   padding: 0;
-  width: 180px;
+  width: 150px;
   line-height: 32px;
   background-color: #f7f7f7;
 }
@@ -65,33 +65,39 @@
   color: black;
 }
 #menu li:nth-child( 1):hover a {
-  border-top-color: #1b325f;
-}
-#menu li:nth-child( 1) li:hover a {
-  color: #1b325f;
-}
-#menu li:nth-child( 2):hover a {
-  border-top-color: #9cc4e4;
-}
-#menu li:nth-child( 2) li:hover a {
-  color: #9cc4e4;
-}
-#menu li:nth-child( 3):hover a {
-  border-top-color: #7f44d6;
-}
-#menu li:nth-child( 3) li:hover a {
-  color: #7f44d6;
-}
-#menu li:nth-child( 4):hover a {
-  border-top-color: #3a89c9;
-}
-#menu li:nth-child( 4) li:hover a {
-  color: #3a89c9;
-}
-#menu li:nth-child( 5):hover a {
   border-top-color: #f26c4f;
 }
-#menu li:nth-child( 5) li:hover a {
+#menu li:nth-child( 1) li:hover a {
   color: #f26c4f;
+}
+#menu li:nth-child( 2):hover a {
+  border-top-color: #1b325f;
+}
+#menu li:nth-child( 2) li:hover a {
+  color: #1b325f;
+}
+#menu li:nth-child( 3):hover a {
+  border-top-color: #3a89c9;
+}
+#menu li:nth-child( 3) li:hover a {
+  color: #3a89c9;
+}
+#menu li:nth-child( 4):hover a {
+  border-top-color: #9cc4e4;
+}
+#menu li:nth-child( 4) li:hover a {
+  color: #9cc4e4;
+}
+#menu li:nth-child( 5):hover a {
+  border-top-color: #3a89c9;
+}
+#menu li:nth-child( 5) li:hover a {
+  color: #3a89c9;
+}
+#menu li:nth-child( 6):hover a {
+  border-top-color: #1b325f;
+}
+#menu li:nth-child( 6) li:hover a {
+  color: #1b325f;
 }
 /*# sourceMappingURL=angelfish.css.map */
