@@ -117,11 +117,16 @@ namespace RestSys.Controllers
                 receipt.Order = order;
                 receipt.User = db.Users.Find((User.Identity as RSUser).Id);
 
-                var orderItems = orderItemIds.Select(oiid => db.OrderItems.Find(oiid));
+                var orderItems = orderItemIds.Select(oiid => db.OrderItems.Include("Product.Stocks.Stock").SingleOrDefault(oi => oi.Id == oiid));
                 if (orderItems.All(oi => oi != null ? oi.State < 2 : false))
                     foreach (var orderItem in orderItems)
                     {
                         orderItem.Receipt = receipt;
+
+                        //Product was used, modify stock quantity
+                        foreach (var stockItem in orderItem.Product.Stocks)
+                            stockItem.Stock.Quantity -= stockItem.Amount;
+
                         orderItem.State = (int)RSOrderItemState.Paid;
                     }
                 else return -1;

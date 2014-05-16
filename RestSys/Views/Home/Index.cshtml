@@ -32,11 +32,13 @@
     <div class="dashboard-item">
         <p class="dashboard-desc">Využité zboží za dnešní den</p>
         <p class="dashboard-data">
-            <ul>
-                <li>Rum - 4l</li>
-                <li>Cola - 17l</li>
-                <li>Limetky - 26ks</li>
-            </ul>
+			<ul>
+				@foreach (dynamic stock in ViewBag.TodayMostUsedStock)
+				{
+					<li>@stock.Title - @stock.Quantity @stock.Unit</li>
+				}
+			</ul>
+
         </p>
     </div>
 
