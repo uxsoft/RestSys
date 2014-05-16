@@ -1,5 +1,5 @@
 ﻿using RestSys.Client.Common;
-using RestSys.Client.Services.EntityService;
+using RestSys.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;

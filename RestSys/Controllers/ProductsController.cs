@@ -53,7 +53,7 @@ namespace RestSys.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetStocks(int id)
+        public ActionResult GetStocks(int id)
         {
             return Json(db.StockItems.Where(si => si.Product.Id == id).Select(s => new { title = s.Stock.Title, amount = s.Amount, unit = s.Stock.Unit, id = s.Id }), JsonRequestBehavior.AllowGet);
         }

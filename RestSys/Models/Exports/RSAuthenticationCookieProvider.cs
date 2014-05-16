@@ -11,26 +11,29 @@ namespace RestSys.Models.Exports
         private const string COOKIE_NAME = "RestSysAuthenticationCookie";
         private const string COOKIE_USERNAME = "u";
         private const string COOKIE_PASSWORDHASH = "p";
+        private static RSDbContext Db = new RSDbContext();
 
         private static RSUser CurrentUser { get; set; }
 
         public System.Security.Principal.IIdentity CreateIdentity()
         {
-            using (RSDbContext Db = new RSDbContext())
+            if (HttpContext.Current.Request.Cookies[COOKIE_NAME] == null)
+                return null;
+
+            string username = HttpContext.Current.Request.Cookies[COOKIE_NAME][COOKIE_USERNAME];
+            string password = HttpContext.Current.Request.Cookies[COOKIE_NAME][COOKIE_PASSWORDHASH];
+
+            if (CurrentUser == null)
             {
-                if (HttpContext.Current.Request.Cookies[COOKIE_NAME] == null)
-                    return null;
-
-                string username = HttpContext.Current.Request.Cookies[COOKIE_NAME][COOKIE_USERNAME];
-                string password = HttpContext.Current.Request.Cookies[COOKIE_NAME][COOKIE_PASSWORDHASH];
-
-                if (CurrentUser == null)
+                IEnumerable<RSUser> allUsers;
+                do
                 {
-                    var matchingUsers = Db.Users.Where(u => u.Name == username).ToList();
-                    CurrentUser = matchingUsers.SingleOrDefault(u => BitConverter.ToString(u.PasswordHash) == password);
-                }
-                return CurrentUser;
+                    allUsers = Db.Users.ToList();
+                } while (!allUsers.Any());
+
+                CurrentUser = allUsers.SingleOrDefault(u => u.Name == username && BitConverter.ToString(u.PasswordHash) == password);
             }
+            return CurrentUser;
         }
 
         public System.Security.Principal.IPrincipal CreatePrincipal()
@@ -43,6 +46,7 @@ namespace RestSys.Models.Exports
             using (RSDbContext Db = new RSDbContext())
             {
                 RSUser user = Db.Users.FirstOrDefault(u => u.Username == username);
+                user.DependencyInjection();
 
                 if (user == null) return false;
                 if (!user.CheckPassword(password)) return false;

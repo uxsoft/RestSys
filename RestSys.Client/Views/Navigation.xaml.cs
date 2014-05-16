@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using RestSys.Client.Common;
-using RestSys.Client.Services.EntityService;
+using RestSys.Models;
 using Windows.UI.Core;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
@@ -43,7 +43,6 @@ namespace RestSys.Client.Views
                 btnHome_Click(null, null);
             });
         }
-
 
         public void NavigateTo(int id)
         {

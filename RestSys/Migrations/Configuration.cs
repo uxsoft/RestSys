@@ -28,6 +28,7 @@ namespace RestSys.Migrations
                         IsAdmin = true,
                         IsWaiter = true
                     };
+                    user0.DependencyInjection();
                     user0.CreatePassword("admin");
                     context.Users.AddOrUpdate(user0);
                 }

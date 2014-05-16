@@ -107,9 +107,9 @@ namespace RestSys.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
-
                 if (!string.IsNullOrWhiteSpace(newpassword) & newpassword == confirmpassword)
                 {
+                    user.DependencyInjection();
                     user.CreatePassword(newpassword);
                 }
 
@@ -136,6 +136,7 @@ namespace RestSys.Controllers
 
                 if (newpassword == confirmpassword)
                 {
+                    user.DependencyInjection();
                     user.CreatePassword(newpassword);
                 }
                 else

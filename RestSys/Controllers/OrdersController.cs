@@ -50,18 +50,16 @@ namespace RestSys.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetProducts(int id)
+        public ActionResult GetProducts(int id)
         {
             return Json(db.OrderItems.Where(p => p.Order.Id == id).Select(p => new { title = p.Product.Title, id = p.Id }), JsonRequestBehavior.AllowGet);
         }
 
-        // GET: /Orders/
         public ActionResult Index()
         {
             return View(db.Orders.ToList());
         }
 
-        // GET: /Orders/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -74,7 +72,6 @@ namespace RestSys.Controllers
             return View(rsorder);
         }
 
-        // GET: /Orders/Create
         public ActionResult Create()
         {
             return View();

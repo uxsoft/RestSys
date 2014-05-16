@@ -17,6 +17,7 @@ namespace RestSys
     {
         public WebApiApplication()
         {
+            Db = new RSDbContext();
             this.DependencyInjection();
         }
 
@@ -28,6 +29,8 @@ namespace RestSys
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        public RSDbContext Db { get; set; }
 
         [Import]
         public IAuthenticationCookieProvider AuthenticationCookieProvider { get; set; }

@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Graphics.Printing;
 using Windows.UI.Xaml.Printing;
-using RestSys.Client.Services.EntityService;
+using RestSys.Models;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 

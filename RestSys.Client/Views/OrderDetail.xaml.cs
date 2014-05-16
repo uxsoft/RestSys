@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using RestSys.Client.Services.EntityService;
+using RestSys.Models;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 

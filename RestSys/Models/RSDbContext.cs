@@ -4,12 +4,17 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
+using RestSys.Models;
 using System.Web;
 
 namespace RestSys.Models
 {
     public partial class RSDbContext : DbContext
     {
+        public RSDbContext()
+        {
+        }
+
         public DbSet<RSNavigationItem> Navigation { get; set; }
         public DbSet<RSOrder> Orders { get; set; }
         public DbSet<RSProduct> Products { get; set; }

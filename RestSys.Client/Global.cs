@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RestSys.Client.Services.EntityService;
+using RestSys.Models;
 using System.Net.Http;
 using Windows.Storage;
 using Windows.Foundation.Collections;
@@ -46,10 +46,6 @@ namespace RestSys.Client
             await Connect(ConnectionUrl);
             if (IsConnected)
                 await Login(Username, Password);
-
-            ////---
-            //var a = await Service.GetNavigationItems();
-            //var b = await Service.GetNavigationItems();
 
             if (!IsAuthenticated || !IsConnected)
                 new RestSys.Client.Views.Settings().ShowIndependent();
