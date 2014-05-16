@@ -1,28 +1,27 @@
 ﻿@model RSDbContext
 @using RestSys.Resources
 @using RestSys.Models;
-
 <h2>@Resources.Dashboard</h2>
 <div id="dashboard">
     <div class="dashboard-item">
         <p class="dashboard-desc">Informace o uživateli</p>
         <p class="dashboard-data">
-            <strong>Přihlašovací jméno: </strong>  @((User.Identity as RSUser).Username)<br />
-            <strong>Jméno: </strong> @((User.Identity as RSUser).Name)<br />
+            <strong>Přihlašovací jméno: </strong>  @ViewBag.Username<br />
+            <strong>Jméno: </strong> @ViewBag.Name<br />
             @Html.ActionLink(Resources.Logout, "Logout", "Account")
         </p>
     </div>
 
     <div class="dashboard-item">
         <p class="dashboard-desc">Celková hodnota objednávek za dnešní den</p>
-        <p class="dashboard-data">@Model.Orders.Sum(o => o.Items.Sum(oi => oi.Price))  Kč</p>
+        <p class="dashboard-data">@ViewBag.TodayOrdersTotal  Kč</p>
     </div>
 
     <div class="dashboard-item">
         <p class="dashboard-desc">Zboží s nízkým množství na skladě</p>
         <p class="dashboard-data">
             <ul>
-                @foreach (var stock in Model.Stocks.Where(s => s.Quantity < s.CriticalQuantity).OrderBy(s => s.Quantity / s.CriticalQuantity).Take(5))
+                @foreach (var stock in ViewBag.StocksLowOnStock)
                 {
                     <li>@stock.Title - @stock.Quantity @stock.Unit</li>
                 }
@@ -34,7 +33,7 @@
         <p class="dashboard-desc">Nejpopulárnější produkty</p>
         <p class="dashboard-data">
             <ol>
-                @foreach (var product in Model.Products.Include("OrderItems").OrderBy(p => p.DependentOrderItems.Count).Take(5))
+                @foreach (var product in ViewBag.MostPopularProducts)
                 {
                     <li>@product.Title</li>
                 }

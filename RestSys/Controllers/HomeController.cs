@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity;
 namespace RestSys.Controllers
 {
     public class HomeController : Controller
@@ -14,7 +15,22 @@ namespace RestSys.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Username = (User.Identity as RSUser).Username;
+            ViewBag.Name = (User.Identity as RSUser).Name;
+            
+            ViewBag.TodayOrdersTotal = db.Orders
+                .Where(o => DbFunctions.TruncateTime(o.CreatedOn) == DbFunctions.TruncateTime(DateTime.Now))
+                .Sum(o => o.Items.Sum(oi => oi.Price));
+            
+            ViewBag.MostPopularProducts = db.Products
+                .Include("DependentOrderItems")
+                .OrderBy(p => p.DependentOrderItems.Count)
+                .Take(5);
+
+            ViewBag.StocksLowOnStock = db.Stocks.
+                Where(s => s.Quantity < s.CriticalQuantity)
+                .OrderBy(s => s.Quantity / s.CriticalQuantity)
+                .Take(5);
 
             return View(db);
         }
