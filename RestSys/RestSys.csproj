@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201405161301217_stockquantity.Designer.cs">
       <DependentUpon>201405161301217_stockquantity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405161456563_CriticalQuantity.cs" />
+    <Compile Include="Migrations\201405161456563_CriticalQuantity.Designer.cs">
+      <DependentUpon>201405161456563_CriticalQuantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Exports\RSAuthenticationCookieProvider.cs" />
     <Compile Include="Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -355,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405161301217_stockquantity.resx">
       <DependentUpon>201405161301217_stockquantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405161456563_CriticalQuantity.resx">
+      <DependentUpon>201405161456563_CriticalQuantity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resources.en.resw">
       <Generator>PublicResXFileCodeGenerator</Generator>

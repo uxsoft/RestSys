@@ -19,6 +19,9 @@ namespace RestSys.Models
         [Display(Name = "Množství")]
         public double Quantity { get; set; }
 
+        [Display(Name = "Kritická kvantita", Description = "Kritická kvantita je hranice pod kterou je produkt považován za nedostatečně naskladněný")]
+        public double CriticalQuantity { get; set; }
+
         [Display(Name = "Jednotky")]
         public string Unit { get; set; }
 
