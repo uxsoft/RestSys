@@ -45,7 +45,7 @@ namespace RestSys.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Quantity,Notes,SerialNumber,Unit")] RSStock rSStock)
+        public async Task<ActionResult> Create(RSStock rSStock)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +74,7 @@ namespace RestSys.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Quantity,Notes,SerialNumber,Unit")] RSStock rSStock)
+        public async Task<ActionResult> Edit(RSStock rSStock)
         {
             if (ModelState.IsValid)
             {

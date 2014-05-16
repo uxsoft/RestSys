@@ -17,7 +17,7 @@ namespace RestSys.Models
 
         [Required]
         [Display(Name = "Množství")]
-        public double Quantity;
+        public double Quantity { get; set; }
 
         [Display(Name = "Jednotky")]
         public string Unit { get; set; }
@@ -27,7 +27,6 @@ namespace RestSys.Models
 
         [Display(Name = "Kód")]
         public string SerialNumber { get; set; }
-
 
         //Relations
         public virtual ICollection<RSStockItem> Items { get; set; }

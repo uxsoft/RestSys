@@ -11,6 +11,7 @@ namespace RestSys.Controllers
     {
         RSDbContext db = new RSDbContext();
 
+        [Authorize]
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";

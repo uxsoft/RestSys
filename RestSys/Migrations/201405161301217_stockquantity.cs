@@ -7,10 +7,12 @@ namespace RestSys.Migrations
     {
         public override void Up()
         {
+            AddColumn("dbo.RSStocks", "Quantity", c => c.Double(nullable: false));
         }
         
         public override void Down()
         {
+            DropColumn("dbo.RSStocks", "Quantity");
         }
     }
 }

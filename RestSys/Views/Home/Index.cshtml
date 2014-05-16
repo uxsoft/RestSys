@@ -7,8 +7,8 @@
     <div class="dashboard-item">
         <p class="dashboard-desc">Informace o uživateli</p>
         <p class="dashboard-data">
-            <strong>Přihlašovací jméno: </strong>  JD<br />
-            <strong>Jméno: </strong> John Doe <br />
+            <strong>Přihlašovací jméno: </strong>  @((User.Identity as RSUser).Username)<br />
+            <strong>Jméno: </strong> @((User.Identity as RSUser).Name)<br />
             @Html.ActionLink(Resources.Logout, "Logout", "Account")
         </p>
     </div>
@@ -39,5 +39,4 @@
             </ol>
         </p>
     </div>
-
 </div>

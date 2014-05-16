@@ -13,7 +13,7 @@ namespace RestSys.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201405151737398_stockquantity"; }
+            get { return "201405161301217_stockquantity"; }
         }
         
         string IMigrationMetadata.Source
