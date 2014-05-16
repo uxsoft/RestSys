@@ -22,9 +22,10 @@
         <p class="dashboard-desc">Zboží s nízkým množství na skladě</p>
         <p class="dashboard-data">
             <ul>
-                <li>Cola - 1 l</li>
-                <li>Rum - 0.3 l</li>
-                <li>Limetky - 2 ks</li>
+                @foreach (var stock in Model.Stocks.Where(s => s.Quantity < s.CriticalQuantity).OrderBy(s => s.Quantity / s.CriticalQuantity).Take(5))
+                {
+                    <li>@stock.Title - @stock.Quantity @stock.Unit</li>
+                }
             </ul>
         </p>
     </div>
@@ -33,9 +34,10 @@
         <p class="dashboard-desc">Nejpopulárnější produkty</p>
         <p class="dashboard-data">
             <ol>
-                <li>Smažený sýr s hranolkami</li>
-                <li>Fernet Stock</li>
-                <li>Rýžový nákyp</li>
+                @foreach (var product in Model.Products.Include("OrderItems").OrderBy(p => p.DependentOrderItems.Count).Take(5))
+                {
+                    <li>@product.Title</li>
+                }
             </ol>
         </p>
     </div>
