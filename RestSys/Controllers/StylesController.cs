@@ -16,7 +16,10 @@ namespace RestSys.Controllers
 
         public ActionResult Receipt(int id)
         {
-            return View(db.Receipts.Find(id));
+            RSReceipt receipt = db.Receipts.Include("Order").Include("PaidItems.Product").SingleOrDefault(r => r.Id == id);
+            if (receipt != null)
+                return View(receipt);
+            else return HttpNotFound();
         }
 
         public ActionResult ReceiptStyle()

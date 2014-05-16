@@ -40,7 +40,7 @@ namespace RestSys.Models.Exports
         {
             using (RSDbContext Db = new RSDbContext())
             {
-                RSUser user = Db.Users.SingleOrDefault(u => u.Username == username);
+                RSUser user = Db.Users.FirstOrDefault(u => u.Username == username);
 
                 if (user == null) return false;
                 if (!user.CheckPassword(password)) return false;

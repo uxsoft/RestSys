@@ -60,7 +60,7 @@ namespace RestSys.Client.Views
 
         private async void btnConnect_Click(object sender, RoutedEventArgs e)
         {
-            if (await Global.Connect(Global.ConnectionUrl))
+            if (await Global.Connect(txtServerAddress.Text))
             {
                 visibility();
             }

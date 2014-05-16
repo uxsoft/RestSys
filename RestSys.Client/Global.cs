@@ -25,6 +25,7 @@ namespace RestSys.Client
 
         const string LOGIN_ENDPOINT = "{0}/Account/Login";
         const string IDENTIFICATION_ENDPOINT = "{0}/Home/ServerIdentification";
+        const string SETTINGS_COOKIE = "RestSysAuthenticationCookie";
         const string SETTINGS_CONNECTIONURL = "RestSysServiceUrl";
         const string SETTINGS_USERNAME = "RestSysUsername";
         const string SETTINGS_PASSWORD = "RestSysPassword";
@@ -57,16 +58,20 @@ namespace RestSys.Client
                 new KeyValuePair<string,string>("password", password)
             }));
 
-            if (!response.Headers.Contains("Set-Cookie"))
-                return false;
+            if (response.Headers.Contains("Set-Cookie"))
+                if (response.Headers.GetValues("Set-Cookie").Any(s => s.StartsWith(SETTINGS_COOKIE)))
+                {
 
-            if (Authenticated != null)
-                Authenticated(null, EventArgs.Empty);
+                    if (Authenticated != null)
+                        Authenticated(null, EventArgs.Empty);
 
-            Username = username;
-            Password = password;
-            IsAuthenticated = true;
-            return true;
+                    Username = username;
+                    Password = password;
+                    IsAuthenticated = true;
+                    return true;
+                }
+
+            return false;
         }
 
         public static async Task<bool> Connect(string url)
@@ -85,6 +90,8 @@ namespace RestSys.Client
                     Handler.UseCookies = true;
                     Client = new HttpClient(Handler);
                     Client.BaseAddress = new Uri(url);
+
+                    ConnectionUrl = url;
 
                     if (Connected != null)
                         Connected(null, EventArgs.Empty);

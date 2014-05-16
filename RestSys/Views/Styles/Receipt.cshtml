@@ -12,19 +12,24 @@
 </head>
 <body>
     <div id="page">
-        <h1>RestSys</h1>
-        pjsdfoijsfdjifd]as
-
-        sfd<br/>
-        asf<br />
-        s<br />
-        afd<br />
-        fsda<br />
-        fdsa<br />
-        ds<br />
-        af<br />
-        ds<br />
-        fsdafsdaas<br />
+        <div class="receipt-header"></div>
+        <span class="receipt-id">@Model.Id</span>
+        <span class="receipt-title">@Model.Order.Title</span>
+        <span class="receipt-date">@Model.CreatedOn.ToLongDateString() @Model.CreatedOn.ToShortTimeString()</span>
+        <table class="receipt-items">
+            @foreach (var item in @Model.PaidItems.GroupBy(i => i.Product.Id))
+            {
+                <tr>
+                    <td>@item.Count()x</td>
+                    <td>@item.First().Product.Title</td>
+                    <td>@(item.First().Price)</td>
+                    <td>@item.Sum(i => i.Price)</td>
+                </tr>
+            }
+        </table>
+        <span class="receipt-total">@Model.PaidItems.Sum(i => i.Price)</span>
+        <div class="receipt-footer"></div>
     </div>
 </body>
+
 </html>

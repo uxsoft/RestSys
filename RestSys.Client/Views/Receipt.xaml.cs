@@ -77,10 +77,15 @@ namespace RestSys.Client.Views
 
         private async void btnCreateReceipt_Click(object sender, RoutedEventArgs e)
         {
+            btnAcceptReceipt.IsEnabled = false;
+            grdOrderItems.IsEnabled = false;
+
             if (grdOrderItems.SelectedItems.Count == 0)
             {
                 MessageDialog md = new MessageDialog("Potvrzení účtenky nebylo možno provést. Musíte označit alespoň jednu položku.", "Potvrzení účtenky");
                 await md.ShowAsync();
+                btnAcceptReceipt.IsEnabled = true;
+                grdOrderItems.IsEnabled = true;
                 return;
             }
 
@@ -90,6 +95,7 @@ namespace RestSys.Client.Views
                 string receiptHtml = await Service.GenerateReceipt(receipt.Id);
                 webReceipt.NavigateToString(receiptHtml);
                 await PrintManager.ShowPrintUIAsync();
+
             }
             else
             {
@@ -97,6 +103,8 @@ namespace RestSys.Client.Views
                 await md.ShowAsync();
                 order = await Service.GetOrder(order.Id);
                 grdOrderItems.ItemsSource = order.Items.Where(oi => oi.State < 2);
+                btnAcceptReceipt.IsEnabled = true;
+                grdOrderItems.IsEnabled = true;
             }
         }
 

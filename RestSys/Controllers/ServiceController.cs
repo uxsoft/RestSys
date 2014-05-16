@@ -115,7 +115,7 @@ namespace RestSys.Controllers
                 RSReceipt receipt = new RSReceipt();
                 RSOrder order = db.Orders.Find(id);
                 receipt.Order = order;
-                receipt.User = User.Identity as RSUser;
+                receipt.User = db.Users.Find((User.Identity as RSUser).Id);
 
                 var orderItems = orderItemIds.Select(oiid => db.OrderItems.Find(oiid));
                 if (orderItems.All(oi => oi != null ? oi.State < 2 : false))
@@ -126,7 +126,7 @@ namespace RestSys.Controllers
                     }
                 else return null;
 
-                db.Receipts.Add(receipt);
+                receipt = db.Receipts.Add(receipt);
 
                 db.SaveChanges();
                 return receipt;
@@ -141,7 +141,7 @@ namespace RestSys.Controllers
         public async Task<RSOrderItem> AddOrderItem(int id, [FromBody]int productId)
         {
             RSOrder order = await db.Orders.FindAsync(id);
-            
+
             if (!order.Active) //Disallow editing closed orders
                 return null;
 
