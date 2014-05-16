@@ -83,7 +83,7 @@
             <label>@Resources.ProductIngredients</label>
             <ul>
                 <li ng-repeat="stock in stocks">
-                    {{stock.title}} {{stock.amount}}
+                    {{stock.title}} {{stock.amount}}{{stock.unit}}
                     <button type="button" class="btnRemoveStock" ng-click="remove(stock)">@Resources.Remove</button>
                 </li>
             </ul>
@@ -92,10 +92,10 @@
             <select class="selAddStock">
                 @foreach (RSStock stock in Db.Stocks)
                 {
-                    <option value="@stock.Id">@stock.Title</option>
+                    <option value="@stock.Id">@stock.Title (@stock.Unit)</option>
                 }
             </select>
-            <input type="number" name="amount" id="amount" value="100" title="Amount in basic units SI" />
+            <input type="number" name="amount" id="amount" value="0" />
             <button class="btnAddStock" type="button" ng-click="add()">@Resources.Add</button>
         </div>
 

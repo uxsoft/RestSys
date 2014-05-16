@@ -55,7 +55,15 @@ namespace RestSys.Controllers
         [HttpGet]
         public ActionResult GetStocks(int id)
         {
-            return Json(db.StockItems.Where(si => si.Product.Id == id).Select(s => new { title = s.Stock.Title, amount = s.Amount, unit = s.Stock.Unit, id = s.Id }), JsonRequestBehavior.AllowGet);
+            return Json(db.StockItems
+                .Where(si => si.Product.Id == id).
+                Select(s => new
+                {
+                    title = s.Stock.Title,
+                    amount = s.Amount,
+                    unit = s.Stock.Unit,
+                    id = s.Id,
+                }), JsonRequestBehavior.AllowGet);
         }
 
         // GET: Products

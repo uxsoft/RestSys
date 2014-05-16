@@ -1,7 +1,7 @@
 ﻿@model RestSys.Models.RSStock
 @using RestSys.Resources
 @{
-    ViewBag.Title = "Edit";
+	ViewBag.Title = "Edit";
 }
 
 <h2>@Resources.StockEdit</h2>
@@ -9,72 +9,72 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.Id)
+	@Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+	<div class="form-horizontal">
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		@Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CriticalQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CriticalQuantity, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CriticalQuantity, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Unit, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Unit, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Unit, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.CriticalQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.CriticalQuantity, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.CriticalQuantity, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Unit, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.DropDownListFor(model => model.Unit, new string[] { "g", "l", "m", "ks" }.Select(s => new SelectListItem() { Text = s, Value = s }), new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Unit, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SerialNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@Resources.Submit" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.SerialNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="@Resources.Submit" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
 }
 
 <div>
-    @Html.ActionLink(@Resources.BackToList, "Index")
+	@Html.ActionLink(@Resources.BackToList, "Index")
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/jqueryval")
 }
