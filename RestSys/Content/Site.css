@@ -38,7 +38,7 @@ br {
   text-align: right;
 }
 #page {
-  width: 960px;
+  width: 980px;
   margin: 0 auto;
 }
 #page #content {
@@ -47,6 +47,7 @@ br {
   padding-top: 2px;
 }
 #page #menu {
+  margin: 0 auto;
   clear: both;
   font-size: 20px;
   font-family: 'Oswald', sans-serif;
