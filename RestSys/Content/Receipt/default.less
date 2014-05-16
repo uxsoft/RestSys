@@ -1,2 +1,42 @@
 ﻿body {
+    font: 12px Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+#page {
+    width: 5.25cm;
+    margin: 0 auto;
+}
+.receipt-header, .receipt-footer {
+    font-style: italics;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+}
+.receipt-id:before {
+    content: "ID: ";
+}
+.receipt-id,
+.receipt.title,
+.receipt-date {
+    font-style: italic;
+}
+.receipt-total,
+.receipt-date {
+    float: right;
+    text-align: right;
+}
+table {
+    margin-top: 1em;
+    border-top: 1px dashed black;
+}
+td {
+    padding: 0.25em 0;
+}
+.receipt-total {
+    font-size: 14px;
+    font-weight: bold;
+}
+.receipt-total:after {
+    content: " Kč";
+}
+.receipt-footer {   
+    clear: both;
 }

@@ -281,6 +281,9 @@
     <Content Include="Content\Menu\default.min.css">
       <DependentUpon>default.css</DependentUpon>
     </Content>
+    <Content Include="Content\Receipt\default.css">
+      <DependentUpon>default.less</DependentUpon>
+    </Content>
     <Content Include="Content\site.css">
       <DependentUpon>site.less</DependentUpon>
     </Content>
@@ -431,6 +434,9 @@
     </Content>
     <Content Include="Content\site.css.map">
       <DependentUpon>site.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Receipt\default.css.map">
+      <DependentUpon>default.css</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\restsys.uxsoft.cz.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
