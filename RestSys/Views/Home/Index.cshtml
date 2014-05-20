@@ -12,6 +12,13 @@
         </p>
     </div>
 
+	<div class="dashboard-item">
+		<p class="dashboard-desc">Vygenerovat Menu</p>
+		<p>
+			@Html.ActionLink("Generovat", "Menu", "Styles")
+		</p>
+	</div>
+
     <div class="dashboard-item">
         <p class="dashboard-desc">Celková hodnota objednávek za dnešní den</p>
         <p class="dashboard-data">@ViewBag.TodayOrdersTotal  Kč</p>

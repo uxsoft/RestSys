@@ -39,7 +39,7 @@ namespace RestSys.Controllers
 
         private string GetStyleCode(RSStyleType type)
         {
-            RSStyle style = db.Styles.Where(s => s.Type == (int)RSStyleType.MenuStyle).FirstOrDefault(s => s.Selected);
+            RSStyle style = db.Styles.Where(s => s.Type == (int)type).FirstOrDefault(s => s.Selected);
             if (style == null)
                 return "";
 

@@ -89,7 +89,6 @@ namespace RestSys.Client.Views
                 string receiptHtml = await Service.GenerateReceipt(receiptId);
                 webReceipt.NavigateToString(receiptHtml);
                 await PrintManager.ShowPrintUIAsync();
-
             }
             else
             {

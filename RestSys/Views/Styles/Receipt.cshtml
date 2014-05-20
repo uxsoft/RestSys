@@ -1,35 +1,35 @@
 ﻿@model RSReceipt
 @using RestSys.Models
 @{
-    Layout = null;
+	Layout = null;
 }
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>RestSys Účtenka #@Model.Id</title>
-    <link href="/Styles/ReceiptStyle" rel="stylesheet" />
+	<meta name="viewport" content="width=device-width" />
+	<title>RestSys Účtenka #@Model.Id</title>
+	<link href="@Url.Action("ReceiptStyle", "Styles", new { }, Url.RequestContext.HttpContext.Request.Url.Scheme)" rel="stylesheet" />
 </head>
 <body>
-    <div id="page">
-        <div class="receipt-header"></div>
-        <span class="receipt-id">@Model.Id</span>
-        <span class="receipt-title">@Model.Order.Title</span>
-        <span class="receipt-date">@Model.CreatedOn.ToLongDateString() @Model.CreatedOn.ToShortTimeString()</span>
-        <table class="receipt-items">
-            @foreach (var item in @Model.PaidItems.GroupBy(i => i.Product.Id))
-            {
-                <tr>
-                    <td>@item.Count()x</td>
-                    <td>@item.First().Product.Title</td>
-                    <td>@(item.First().Price)</td>
-                    <td>@item.Sum(i => i.Price)</td>
-                </tr>
-            }
-        </table>
-        <span class="receipt-total">@Model.PaidItems.Sum(i => i.Price)</span>
-        <div class="receipt-footer"></div>
-    </div>
+	<div id="page">
+		<div class="receipt-header"></div>
+		<span class="receipt-id">@Model.Id</span>
+		<span class="receipt-title">@Model.Order.Title</span>
+		<span class="receipt-date">@Model.CreatedOn.ToLongDateString() @Model.CreatedOn.ToShortTimeString()</span>
+		<table class="receipt-items">
+			@foreach (var item in @Model.PaidItems.GroupBy(i => i.Product.Id))
+			{
+				<tr>
+					<td>@item.Count()x</td>
+					<td>@item.First().Product.Title</td>
+					<td>@(item.First().Price)</td>
+					<td>@item.Sum(i => i.Price)</td>
+				</tr>
+			}
+		</table>
+		<span class="receipt-total">@Model.PaidItems.Sum(i => i.Price)</span>
+		<div class="receipt-footer"></div>
+	</div>
 </body>
 
 </html>

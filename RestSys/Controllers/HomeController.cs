@@ -20,6 +20,9 @@ namespace RestSys.Controllers
 
             ViewBag.TodayOrdersTotal = db.Orders
                 .Where(o => DbFunctions.TruncateTime(o.CreatedOn) == DbFunctions.TruncateTime(DateTime.Now))
+                .Include("Items")
+                .ToList()
+                .Where(o => o.Items != null)
                 .Sum(o => o.Items.Sum(oi => oi.Price));
 
             ViewBag.MostPopularProducts = db.Products
